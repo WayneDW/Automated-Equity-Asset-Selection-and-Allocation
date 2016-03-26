@@ -1,12 +1,13 @@
 #!/usr/bin/python
 import sys
+import random
 import urllib2
 import numpy
 import scipy
 import operator
 import math
 import itertools
-import random
+
 
 def grapDATA(file, year, mon, day):
     # The following path is used for a customized path
