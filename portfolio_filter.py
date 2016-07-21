@@ -6,12 +6,20 @@ import sys
 # B/M, growing 
 # leverage ratio
 
-def check(model, invest_type):
+def init_check(model, invest_type):
 	ticker = model.ticker
 	returns = model.returns
 	ticker_info = model.ticker_info
 	if sample_size(ticker, returns): return 0
-	if capSize(ticker, ticker_info.marketCap, invest_type): return 0
+	#if capSize(ticker, ticker_info.marketCap, invest_type): return 0
+	return 1
+
+def mid_check(obj):
+	print "=============================================================================="
+	if alpha_neg(obj): return 0
+	# PE check
+	# if 200 moving avg > 50 moving avg check
+	# Price_to_Book check
 	return 1
 
 
@@ -32,12 +40,17 @@ def capSize(ticker, par, target):
 	else:
 		out = "large-cap"
 	if out != target:
-		return warining(ticker, "is a", out, "company, rather than a" + target)
+		return warining(ticker, "is a " + out +  " company, rather than a " + target)
+	return 0
+
+def alpha_neg(obj):
+	if obj.alpha < 0:
+		return warining(obj.ticker_info.ticker, "has negative alpha")
 	return 0
 
 def warining(ticker, s):
 	print ticker, s, "!"
-	print "==============================================================================\n\n\n"
+	print "=============================================================================="
 	return 1
 
 

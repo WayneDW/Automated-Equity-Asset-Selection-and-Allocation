@@ -10,18 +10,38 @@ import zipfile
 import StringIO
 import random
 from math import log
+# yahoo finance api, containing incomplete index
+from yahoo_finance import Share 
+from pprint import pprint
 
 
 class ticker_info:
 	# pars are customized to the data from NASDAQ website
-	def __init__(self, pars, ex):
-		self.ticker = pars[0]
-		self.name = pars[1]
-		self.lastSale = pars[2]
-		self.marketCap = float(pars[3])
-		self.IPOyear = pars[5]
-		self.sector = pars[6]
-		self.industry = pars[7]
+	def __init__(self, ticker, pars, index, ex):
+		
+		self.ticker = ticker
+		self.name = pars[0]
+		self.lastSale = pars[1]
+		self.marketCap = float(pars[2])
+		self.IPOyear = pars[4]
+		self.sector = pars[5]
+		self.industry = pars[6]
+
+		'''
+		# Api from https://pypi.python.org/pypi/yahoo-finance/1.2.1
+		# Since grabbing these information consumes much more time, 
+		# a better way is to split the whole process into 2 seperate parts, 
+		# one is to download basic informations, one to do calculation
+		info = Share(ticker)
+		self.EBITDA = info.get_ebitda()
+		self.EPS = info.get_earnings_share()
+		self.EPS_growth = info.get_price_earnings_growth_ratio()
+		self.price_book = info.get_price_book()
+		self.moving_avg_50 = info.get_50day_moving_avg()
+		self.moving_avg_200 = info.get_200day_moving_avg()
+		self.trailingPE = index['trailingPE']
+		self.forwardPE = index['forwardPE']
+		'''
 		self.exchange = ex
 
 class stock_price:
@@ -44,11 +64,27 @@ class fama_french_factor:
 		if tag == 6:
 			self.RMW = pars[3]
 			self.CMA = pars[4]
-		self.RF = pars[len(pars) - 1]
+		self.RF = pars[tag - 1]
 
 
 
 class web_spider:
+	# http://finance.yahoo.com/quote/BABA/key-statistics, incomplete_version
+	def key_stat(self, ticker):
+		url = "http://finance.yahoo.com/quote/" + ticker + "/key-statistics"
+		index = {"trailingPE" : None, "forwardPE" : None}
+		try:
+			response = urllib2.urlopen(url)
+			csv = response.read()
+			for par in index:
+				reg = "\\\"" + par + "\\\":{\\\"raw\\\":([\\d.]+)"
+				m = re.search(reg, csv)
+				if m:
+					index[par] =  float(m.group(1))
+		except:
+			print "Http error in grapping PE"
+		return index
+
 	# Get all the tickers in NYSE, NASDAQ and AMEX from NASDAQ website
 	# http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange=NASDAQ&render=download
 	def tickers(self):
@@ -64,47 +100,12 @@ class web_spider:
 				if num == 0 or len(line) != 9:
 					continue
 				ticker = line[0]
-				tickerList[ticker] = ticker_info(line, exchange)
+				index = {"trailingPE" : None, "forwardPE" : None}
+				#index = self.key_stat(ticker)
+				tickerList[ticker] = ticker_info(ticker, line[1:], index, exchange)
 		return tickerList
 
-	# http://finance.yahoo.com/quote/BABA/key-statistics
-	# incomplete_version
-	def key_stat(self, ticker):
-		url = "http://finance.yahoo.com/quote/" + ticker + "/key-statistics"
-		response = urllib2.urlopen(url)
-		csv = response.read()
-		print csv
-		parList = ["marketCap", "trailingPE", "forwardPE"]
-		index = {}
-		for par in parList:
-			reg = "\\\"" + par + "\\\":{\\\"raw\\\":([\\d.]+)"
-			m = re.search(reg, csv)
-			if m:
-				index[par] =  float(m.group(1))
-				print par, float(m.group(1))
-			else:
-				index[par] = None
-
-	def key_index(self, ticker):
-		f = open('/home/wayne/Portfolio_Selection/tag')
-		tag = ""
-		Dict = {}
-		for num, l in enumerate(f):
-			l = l.strip().split("\t")
-			if len(l) != 2:
-				continue
-			tag += l[0]
-			Dict[num] = l[1]
-		url = "http://download.finance.yahoo.com/d/quotes.csv?s=" + ticker + "&f=" + tag + "&e=.csv"
-		response = urllib2.urlopen(url)
-		csv = response.read().split(',')
-		#for num in range(len(csv)):
-		#	print num, Dict[num], csv[num]
-		url = "http://finance.yahoo.com/q/ks?s=" + ticker + "+Key+Statistics"
-		response = urllib2.urlopen(url)
-		csv = response.read().split(',')
-		print csv
-		print url
+	
 
 	# US Treasury N Year Yield from Bloomberg
 	def treasury_yield(self):
@@ -177,7 +178,7 @@ class web_spider:
 		#print url1 + url2 + url3 + url4
 
 		# sleep for sometime to reduce the burden of the website
-		time.sleep(random.randint(1,10))
+		time.sleep(random.uniform(0.1, 1))
 
 		# parse url
 		response = urllib2.urlopen(url1 + url2 + url3 + url4)
@@ -219,7 +220,10 @@ class web_spider:
 
 def main():
 	spider = web_spider()
-	#spider.tickers()
+	lists = spider.tickers()
+	for ticker in lists:
+		spider.key_index(ticker)
+		#spider.key_stat(ticker)
 	#spider.treasury_yield()
 	#spider.FF_five_factor()
 	#spider.yahoo_all_returns("2015-01-01", "-",'m')

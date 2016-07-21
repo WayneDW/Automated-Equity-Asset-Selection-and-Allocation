@@ -23,16 +23,17 @@ import class_crawler
 # to capture key results from the following model
 
 class ticker_detail:
-	def __init__(self, r, var, alpha, betas, ticker_info):
+	def __init__(self, r, var, VaR, alpha, betas, ticker_info):
 		self.expect_return = r
 		self.var = var
+		self.VaR = VaR
 		self.alpha = alpha
 		self.betas = betas
 		# ticker_info is an object, containing info: Mkt-cap, IPO year,...
 		self.ticker_info = ticker_info 
 
 
-class Fama_French_factor_model:
+class Fama_French_preprocessor:
 	def __init__(self, ticker_info, start_time, end_time, type_time, factor_num, rf, market_return, factors):
 		self.ticker_info = ticker_info
 		self.ticker = ticker_info.ticker
@@ -77,8 +78,8 @@ class Fama_French_factor_model:
 			model = ols("Excess_Return ~ Mkt_Rf + SMB + HML", pars).fit()
 			# The following 3 numbers are from: Equity Asset Evaluation, 2nd edition by Jerald Pinto, etc. page 66.
 			market_risk_coef, size_risk_coef, value_risk_coef = model.params[1:]
-			required_rate_of_return = self.rf + market_risk_coef * np.mean(pars["Mkt_Rf"]) \
-			+ size_risk_coef * np.mean(pars["SMB"]) + value_risk_coef * np.mean(pars["HML"])
+			required_rate_of_return = self.rf + market_risk_coef * np.mean(pars["Mkt_Rf"]) + size_risk_coef * np.mean(pars["SMB"]) + value_risk_coef * np.mean(pars["HML"])
+			#required_rate_of_return = self.rf + market_risk_coef * 0.055 / 12 + size_risk_coef * 0.02 / 12 + value_risk_coef * 0.043 / 12
 		else:
 			model = ols("Excess_Return ~ Mkt_Rf + SMB + HML + RMW + CMA", pars).fit()
 			market_risk_coef, size_risk_coef, value_risk_coef, profit_risk_coef, invest_risk_coef = model.params[1:]
@@ -90,12 +91,14 @@ class Fama_French_factor_model:
 		# take care!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		alpha = model.params[0]
 		betas = model.params[1:]
+		VaR = np.percentile(pars['return'], 5)
 		var = np.var(np.array(pars['return']), ddof = 1)
-		print "alpha :", round(alpha, 3)
-		print "Return:", util.perc(required_rate_of_return, 3)
-		print "SD    :", util.perc(math.sqrt(var), 2), "\n\n"
+		print "alpha  :", round(alpha, 3)
+		print "Return :", util.perc(required_rate_of_return, 3)
+		print "SD     :", util.perc(math.sqrt(var), 2)
+		print "VaR 95%:", util.perc(VaR, 2), "\n\n"
 		#print "annualized required_rate_of_return:", required_rate_of_return * 12
-		return ticker_detail(required_rate_of_return, var, alpha, betas, self.ticker_info)
+		return ticker_detail(required_rate_of_return, var, VaR, alpha, betas, self.ticker_info)
 
 		#fig, ax = plt.subplots(figsize=(12, 8))
 		#fig = sm.graphics.influence_plot(model, ax = ax, criterion = "cooks")

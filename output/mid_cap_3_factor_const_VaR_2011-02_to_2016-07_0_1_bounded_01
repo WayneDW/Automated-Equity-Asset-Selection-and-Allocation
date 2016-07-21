@@ -1,0 +1,1840 @@
+Download treasury yield
+Download tickers from NASDAQ
+Download tickers from NYSE
+Download tickers from AMEX
+Download historical Fama French factors
+
+
+Ticker: 1
+==============================================================================
+Ticker       |	CUBE
+Company      |	CubeSmart
+Market Cap   |	5449952109.0
+IPO year     |	n/a
+Sector       |	Consumer Services
+Industry     |	Real Estate Investment Trusts
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2011-03
+Ending   time: 2016-02
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.147
+Model:                            OLS   Adj. R-squared:                  0.101
+Method:                 Least Squares   F-statistic:                     3.213
+Date:                Tue, 19 Jul 2016   Prob (F-statistic):             0.0297
+Time:                        18:46:43   Log-Likelihood:                 84.641
+No. Observations:                  60   AIC:                            -161.3
+Df Residuals:                      56   BIC:                            -152.9
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0177      0.008      2.142      0.037         0.001     0.034
+Mkt_Rf         0.5567      0.240      2.323      0.024         0.077     1.037
+SMB            0.1544      0.393      0.393      0.696        -0.632     0.941
+HML           -0.6004      0.451     -1.331      0.189        -1.504     0.303
+==============================================================================
+Omnibus:                        8.523   Durbin-Watson:                   2.520
+Prob(Omnibus):                  0.014   Jarque-Bera (JB):                8.052
+Skew:                          -0.729   Prob(JB):                       0.0178
+Kurtosis:                       4.046   Cond. No.                         57.5
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.018
+Return : 0.598%
+SD     : 6.45%
+VaR 95%: -10.0% 
+
+
+==============================================================================
+
+
+Ticker: 2
+==============================================================================
+Ticker       |	JPEP
+Company      |	JP Energy Partners LP
+Market Cap   |	292855432.55
+IPO year     |	2014
+Sector       |	Energy
+Industry     |	Oil Refining/Marketing
+Exchange     |	NYSE
+==============================================================================
+JPEP has insufficient data !
+==============================================================================
+
+
+Ticker: 3
+==============================================================================
+Ticker       |	AIB
+Company      |	Apollo Investment Corporation
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+AIB is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 4
+==============================================================================
+Ticker       |	HQH
+Company      |	Tekla Healthcare Investors
+Market Cap   |	701054457.12
+IPO year     |	1987
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+HQH is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 5
+==============================================================================
+Ticker       |	AXE
+Company      |	Anixter International Inc.
+Market Cap   |	1904394010.4
+IPO year     |	n/a
+Sector       |	Consumer Non-Durables
+Industry     |	Telecommunications Equipment
+Exchange     |	NYSE
+==============================================================================
+AXE is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 6
+==============================================================================
+Ticker       |	INOV
+Company      |	Inovalon Holdings, Inc.
+Market Cap   |	2889935593.58
+IPO year     |	2015
+Sector       |	Technology
+Industry     |	EDP Services
+Exchange     |	NASDAQ
+==============================================================================
+INOV has insufficient data !
+==============================================================================
+
+
+Ticker: 7
+==============================================================================
+Ticker       |	SGMA
+Company      |	SigmaTron International, Inc.
+Market Cap   |	24198928.2
+IPO year     |	1994
+Sector       |	Technology
+Industry     |	Electrical Products
+Exchange     |	NASDAQ
+==============================================================================
+SGMA is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 8
+==============================================================================
+Ticker       |	COWN
+Company      |	Cowen Group, Inc.
+Market Cap   |	327116836.2
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Investment Bankers/Brokers/Service
+Exchange     |	NASDAQ
+==============================================================================
+COWN is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 9
+==============================================================================
+Ticker       |	CNTF
+Company      |	China TechFaith Wireless Communication Technology Limited
+Market Cap   |	12910834.2782
+IPO year     |	2005
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NASDAQ
+==============================================================================
+CNTF is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 10
+==============================================================================
+Ticker       |	MGM
+Company      |	MGM Resorts International
+Market Cap   |	13218946282.7
+IPO year     |	n/a
+Sector       |	Consumer Services
+Industry     |	Hotels/Resorts
+Exchange     |	NYSE
+==============================================================================
+MGM is a large-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 11
+==============================================================================
+Ticker       |	HIG
+Company      |	Hartford Financial Services Group, Inc. (The)
+Market Cap   |	17206655176.1
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Property-Casualty Insurers
+Exchange     |	NYSE
+==============================================================================
+HIG is a large-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 12
+==============================================================================
+Ticker       |	TSCO
+Company      |	Tractor Supply Company
+Market Cap   |	12406038926.8
+IPO year     |	1994
+Sector       |	Consumer Services
+Industry     |	RETAIL: Building Materials
+Exchange     |	NASDAQ
+==============================================================================
+TSCO is a large-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 13
+==============================================================================
+Ticker       |	KVHI
+Company      |	KVH Industries, Inc.
+Market Cap   |	133644346.2
+IPO year     |	1996
+Sector       |	Technology
+Industry     |	Radio And Television Broadcasting And Communications Equipment
+Exchange     |	NASDAQ
+==============================================================================
+KVHI is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 14
+==============================================================================
+Ticker       |	SCE^G
+Company      |	Southern California Edison Company
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+SCE^G fetech failed, http error!
+==============================================================================
+
+
+Ticker: 15
+==============================================================================
+Ticker       |	NPO
+Company      |	Enpro Industries
+Market Cap   |	1041251306.81
+IPO year     |	n/a
+Sector       |	Basic Industries
+Industry     |	Metal Fabrications
+Exchange     |	NYSE
+==============================================================================
+NPO is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 16
+==============================================================================
+Ticker       |	MS^E
+Company      |	Morgan Stanley
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+MS^E fetech failed, http error!
+==============================================================================
+
+
+Ticker: 17
+==============================================================================
+Ticker       |	DSXN
+Company      |	Diana Shipping inc.
+Market Cap   |	0.0
+IPO year     |	2015
+Sector       |	Transportation
+Industry     |	Marine Transportation
+Exchange     |	NYSE
+==============================================================================
+DSXN has insufficient data !
+==============================================================================
+
+
+Ticker: 18
+==============================================================================
+Ticker       |	SIEB
+Company      |	Siebert Financial Corp.
+Market Cap   |	35115350.34
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Investment Bankers/Brokers/Service
+Exchange     |	NASDAQ
+==============================================================================
+SIEB is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 19
+==============================================================================
+Ticker       |	SGZA
+Company      |	Selective Insurance Group, Inc.
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Property-Casualty Insurers
+Exchange     |	NYSE
+==============================================================================
+SGZA is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 20
+==============================================================================
+Ticker       |	FLEX
+Company      |	Flextronics International Ltd.
+Market Cap   |	6985872615.15
+IPO year     |	1994
+Sector       |	Technology
+Industry     |	Electrical Products
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2011-03
+Ending   time: 2016-02
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.300
+Model:                            OLS   Adj. R-squared:                  0.263
+Method:                 Least Squares   F-statistic:                     8.012
+Date:                Tue, 19 Jul 2016   Prob (F-statistic):           0.000156
+Time:                        18:46:56   Log-Likelihood:                 85.377
+No. Observations:                  60   AIC:                            -162.8
+Df Residuals:                      56   BIC:                            -154.4
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0005      0.008     -0.067      0.947        -0.017     0.016
+Mkt_Rf         0.8379      0.237      3.540      0.001         0.364     1.312
+SMB            0.5509      0.388      1.421      0.161        -0.226     1.328
+HML           -0.5570      0.446     -1.250      0.217        -1.450     0.336
+==============================================================================
+Omnibus:                        1.301   Durbin-Watson:                   1.877
+Prob(Omnibus):                  0.522   Jarque-Bera (JB):                0.929
+Skew:                          -0.304   Prob(JB):                        0.628
+Kurtosis:                       3.043   Cond. No.                         57.5
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.001
+Return : 0.747%
+SD     : 7.03%
+VaR 95%: -10.85% 
+
+
+==============================================================================
+FLEX has negative alpha !
+==============================================================================
+
+
+Ticker: 21
+==============================================================================
+Ticker       |	PVTD
+Company      |	PrivateBancorp, Inc.
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Major Banks
+Exchange     |	NYSE
+==============================================================================
+PVTD is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 22
+==============================================================================
+Ticker       |	LXRX
+Company      |	Lexicon Pharmaceuticals, Inc.
+Market Cap   |	1563927642.42
+IPO year     |	n/a
+Sector       |	Health Care
+Industry     |	Major Pharmaceuticals
+Exchange     |	NASDAQ
+==============================================================================
+LXRX is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 23
+==============================================================================
+Ticker       |	ARCO
+Company      |	Arcos Dorados Holdings Inc.
+Market Cap   |	1160069316.96
+IPO year     |	2011
+Sector       |	Consumer Services
+Industry     |	Restaurants
+Exchange     |	NYSE
+==============================================================================
+ARCO is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 24
+==============================================================================
+Ticker       |	KMF
+Company      |	Kayne Anderson Midstream Energy Fund, Inc
+Market Cap   |	314406417.4
+IPO year     |	2010
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+KMF is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 25
+==============================================================================
+Ticker       |	AKG
+Company      |	Asanko Gold Inc.
+Market Cap   |	819657725.12
+IPO year     |	n/a
+Sector       |	Basic Industries
+Industry     |	Mining & Quarrying of Nonmetallic Minerals (No Fuels)
+Exchange     |	AMEX
+==============================================================================
+AKG is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 26
+==============================================================================
+Ticker       |	KLRE
+Company      |	KLR Energy Acquisition Corp.
+Market Cap   |	101907234.0
+IPO year     |	2016
+Sector       |	Finance
+Industry     |	Business Services
+Exchange     |	NASDAQ
+==============================================================================
+KLRE fetech failed, http error!
+==============================================================================
+
+
+Ticker: 27
+==============================================================================
+Ticker       |	KEQU
+Company      |	Kewaunee Scientific Corporation
+Market Cap   |	51194940.6
+IPO year     |	n/a
+Sector       |	Capital Goods
+Industry     |	Medical Specialities
+Exchange     |	NASDAQ
+==============================================================================
+KEQU is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 28
+==============================================================================
+Ticker       |	AAV
+Company      |	Advantage Oil & Gas Ltd
+Market Cap   |	1195625946.96
+IPO year     |	n/a
+Sector       |	Energy
+Industry     |	Oil & Gas Production
+Exchange     |	NYSE
+==============================================================================
+AAV is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 29
+==============================================================================
+Ticker       |	MDXG
+Company      |	MiMedx Group, Inc
+Market Cap   |	853382277.49
+IPO year     |	n/a
+Sector       |	Health Care
+Industry     |	Medical/Dental Instruments
+Exchange     |	NASDAQ
+==============================================================================
+MDXG is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 30
+==============================================================================
+Ticker       |	DRE
+Company      |	Duke Realty Corporation
+Market Cap   |	9468505152.61
+IPO year     |	n/a
+Sector       |	Consumer Services
+Industry     |	Real Estate Investment Trusts
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2011-03
+Ending   time: 2016-02
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.448
+Model:                            OLS   Adj. R-squared:                  0.419
+Method:                 Least Squares   F-statistic:                     15.16
+Date:                Tue, 19 Jul 2016   Prob (F-statistic):           2.44e-07
+Time:                        18:47:04   Log-Likelihood:                 99.246
+No. Observations:                  60   AIC:                            -190.5
+Df Residuals:                      56   BIC:                            -182.1
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0012      0.006      0.180      0.858        -0.012     0.014
+Mkt_Rf         1.1633      0.188      6.192      0.000         0.787     1.540
+SMB           -0.0506      0.308     -0.164      0.870        -0.667     0.566
+HML           -0.2970      0.354     -0.840      0.405        -1.006     0.412
+==============================================================================
+Omnibus:                        1.078   Durbin-Watson:                   2.230
+Prob(Omnibus):                  0.583   Jarque-Bera (JB):                0.943
+Skew:                          -0.300   Prob(JB):                        0.624
+Kurtosis:                       2.870   Cond. No.                         57.5
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.001
+Return : 1.067%
+SD     : 6.28%
+VaR 95%: -9.73% 
+
+
+==============================================================================
+
+
+Ticker: 31
+==============================================================================
+Ticker       |	PRFZ
+Company      |	PowerShares FTSE RAFI US 1500 Small-Mid Portfolio
+Market Cap   |	1187724000.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NASDAQ
+==============================================================================
+PRFZ is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 32
+==============================================================================
+Ticker       |	WPRT
+Company      |	Westport Fuel Systems Inc
+Market Cap   |	153139421.4
+IPO year     |	n/a
+Sector       |	Energy
+Industry     |	Industrial Machinery/Components
+Exchange     |	NASDAQ
+==============================================================================
+WPRT is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 33
+==============================================================================
+Ticker       |	HTA
+Company      |	Healthcare Trust of America, Inc.
+Market Cap   |	4496337898.98
+IPO year     |	n/a
+Sector       |	Consumer Services
+Industry     |	Real Estate Investment Trusts
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2012-07
+Ending   time: 2016-02
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.013
+Model:                            OLS   Adj. R-squared:                 -0.061
+Method:                 Least Squares   F-statistic:                    0.1733
+Date:                Tue, 19 Jul 2016   Prob (F-statistic):              0.914
+Time:                        18:47:07   Log-Likelihood:                 64.916
+No. Observations:                  44   AIC:                            -121.8
+Df Residuals:                      40   BIC:                            -114.7
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0117      0.009      1.256      0.216        -0.007     0.030
+Mkt_Rf         0.1513      0.298      0.508      0.614        -0.450     0.753
+SMB           -0.1377      0.398     -0.346      0.731        -0.941     0.666
+HML           -0.1910      0.457     -0.418      0.678        -1.115     0.733
+==============================================================================
+Omnibus:                        1.812   Durbin-Watson:                   2.231
+Prob(Omnibus):                  0.404   Jarque-Bera (JB):                1.739
+Skew:                          -0.418   Prob(JB):                        0.419
+Kurtosis:                       2.499   Cond. No.                         52.6
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.012
+Return : 0.22%
+SD     : 5.63%
+VaR 95%: -7.32% 
+
+
+==============================================================================
+
+
+Ticker: 34
+==============================================================================
+Ticker       |	LLL
+Company      |	L-3 Communications Holdings, Inc.
+Market Cap   |	11467496569.7
+IPO year     |	n/a
+Sector       |	Technology
+Industry     |	Radio And Television Broadcasting And Communications Equipment
+Exchange     |	NYSE
+==============================================================================
+LLL is a large-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 35
+==============================================================================
+Ticker       |	CKH
+Company      |	SEACOR Holdings, Inc.
+Market Cap   |	992702216.64
+IPO year     |	n/a
+Sector       |	Transportation
+Industry     |	Marine Transportation
+Exchange     |	NYSE
+==============================================================================
+CKH is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 36
+==============================================================================
+Ticker       |	FFWM
+Company      |	First Foundation Inc.
+Market Cap   |	363426587.19
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Major Banks
+Exchange     |	NASDAQ
+==============================================================================
+FFWM has insufficient data !
+==============================================================================
+
+
+Ticker: 37
+==============================================================================
+Ticker       |	AOS
+Company      |	Smith (A.O.) Corporation
+Market Cap   |	7997172170.4
+IPO year     |	n/a
+Sector       |	Consumer Durables
+Industry     |	Consumer Electronics/Appliances
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2011-03
+Ending   time: 2016-02
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.586
+Model:                            OLS   Adj. R-squared:                  0.564
+Method:                 Least Squares   F-statistic:                     26.43
+Date:                Tue, 19 Jul 2016   Prob (F-statistic):           8.80e-11
+Time:                        18:47:09   Log-Likelihood:                 102.05
+No. Observations:                  60   AIC:                            -196.1
+Df Residuals:                      56   BIC:                            -187.7
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0144      0.006      2.319      0.024         0.002     0.027
+Mkt_Rf         1.3196      0.179      7.360      0.000         0.960     1.679
+SMB            0.5349      0.294      1.821      0.074        -0.053     1.123
+HML           -0.0008      0.338     -0.002      0.998        -0.677     0.675
+==============================================================================
+Omnibus:                        0.590   Durbin-Watson:                   2.038
+Prob(Omnibus):                  0.745   Jarque-Bera (JB):                0.678
+Skew:                           0.022   Prob(JB):                        0.712
+Kurtosis:                       2.481   Cond. No.                         57.5
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.014
+Return : 1.022%
+SD     : 6.92%
+VaR 95%: -8.89% 
+
+
+==============================================================================
+
+
+Ticker: 38
+==============================================================================
+Ticker       |	BW
+Company      |	Babcock
+Market Cap   |	801679306.82
+IPO year     |	2015
+Sector       |	Capital Goods
+Industry     |	Building Products
+Exchange     |	NYSE
+==============================================================================
+BW has insufficient data !
+==============================================================================
+
+
+Ticker: 39
+==============================================================================
+Ticker       |	UBOH
+Company      |	United Bancshares, Inc.
+Market Cap   |	59182855.25
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Major Banks
+Exchange     |	NASDAQ
+==============================================================================
+UBOH is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 40
+==============================================================================
+Ticker       |	CCC
+Company      |	Calgon Carbon Corporation
+Market Cap   |	713293126.5
+IPO year     |	n/a
+Sector       |	Basic Industries
+Industry     |	Major Chemicals
+Exchange     |	NYSE
+==============================================================================
+CCC is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 41
+==============================================================================
+Ticker       |	NGHCN
+Company      |	National General Holdings Corp
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Property-Casualty Insurers
+Exchange     |	NASDAQ
+==============================================================================
+NGHCN fetech failed, http error!
+==============================================================================
+
+
+Ticker: 42
+==============================================================================
+Ticker       |	GXP^D.CL
+Company      |	Great Plains Energy Inc
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+GXP^D.CL fetech failed, http error!
+==============================================================================
+
+
+Ticker: 43
+==============================================================================
+Ticker       |	SRC
+Company      |	Spirit Realty Capital, Inc.
+Market Cap   |	6249915464.9
+IPO year     |	2013
+Sector       |	Consumer Services
+Industry     |	Building operators
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2012-10
+Ending   time: 2016-02
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.094
+Model:                            OLS   Adj. R-squared:                  0.021
+Method:                 Least Squares   F-statistic:                     1.287
+Date:                Tue, 19 Jul 2016   Prob (F-statistic):              0.293
+Time:                        18:47:14   Log-Likelihood:                 58.635
+No. Observations:                  41   AIC:                            -109.3
+Df Residuals:                      37   BIC:                            -102.4
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0080      0.010      0.799      0.430        -0.012     0.028
+Mkt_Rf         0.5412      0.315      1.718      0.094        -0.097     1.179
+SMB           -0.4697      0.424     -1.108      0.275        -1.329     0.389
+HML            0.3572      0.486      0.735      0.467        -0.628     1.343
+==============================================================================
+Omnibus:                        3.037   Durbin-Watson:                   2.191
+Prob(Omnibus):                  0.219   Jarque-Bera (JB):                1.715
+Skew:                           0.217   Prob(JB):                        0.424
+Kurtosis:                       2.097   Cond. No.                         51.5
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.008
+Return : 0.56%
+SD     : 6.16%
+VaR 95%: -6.78% 
+
+
+==============================================================================
+
+
+Ticker: 44
+==============================================================================
+Ticker       |	LOXO
+Company      |	Loxo Oncology, Inc.
+Market Cap   |	502567464.0
+IPO year     |	2014
+Sector       |	Health Care
+Industry     |	Major Pharmaceuticals
+Exchange     |	NASDAQ
+==============================================================================
+LOXO has insufficient data !
+==============================================================================
+
+
+Ticker: 45
+==============================================================================
+Ticker       |	OCUL
+Company      |	Ocular Therapeutix, Inc.
+Market Cap   |	124327373.18
+IPO year     |	2014
+Sector       |	Health Care
+Industry     |	Major Pharmaceuticals
+Exchange     |	NASDAQ
+==============================================================================
+OCUL has insufficient data !
+==============================================================================
+
+
+Ticker: 46
+==============================================================================
+Ticker       |	FFIN
+Company      |	First Financial Bankshares, Inc.
+Market Cap   |	2292187511.9
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Major Banks
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2011-03
+Ending   time: 2016-02
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.633
+Model:                            OLS   Adj. R-squared:                  0.613
+Method:                 Least Squares   F-statistic:                     32.15
+Date:                Tue, 19 Jul 2016   Prob (F-statistic):           3.23e-12
+Time:                        18:47:17   Log-Likelihood:                 102.13
+No. Observations:                  60   AIC:                            -196.3
+Df Residuals:                      56   BIC:                            -187.9
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0069      0.006      1.119      0.268        -0.005     0.019
+Mkt_Rf         1.1045      0.179      6.169      0.000         0.746     1.463
+SMB            1.3700      0.293      4.671      0.000         0.782     1.958
+HML            0.6622      0.337      1.964      0.054        -0.013     1.338
+==============================================================================
+Omnibus:                        2.435   Durbin-Watson:                   1.645
+Prob(Omnibus):                  0.296   Jarque-Bera (JB):                1.704
+Skew:                           0.177   Prob(JB):                        0.427
+Kurtosis:                       3.746   Cond. No.                         57.5
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.007
+Return : 0.545%
+SD     : 7.34%
+VaR 95%: -11.0% 
+
+
+==============================================================================
+
+
+Ticker: 47
+==============================================================================
+Ticker       |	GBR
+Company      |	New Concept Energy, Inc
+Market Cap   |	3971747.4
+IPO year     |	n/a
+Sector       |	Energy
+Industry     |	Oil & Gas Production
+Exchange     |	AMEX
+==============================================================================
+GBR is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 48
+==============================================================================
+Ticker       |	AJG
+Company      |	Arthur J. Gallagher & Co.
+Market Cap   |	8613783270.0
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Specialty Insurers
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2011-03
+Ending   time: 2016-02
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.582
+Model:                            OLS   Adj. R-squared:                  0.559
+Method:                 Least Squares   F-statistic:                     25.96
+Date:                Tue, 19 Jul 2016   Prob (F-statistic):           1.18e-10
+Time:                        18:47:19   Log-Likelihood:                 125.10
+No. Observations:                  60   AIC:                            -242.2
+Df Residuals:                      56   BIC:                            -233.8
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0005      0.004     -0.118      0.907        -0.009     0.008
+Mkt_Rf         0.9826      0.122      8.049      0.000         0.738     1.227
+SMB            0.0630      0.200      0.315      0.754        -0.338     0.464
+HML            0.1380      0.230      0.600      0.551        -0.322     0.599
+==============================================================================
+Omnibus:                        1.993   Durbin-Watson:                   1.940
+Prob(Omnibus):                  0.369   Jarque-Bera (JB):                1.347
+Skew:                           0.350   Prob(JB):                        0.510
+Kurtosis:                       3.224   Cond. No.                         57.5
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.0
+Return : 0.801%
+SD     : 4.69%
+VaR 95%: -6.14% 
+
+
+==============================================================================
+AJG has negative alpha !
+==============================================================================
+
+
+Ticker: 49
+==============================================================================
+Ticker       |	PE
+Company      |	Parsley Energy, Inc.
+Market Cap   |	5406221915.71
+IPO year     |	2014
+Sector       |	Energy
+Industry     |	Oil & Gas Production
+Exchange     |	NYSE
+==============================================================================
+PE has insufficient data !
+==============================================================================
+
+
+Ticker: 50
+==============================================================================
+Ticker       |	CVCO
+Company      |	Cavco Industries, Inc.
+Market Cap   |	917236228.33
+IPO year     |	n/a
+Sector       |	Basic Industries
+Industry     |	Homebuilding
+Exchange     |	NASDAQ
+==============================================================================
+CVCO is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 51
+==============================================================================
+Ticker       |	NGVC
+Company      |	Natural Grocers by Vitamin Cottage, Inc.
+Market Cap   |	309425105.0
+IPO year     |	2012
+Sector       |	Consumer Services
+Industry     |	Food Chains
+Exchange     |	NYSE
+==============================================================================
+NGVC is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 52
+==============================================================================
+Ticker       |	BVX
+Company      |	Bovie Medical Corporation
+Market Cap   |	47589939.25
+IPO year     |	n/a
+Sector       |	Health Care
+Industry     |	Medical/Dental Instruments
+Exchange     |	AMEX
+==============================================================================
+BVX is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 53
+==============================================================================
+Ticker       |	GRX^A
+Company      |	The Gabelli Healthcare & Wellness Trust
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+GRX^A fetech failed, http error!
+==============================================================================
+
+
+Ticker: 54
+==============================================================================
+Ticker       |	DGI
+Company      |	DigitalGlobe, Inc
+Market Cap   |	1437989407.04
+IPO year     |	2009
+Sector       |	Consumer Services
+Industry     |	Telecommunications Equipment
+Exchange     |	NYSE
+==============================================================================
+DGI is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 55
+==============================================================================
+Ticker       |	LINK
+Company      |	Interlink Electronics, Inc.
+Market Cap   |	80662133.61
+IPO year     |	n/a
+Sector       |	Technology
+Industry     |	Computer peripheral equipment
+Exchange     |	NASDAQ
+==============================================================================
+LINK is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 56
+==============================================================================
+Ticker       |	SILC
+Company      |	Silicom Ltd
+Market Cap   |	224318752.84
+IPO year     |	n/a
+Sector       |	Technology
+Industry     |	Computer Communications Equipment
+Exchange     |	NASDAQ
+==============================================================================
+SILC is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 57
+==============================================================================
+Ticker       |	CANF
+Company      |	Can-Fite Biopharma Ltd
+Market Cap   |	30855283.5
+IPO year     |	n/a
+Sector       |	Health Care
+Industry     |	Major Pharmaceuticals
+Exchange     |	AMEX
+==============================================================================
+CANF fetech failed, http error!
+==============================================================================
+
+
+Ticker: 58
+==============================================================================
+Ticker       |	PBT
+Company      |	Permian Basin Royalty Trust
+Market Cap   |	329990275.68
+IPO year     |	n/a
+Sector       |	Energy
+Industry     |	Oil & Gas Production
+Exchange     |	NYSE
+==============================================================================
+PBT is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 59
+==============================================================================
+Ticker       |	ETE
+Company      |	Energy Transfer Equity, L.P.
+Market Cap   |	17761449669.0
+IPO year     |	2006
+Sector       |	Public Utilities
+Industry     |	Natural Gas Distribution
+Exchange     |	NYSE
+==============================================================================
+ETE is a large-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 60
+==============================================================================
+Ticker       |	PSA^U
+Company      |	Public Storage
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	Consumer Services
+Industry     |	Real Estate Investment Trusts
+Exchange     |	NYSE
+==============================================================================
+PSA^U fetech failed, http error!
+==============================================================================
+
+
+Ticker: 61
+==============================================================================
+Ticker       |	NRP
+Company      |	Natural Resource Partners LP
+Market Cap   |	263032000.0
+IPO year     |	2002
+Sector       |	Energy
+Industry     |	Coal Mining
+Exchange     |	NYSE
+==============================================================================
+NRP is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 62
+==============================================================================
+Ticker       |	EGF
+Company      |	Blackrock Enhanced Government Fund, Inc
+Market Cap   |	135428571.328
+IPO year     |	2005
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+EGF is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 63
+==============================================================================
+Ticker       |	DTZ
+Company      |	DTE Energy Company
+Market Cap   |	0.0
+IPO year     |	2011
+Sector       |	Public Utilities
+Industry     |	Electric Utilities: Central
+Exchange     |	NYSE
+==============================================================================
+DTZ is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 64
+==============================================================================
+Ticker       |	BVXVW
+Company      |	BiondVax Pharmaceuticals Ltd.
+Market Cap   |	0.0
+IPO year     |	2015
+Sector       |	Health Care
+Industry     |	Biotechnology: Biological Products (No Diagnostic Substances)
+Exchange     |	NASDAQ
+==============================================================================
+BVXVW fetech failed, http error!
+==============================================================================
+
+
+Ticker: 65
+==============================================================================
+Ticker       |	EHTH
+Company      |	eHealth, Inc.
+Market Cap   |	251638802.74
+IPO year     |	2006
+Sector       |	Finance
+Industry     |	Specialty Insurers
+Exchange     |	NASDAQ
+==============================================================================
+EHTH is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 66
+==============================================================================
+Ticker       |	PCG^H
+Company      |	Pacific Gas & Electric Co.
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	AMEX
+==============================================================================
+PCG^H fetech failed, http error!
+==============================================================================
+
+
+Ticker: 67
+==============================================================================
+Ticker       |	RNVAZ
+Company      |	Rennova Health, Inc.
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NASDAQ
+==============================================================================
+RNVAZ fetech failed, http error!
+==============================================================================
+
+
+Ticker: 68
+==============================================================================
+Ticker       |	ULTA
+Company      |	Ulta Salon, Cosmetics & Fragrance, Inc.
+Market Cap   |	15994005428.4
+IPO year     |	2007
+Sector       |	Consumer Services
+Industry     |	Other Specialty Stores
+Exchange     |	NASDAQ
+==============================================================================
+ULTA is a large-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 69
+==============================================================================
+Ticker       |	IOT
+Company      |	Income Opportunity Realty Investors, Inc.
+Market Cap   |	31474183.914
+IPO year     |	n/a
+Sector       |	Consumer Services
+Industry     |	Real Estate Investment Trusts
+Exchange     |	AMEX
+==============================================================================
+IOT fetech failed, http error!
+==============================================================================
+
+
+Ticker: 70
+==============================================================================
+Ticker       |	CMRE^D
+Company      |	Costamare Inc.
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+CMRE^D fetech failed, http error!
+==============================================================================
+
+
+Ticker: 71
+==============================================================================
+Ticker       |	FTGC
+Company      |	First Trust Global Tactical Commodity Strategy Fund
+Market Cap   |	189159547.74
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NASDAQ
+==============================================================================
+FTGC has insufficient data !
+==============================================================================
+
+
+Ticker: 72
+==============================================================================
+Ticker       |	HCN
+Company      |	Welltower Inc.
+Market Cap   |	27556450456.8
+IPO year     |	n/a
+Sector       |	Consumer Services
+Industry     |	Real Estate Investment Trusts
+Exchange     |	NYSE
+==============================================================================
+HCN is a large-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 73
+==============================================================================
+Ticker       |	FYX
+Company      |	First Trust Small Cap Core AlphaDEX Fund
+Market Cap   |	705093096.92
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NASDAQ
+==============================================================================
+FYX is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 74
+==============================================================================
+Ticker       |	MYCC
+Company      |	ClubCorp Holdings, Inc.
+Market Cap   |	971113681.98
+IPO year     |	2013
+Sector       |	Consumer Services
+Industry     |	Hotels/Resorts
+Exchange     |	NYSE
+==============================================================================
+MYCC has insufficient data !
+==============================================================================
+
+
+Ticker: 75
+==============================================================================
+Ticker       |	HAE
+Company      |	Haemonetics Corporation
+Market Cap   |	1525666183.44
+IPO year     |	1991
+Sector       |	Health Care
+Industry     |	Medical/Dental Instruments
+Exchange     |	NYSE
+==============================================================================
+HAE is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 76
+==============================================================================
+Ticker       |	PVG
+Company      |	Pretium Resources, Inc.
+Market Cap   |	2042481935.7
+IPO year     |	n/a
+Sector       |	Basic Industries
+Industry     |	Precious Metals
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2011-04
+Ending   time: 2016-02
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.032
+Model:                            OLS   Adj. R-squared:                 -0.021
+Method:                 Least Squares   F-statistic:                    0.6066
+Date:                Tue, 19 Jul 2016   Prob (F-statistic):              0.614
+Time:                        18:47:38   Log-Likelihood:                 20.288
+No. Observations:                  59   AIC:                            -32.58
+Df Residuals:                      55   BIC:                            -24.27
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept   6.081e-05      0.024      0.002      0.998        -0.049     0.049
+Mkt_Rf         0.3682      0.700      0.526      0.601        -1.034     1.770
+SMB            0.9967      1.162      0.858      0.395        -1.332     3.326
+HML           -0.4854      1.314     -0.369      0.713        -3.120     2.149
+==============================================================================
+Omnibus:                        8.961   Durbin-Watson:                   2.421
+Prob(Omnibus):                  0.011   Jarque-Bera (JB):               16.577
+Skew:                           0.320   Prob(JB):                     0.000251
+Kurtosis:                       5.517   Cond. No.                         57.0
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.0
+Return : 0.209%
+SD     : 17.59%
+VaR 95%: -23.39% 
+
+
+==============================================================================
+
+
+Ticker: 77
+==============================================================================
+Ticker       |	HPQ
+Company      |	HP Inc.
+Market Cap   |	23845855320.9
+IPO year     |	n/a
+Sector       |	Technology
+Industry     |	Computer Manufacturing
+Exchange     |	NYSE
+==============================================================================
+HPQ is a large-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 78
+==============================================================================
+Ticker       |	APU
+Company      |	AmeriGas Partners, L.P.
+Market Cap   |	4483507971.25
+IPO year     |	n/a
+Sector       |	Consumer Services
+Industry     |	Other Specialty Stores
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2011-03
+Ending   time: 2016-02
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.169
+Model:                            OLS   Adj. R-squared:                  0.124
+Method:                 Least Squares   F-statistic:                     3.794
+Date:                Tue, 19 Jul 2016   Prob (F-statistic):             0.0151
+Time:                        18:47:40   Log-Likelihood:                 99.253
+No. Observations:                  60   AIC:                            -190.5
+Df Residuals:                      56   BIC:                            -182.1
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0015      0.006      0.238      0.813        -0.011     0.015
+Mkt_Rf         0.3255      0.188      1.733      0.089        -0.051     0.702
+SMB           -0.6753      0.308     -2.194      0.032        -1.292    -0.059
+HML            0.8149      0.354      2.304      0.025         0.106     1.523
+==============================================================================
+Omnibus:                        3.096   Durbin-Watson:                   2.356
+Prob(Omnibus):                  0.213   Jarque-Bera (JB):                2.208
+Skew:                          -0.419   Prob(JB):                        0.332
+Kurtosis:                       3.427   Cond. No.                         57.5
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.002
+Return : 0.246%
+SD     : 5.12%
+VaR 95%: -7.94% 
+
+
+==============================================================================
+
+
+Ticker: 79
+==============================================================================
+Ticker       |	ELMD
+Company      |	Electromed, Inc.
+Market Cap   |	33485288.08
+IPO year     |	2011
+Sector       |	Health Care
+Industry     |	Biotechnology: Electromedical & Electrotherapeutic Apparatus
+Exchange     |	AMEX
+==============================================================================
+ELMD is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 80
+==============================================================================
+Ticker       |	AA^
+Company      |	Alcoa Inc.
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	Capital Goods
+Industry     |	Metal Fabrications
+Exchange     |	AMEX
+==============================================================================
+AA^ fetech failed, http error!
+==============================================================================
+
+
+Ticker: 81
+==============================================================================
+Ticker       |	WIA
+Company      |	Western Asset/Claymore U.S. Treasury Inflation Prot Secs Fd
+Market Cap   |	333799789.0
+IPO year     |	2003
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+WIA is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 82
+==============================================================================
+Ticker       |	SPWH
+Company      |	Sportsman&#39;s Warehouse Holdings, Inc.
+Market Cap   |	0.0
+IPO year     |	2014
+Sector       |	Consumer Services
+Industry     |	Other Specialty Stores
+Exchange     |	NASDAQ
+==============================================================================
+SPWH has insufficient data !
+==============================================================================
+
+
+Ticker: 83
+==============================================================================
+Ticker       |	JSYNR
+Company      |	Jensyn Acquistion Corp.
+Market Cap   |	0.0
+IPO year     |	2016
+Sector       |	Finance
+Industry     |	Business Services
+Exchange     |	NASDAQ
+==============================================================================
+JSYNR fetech failed, http error!
+==============================================================================
+
+
+Ticker: 84
+==============================================================================
+Ticker       |	BKT
+Company      |	BlackRock Income Trust Inc. (The)
+Market Cap   |	420102454.95
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+BKT is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 85
+==============================================================================
+Ticker       |	HEQ
+Company      |	John Hancock Hedged Equity & Income Fund
+Market Cap   |	208732100.0
+IPO year     |	2011
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+HEQ is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 86
+==============================================================================
+Ticker       |	ETAK
+Company      |	Elephant Talk Communications Corp.
+Market Cap   |	27333431.7522
+IPO year     |	n/a
+Sector       |	Technology
+Industry     |	EDP Services
+Exchange     |	AMEX
+==============================================================================
+ETAK is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 87
+==============================================================================
+Ticker       |	UNP
+Company      |	Union Pacific Corporation
+Market Cap   |	79158149069.0
+IPO year     |	n/a
+Sector       |	Transportation
+Industry     |	Railroads
+Exchange     |	NYSE
+==============================================================================
+UNP is a large-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 88
+==============================================================================
+Ticker       |	DWA
+Company      |	Dreamworks Animation SKG, Inc.
+Market Cap   |	3545419865.75
+IPO year     |	2004
+Sector       |	Consumer Services
+Industry     |	Movies/Entertainment
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2011-03
+Ending   time: 2016-02
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.087
+Model:                            OLS   Adj. R-squared:                  0.038
+Method:                 Least Squares   F-statistic:                     1.780
+Date:                Tue, 19 Jul 2016   Prob (F-statistic):              0.161
+Time:                        18:47:46   Log-Likelihood:                 49.411
+No. Observations:                  60   AIC:                            -90.82
+Df Residuals:                      56   BIC:                            -82.44
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0057      0.015     -0.383      0.703        -0.036     0.024
+Mkt_Rf         0.9703      0.431      2.251      0.028         0.107     1.834
+SMB           -0.4394      0.706     -0.622      0.536        -1.854     0.975
+HML           -0.2827      0.812     -0.348      0.729        -1.909     1.343
+==============================================================================
+Omnibus:                        2.343   Durbin-Watson:                   2.071
+Prob(Omnibus):                  0.310   Jarque-Bera (JB):                1.873
+Skew:                           0.281   Prob(JB):                        0.392
+Kurtosis:                       2.342   Cond. No.                         57.5
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.006
+Return : 0.976%
+SD     : 11.21%
+VaR 95%: -16.43% 
+
+
+==============================================================================
+DWA has negative alpha !
+==============================================================================
+
+
+Ticker: 89
+==============================================================================
+Ticker       |	CLSD
+Company      |	Clearside Biomedical, Inc.
+Market Cap   |	129115945.72
+IPO year     |	2016
+Sector       |	Health Care
+Industry     |	Major Pharmaceuticals
+Exchange     |	NASDAQ
+==============================================================================
+CLSD fetech failed, http error!
+==============================================================================
+
+
+Ticker: 90
+==============================================================================
+Ticker       |	PRO
+Company      |	PROS Holdings, Inc.
+Market Cap   |	526060154.5
+IPO year     |	2007
+Sector       |	Technology
+Industry     |	EDP Services
+Exchange     |	NYSE
+==============================================================================
+PRO is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 91
+==============================================================================
+Ticker       |	VFL
+Company      |	Delaware Investments Florida Insured Municipal Income Fund
+Market Cap   |	65436001.35
+IPO year     |	1993
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	AMEX
+==============================================================================
+VFL is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 92
+==============================================================================
+Ticker       |	BYBK
+Company      |	Bay Bancorp, Inc.
+Market Cap   |	55295304.2888
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Major Banks
+Exchange     |	NASDAQ
+==============================================================================
+BYBK is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 93
+==============================================================================
+Ticker       |	DVD
+Company      |	Dover Motorsports, Inc.
+Market Cap   |	77364310.8
+IPO year     |	1996
+Sector       |	Consumer Services
+Industry     |	Services-Misc. Amusement & Recreation
+Exchange     |	NYSE
+==============================================================================
+DVD is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 94
+==============================================================================
+Ticker       |	AEL
+Company      |	American Equity Investment Life Holding Company
+Market Cap   |	1315710366.75
+IPO year     |	2003
+Sector       |	Finance
+Industry     |	Life Insurance
+Exchange     |	NYSE
+==============================================================================
+AEL is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 95
+==============================================================================
+Ticker       |	GRVY
+Company      |	GRAVITY Co., Ltd.
+Market Cap   |	6662435.34
+IPO year     |	2005
+Sector       |	Miscellaneous
+Industry     |	Business Services
+Exchange     |	NASDAQ
+==============================================================================
+GRVY is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 96
+==============================================================================
+Ticker       |	ARCC
+Company      |	Ares Capital Corporation
+Market Cap   |	4561751736.24
+IPO year     |	2004
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2011-03
+Ending   time: 2016-02
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.472
+Model:                            OLS   Adj. R-squared:                  0.444
+Method:                 Least Squares   F-statistic:                     16.68
+Date:                Tue, 19 Jul 2016   Prob (F-statistic):           7.28e-08
+Time:                        18:47:51   Log-Likelihood:                 128.55
+No. Observations:                  60   AIC:                            -249.1
+Df Residuals:                      56   BIC:                            -240.7
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0002      0.004     -0.043      0.966        -0.008     0.008
+Mkt_Rf         0.6499      0.115      5.638      0.000         0.419     0.881
+SMB            0.3432      0.189      1.817      0.074        -0.035     0.721
+HML            0.0427      0.217      0.197      0.845        -0.392     0.477
+==============================================================================
+Omnibus:                        3.194   Durbin-Watson:                   2.610
+Prob(Omnibus):                  0.202   Jarque-Bera (JB):                2.743
+Skew:                           0.163   Prob(JB):                        0.254
+Kurtosis:                       3.996   Cond. No.                         57.5
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.0
+Return : 0.497%
+SD     : 3.94%
+VaR 95%: -5.95% 
+
+
+==============================================================================
+ARCC has negative alpha !
+==============================================================================
+
+
+Ticker: 97
+==============================================================================
+Ticker       |	BNCL
+Company      |	Beneficial Bancorp, Inc.
+Market Cap   |	998647270.44
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Savings Institutions
+Exchange     |	NASDAQ
+==============================================================================
+BNCL is a small-cap company, rather than a mid-cap !
+==============================================================================
+
+
+Ticker: 98
+==============================================================================
+Ticker       |	CMA.WS
+Company      |	Comerica Incorporated
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+CMA.WS fetech failed, http error!
+==============================================================================
+
+
+Ticker: 99
+==============================================================================
+Ticker       |	AMH^A
+Company      |	American Homes 4 Rent
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	Consumer Services
+Industry     |	Real Estate Investment Trusts
+Exchange     |	NYSE
+==============================================================================
+AMH^A fetech failed, http error!
+==============================================================================
+
+
+Ticker: 100
+==============================================================================
+Ticker       |	GDL
+Company      |	The GDL Fund
+Market Cap   |	203874017.45
+IPO year     |	2007
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+GDL is a small-cap company, rather than a mid-cap !
+==============================================================================
+Return threshold in constraint:  -0.0605436244492
+Iteration limit exceeded    (Exit mode 9)
+            Current function value: -0.577502085564
+            Iterations: 101
+            Function evaluations: 1047
+            Gradient evaluations: 101
+Portfolio Summary
+==============================================================================
+Portfolio   size: 12
+Portfolio   name: ['SRC', 'CUBE', 'HTA', 'FLEX', 'APU', 'DWA', 'AOS', 'FFIN', 'PVG', 'ARCC', 'DRE', 'AJG']
+Portfolio weight: ['3.7%', '0.0%', '0.6%', '0.0%', '3.9%', '0.1%', '0.0%', '0.0%', '0.0%', '0.0%', '0.8%', '87.3%']
+Portfolio return: 0.74%
+Portfolio  SD(Y):  4.22%
+Annulized return: 8.88%
+Annulized  SD(Y): 14.63%
+        SP ratio: 0.61
+Return threshold: -6.05%
+ Realized return: 30.19% from 2016-02-01 to 2016-07-14
+  S&P 500 return: 11.57%
