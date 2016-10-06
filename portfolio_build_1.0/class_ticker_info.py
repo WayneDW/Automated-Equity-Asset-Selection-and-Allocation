@@ -25,19 +25,19 @@ class stock_info_collector:
 	# collect stock information, eg, price, volume, sector, ...
 	def __init__(self, time_start, time_end, time_type):
 		self.time_start, self.time_end, self.time_type = time_start, time_end, time_type
-		# create an another variable, so that Basic and Balance have the same keys
+		# get ticker list from NASDAQ
 		tickers = self.getTickers()
 		self.Basic, self.Balance, self.Return = {}, {}, {}
 
 		for num, ticker in enumerate(tickers):
 			if num > 5:
 				continue
-			print num, ticker
-			self.Basic[ticker] = tickers[ticker]
-			self.Balance[ticker] = self.BalanceSheet(ticker)
 			tag, times = 0, 1
 			while not tag and times <= 5: # repeat download X times
 				try:
+					print num, ticker
+					self.Basic[ticker] = tickers[ticker]
+					self.Balance[ticker] = self.BalanceSheet(ticker)
 					self.Return[ticker], tag = self.yahoo_return(ticker)
 				except:
 					print num, ticker, "Http error, wait some time!"
@@ -47,7 +47,7 @@ class stock_info_collector:
 
 
 		#print tickers["SPP"].name, tickers["SPP"].BS.PE, tickers["SPP"].BS.moving_avg_50
-
+	# format the data from the ticker list in NASDAQ
 	class Basic():
 		def __init__(self, name, lastSale, marketCap, IPO, sector, industry, ex):
 			self.name, self.lastSale, self.marketCap,  = name, lastSale, float(marketCap)

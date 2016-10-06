@@ -1,17 +1,17 @@
-#!/bin/bash
-fileName="mid_cap_5_factor_const_VaR_2010-02_to_2015-07_0_1_bounded"
-a=1
-while [ "$a" -le 30 ]
-do
-    echo $a "times"
-    if [ $a -le 9 ]
-    then
-        ./main.py >> ./output/5_factor/${fileName}_0${a}
-        tail -3 ./output/5_factor/${fileName}_0${a}
-    else 
-        ./main.py >> ./output/5_factor/${fileName}_${a}
-        tail -3 ./output/5_factor/${fileName}_${a}
-    fi
-    a=`expr $a + 1`
-done
+# download ticker list from NASDAQ, get basic ticker information such as industry, vol
+
+# for each ticker, download historical prices from yahoo.finance
+
+# for each ticker, download key ratios from morning star
+
+
+## save data in this format
+
+BIDU, {industry:Technology, MarketCap: XXX, key_ratios:{dates:date1_date2_..., Revenue:xxx, }, prices:{date1:price1,date2:price2,...}, returns:{date1:price1, date2:price2, ...}}
+
+# feature data based on its recent price
+
+# take key ratios as input, use machine learning method to classify the companies into different groups
+
+
 

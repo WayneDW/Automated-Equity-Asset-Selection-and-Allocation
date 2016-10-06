@@ -44,9 +44,10 @@ class stock_info_collector:
 					try:
 						price_string = self.yahoo_price(ticker)
 						if_response = 1
-						time.sleep(10)
+						time.sleep(5)
 					except:
-						continue
+						print num, ticker, "Http error, wait some time!"
+						time.sleep(times)
 				print num, ticker
 				key_ratios_string = self.key_ratios(ticker)
 				tickerBasicsString += "{ticker:" + ticker + "|" + "name:" + "|" \

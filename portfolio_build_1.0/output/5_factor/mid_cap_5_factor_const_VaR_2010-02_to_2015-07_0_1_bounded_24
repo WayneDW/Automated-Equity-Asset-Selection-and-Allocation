@@ -1,0 +1,1975 @@
+Download treasury yield
+Download tickers from NASDAQ
+Download tickers from NYSE
+Download tickers from AMEX
+Download historical Fama French factors
+
+
+Ticker: 1
+==============================================================================
+Ticker       |	OPXAW
+Company      |	Opexa Therapeutics, Inc.
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	Health Care
+Industry     |	Major Pharmaceuticals
+Exchange     |	NASDAQ
+==============================================================================
+OPXAW has insufficient data !
+==============================================================================
+
+
+Ticker: 2
+==============================================================================
+Ticker       |	HRZN
+Company      |	Horizon Technology Finance Corporation
+Market Cap   |	151552105.9
+IPO year     |	2010
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-11
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.138
+Model:                            OLS   Adj. R-squared:                  0.040
+Method:                 Least Squares   F-statistic:                     1.408
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):              0.240
+Time:                        13:30:22   Log-Likelihood:                 87.471
+No. Observations:                  50   AIC:                            -162.9
+Df Residuals:                      44   BIC:                            -151.5
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0036      0.007      0.492      0.625        -0.011     0.018
+Mkt_Rf         0.3559      0.223      1.598      0.117        -0.093     0.805
+SMB           -0.2425      0.393     -0.617      0.541        -1.035     0.550
+HML           -0.0867      0.557     -0.156      0.877        -1.210     1.037
+RMW           -0.5919      0.518     -1.142      0.260        -1.636     0.453
+CMA           -0.5312      0.718     -0.740      0.463        -1.978     0.915
+==============================================================================
+Omnibus:                        2.025   Durbin-Watson:                   2.554
+Prob(Omnibus):                  0.363   Jarque-Bera (JB):                1.188
+Skew:                          -0.321   Prob(JB):                        0.552
+Kurtosis:                       3.397   Cond. No.                         134.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.004
+Return : 0.513%
+SD     : 4.58%
+VaR 95%: -6.34% 
+
+
+==============================================================================
+
+
+Ticker: 3
+==============================================================================
+Ticker       |	PNF
+Company      |	PIMCO New York Municipal Income Fund
+Market Cap   |	108889259.1
+IPO year     |	2001
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.041
+Model:                            OLS   Adj. R-squared:                 -0.050
+Method:                 Least Squares   F-statistic:                    0.4516
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):              0.810
+Time:                        13:30:23   Log-Likelihood:                 114.78
+No. Observations:                  59   AIC:                            -217.6
+Df Residuals:                      53   BIC:                            -205.1
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0069      0.005      1.292      0.202        -0.004     0.018
+Mkt_Rf         0.0309      0.149      0.207      0.837        -0.269     0.331
+SMB           -0.2499      0.274     -0.910      0.367        -0.800     0.301
+HML           -0.1979      0.372     -0.532      0.597        -0.944     0.548
+RMW            0.0090      0.381      0.024      0.981        -0.755     0.773
+CMA           -0.1167      0.526     -0.222      0.825        -1.173     0.939
+==============================================================================
+Omnibus:                        1.515   Durbin-Watson:                   1.674
+Prob(Omnibus):                  0.469   Jarque-Bera (JB):                0.891
+Skew:                          -0.272   Prob(JB):                        0.641
+Kurtosis:                       3.257   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.007
+Return : 0.064%
+SD     : 3.56%
+VaR 95%: -5.5% 
+
+
+==============================================================================
+
+
+Ticker: 4
+==============================================================================
+Ticker       |	TCBK
+Company      |	TriCo Bancshares
+Market Cap   |	642997582.06
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Major Banks
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.526
+Model:                            OLS   Adj. R-squared:                  0.482
+Method:                 Least Squares   F-statistic:                     11.78
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           1.10e-07
+Time:                        13:30:29   Log-Likelihood:                 88.051
+No. Observations:                  59   AIC:                            -164.1
+Df Residuals:                      53   BIC:                            -151.6
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0063      0.008     -0.757      0.452        -0.023     0.010
+Mkt_Rf         1.2197      0.235      5.188      0.000         0.748     1.691
+SMB            0.8399      0.432      1.945      0.057        -0.026     1.706
+HML            0.6290      0.585      1.075      0.287        -0.544     1.802
+RMW            0.6534      0.599      1.090      0.281        -0.549     1.856
+CMA           -0.1297      0.828     -0.157      0.876        -1.791     1.531
+==============================================================================
+Omnibus:                        3.461   Durbin-Watson:                   2.043
+Prob(Omnibus):                  0.177   Jarque-Bera (JB):                2.512
+Skew:                          -0.437   Prob(JB):                        0.285
+Kurtosis:                       3.507   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.006
+Return : 1.76%
+SD     : 7.97%
+VaR 95%: -8.72% 
+
+
+==============================================================================
+TCBK has negative alpha !
+==============================================================================
+
+
+Ticker: 5
+==============================================================================
+Ticker       |	NVMI
+Company      |	Nova Measuring Instruments Ltd.
+Market Cap   |	309954639.28
+IPO year     |	2000
+Sector       |	Capital Goods
+Industry     |	Electronic Components
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.655
+Model:                            OLS   Adj. R-squared:                  0.622
+Method:                 Least Squares   F-statistic:                     20.13
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           3.38e-11
+Time:                        13:30:29   Log-Likelihood:                 73.890
+No. Observations:                  59   AIC:                            -135.8
+Df Residuals:                      53   BIC:                            -123.3
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0085      0.011     -0.800      0.427        -0.030     0.013
+Mkt_Rf         1.9716      0.299      6.596      0.000         1.372     2.571
+SMB            0.2139      0.549      0.390      0.698        -0.887     1.315
+HML           -1.2578      0.744     -1.691      0.097        -2.750     0.234
+RMW           -2.1764      0.762     -2.856      0.006        -3.705    -0.648
+CMA            1.1846      1.053      1.125      0.266        -0.927     3.296
+==============================================================================
+Omnibus:                        3.906   Durbin-Watson:                   2.484
+Prob(Omnibus):                  0.142   Jarque-Bera (JB):                3.055
+Skew:                          -0.378   Prob(JB):                        0.217
+Kurtosis:                       3.819   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.009
+Return : 2.881%
+SD     : 11.88%
+VaR 95%: -18.93% 
+
+
+==============================================================================
+NVMI has negative alpha !
+==============================================================================
+
+
+Ticker: 6
+==============================================================================
+Ticker       |	PERY
+Company      |	Perry Ellis International Inc.
+Market Cap   |	341072970.0
+IPO year     |	1993
+Sector       |	Consumer Non-Durables
+Industry     |	Apparel
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.268
+Model:                            OLS   Adj. R-squared:                  0.198
+Method:                 Least Squares   F-statistic:                     3.871
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):            0.00460
+Time:                        13:30:30   Log-Likelihood:                 47.864
+No. Observations:                  59   AIC:                            -83.73
+Df Residuals:                      53   BIC:                            -71.26
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0084      0.017     -0.506      0.615        -0.042     0.025
+Mkt_Rf         1.6451      0.465      3.541      0.001         0.713     2.577
+SMB            0.3823      0.853      0.448      0.656        -1.329     2.094
+HML           -0.8073      1.156     -0.698      0.488        -3.126     1.512
+RMW            0.4734      1.185      0.400      0.691        -1.903     2.849
+CMA            0.6448      1.636      0.394      0.695        -2.638     3.927
+==============================================================================
+Omnibus:                       18.800   Durbin-Watson:                   2.204
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               35.099
+Skew:                          -0.989   Prob(JB):                     2.39e-08
+Kurtosis:                       6.219   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.008
+Return : 2.414%
+SD     : 12.67%
+VaR 95%: -18.2% 
+
+
+==============================================================================
+PERY has negative alpha !
+==============================================================================
+
+
+Ticker: 7
+==============================================================================
+Ticker       |	FORTY
+Company      |	Formula Systems (1985) Ltd.
+Market Cap   |	6538545.9
+IPO year     |	n/a
+Sector       |	Technology
+Industry     |	EDP Services
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.310
+Model:                            OLS   Adj. R-squared:                  0.245
+Method:                 Least Squares   F-statistic:                     4.766
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):            0.00114
+Time:                        13:30:31   Log-Likelihood:                 70.968
+No. Observations:                  59   AIC:                            -129.9
+Df Residuals:                      53   BIC:                            -117.5
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0068      0.011      0.611      0.544        -0.016     0.029
+Mkt_Rf         0.9227      0.314      2.938      0.005         0.293     1.553
+SMB            0.3241      0.577      0.562      0.577        -0.833     1.481
+HML            0.2798      0.782      0.358      0.722        -1.288     1.847
+RMW           -0.8833      0.801     -1.103      0.275        -2.489     0.723
+CMA            0.0093      1.106      0.008      0.993        -2.209     2.228
+==============================================================================
+Omnibus:                        1.834   Durbin-Watson:                   2.311
+Prob(Omnibus):                  0.400   Jarque-Bera (JB):                1.072
+Skew:                           0.253   Prob(JB):                        0.585
+Kurtosis:                       3.424   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.007
+Return : 1.319%
+SD     : 8.83%
+VaR 95%: -10.27% 
+
+
+==============================================================================
+
+
+Ticker: 8
+==============================================================================
+Ticker       |	DHG
+Company      |	DWS High Income Opportunities Fund, Inc.
+Market Cap   |	211780097.55
+IPO year     |	2006
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.468
+Model:                            OLS   Adj. R-squared:                  0.418
+Method:                 Least Squares   F-statistic:                     9.318
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           2.06e-06
+Time:                        13:30:32   Log-Likelihood:                 135.06
+No. Observations:                  59   AIC:                            -258.1
+Df Residuals:                      53   BIC:                            -245.7
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0008      0.004      0.222      0.825        -0.007     0.008
+Mkt_Rf         0.6866      0.106      6.478      0.000         0.474     0.899
+SMB           -0.2654      0.195     -1.364      0.178        -0.656     0.125
+HML           -0.0631      0.264     -0.239      0.812        -0.592     0.466
+RMW            0.1380      0.270      0.511      0.612        -0.404     0.680
+CMA           -0.1637      0.373     -0.439      0.663        -0.912     0.585
+==============================================================================
+Omnibus:                        8.664   Durbin-Watson:                   2.260
+Prob(Omnibus):                  0.013   Jarque-Bera (JB):                9.442
+Skew:                           0.621   Prob(JB):                      0.00891
+Kurtosis:                       4.516   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.001
+Return : 0.95%
+SD     : 3.39%
+VaR 95%: -4.73% 
+
+
+==============================================================================
+
+
+Ticker: 9
+==============================================================================
+Ticker       |	FDX
+Company      |	FedEx Corporation
+Market Cap   |	42861906316.2
+IPO year     |	n/a
+Sector       |	Transportation
+Industry     |	Air Freight/Delivery Services
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.508
+Model:                            OLS   Adj. R-squared:                  0.461
+Method:                 Least Squares   F-statistic:                     10.93
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           2.94e-07
+Time:                        13:30:32   Log-Likelihood:                 95.941
+No. Observations:                  59   AIC:                            -179.9
+Df Residuals:                      53   BIC:                            -167.4
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0019      0.007     -0.258      0.798        -0.017     0.013
+Mkt_Rf         1.2428      0.206      6.042      0.000         0.830     1.655
+SMB            0.3163      0.378      0.837      0.406        -0.441     1.074
+HML            0.1877      0.512      0.367      0.715        -0.839     1.214
+RMW            0.9237      0.524      1.761      0.084        -0.128     1.976
+CMA            0.0635      0.724      0.088      0.930        -1.390     1.517
+==============================================================================
+Omnibus:                        1.115   Durbin-Watson:                   2.201
+Prob(Omnibus):                  0.573   Jarque-Bera (JB):                0.602
+Skew:                           0.228   Prob(JB):                        0.740
+Kurtosis:                       3.191   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.002
+Return : 1.765%
+SD     : 6.84%
+VaR 95%: -8.5% 
+
+
+==============================================================================
+FDX has negative alpha !
+==============================================================================
+
+
+Ticker: 10
+==============================================================================
+Ticker       |	CBSHP
+Company      |	Commerce Bancshares, Inc.
+Market Cap   |	2624581170.56
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Major Banks
+Exchange     |	NASDAQ
+==============================================================================
+CBSHP has insufficient data !
+==============================================================================
+
+
+Ticker: 11
+==============================================================================
+Ticker       |	PBMD
+Company      |	Prima BioMed Ltd
+Market Cap   |	19370699.53
+IPO year     |	n/a
+Sector       |	Health Care
+Industry     |	Major Pharmaceuticals
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2012-05
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.219
+Model:                            OLS   Adj. R-squared:                  0.069
+Method:                 Least Squares   F-statistic:                     1.456
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):              0.238
+Time:                        13:30:33   Log-Likelihood:                 7.9127
+No. Observations:                  32   AIC:                            -3.825
+Df Residuals:                      26   BIC:                             4.969
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.1023      0.044     -2.327      0.028        -0.193    -0.012
+Mkt_Rf         3.3332      1.447      2.303      0.030         0.358     6.308
+SMB           -3.2129      2.378     -1.351      0.188        -8.100     1.674
+HML           -2.9007      2.961     -0.980      0.336        -8.988     3.187
+RMW           -4.4848      3.150     -1.424      0.166       -10.959     1.990
+CMA            2.9762      4.722      0.630      0.534        -6.731    12.683
+==============================================================================
+Omnibus:                        1.185   Durbin-Watson:                   2.260
+Prob(Omnibus):                  0.553   Jarque-Bera (JB):                0.617
+Skew:                           0.337   Prob(JB):                        0.735
+Kurtosis:                       3.092   Cond. No.                         144.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.102
+Return : 4.254%
+SD     : 21.72%
+VaR 95%: -36.23% 
+
+
+==============================================================================
+PBMD has negative alpha !
+==============================================================================
+
+
+Ticker: 12
+==============================================================================
+Ticker       |	PEB^D
+Company      |	Pebblebrook Hotel Trust
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+PEB^D fetech failed, http error!
+==============================================================================
+
+
+Ticker: 13
+==============================================================================
+Ticker       |	XPL
+Company      |	Solitario Exploration & Royalty Corp
+Market Cap   |	27857175.9649
+IPO year     |	n/a
+Sector       |	Basic Industries
+Industry     |	Precious Metals
+Exchange     |	AMEX
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.215
+Model:                            OLS   Adj. R-squared:                  0.141
+Method:                 Least Squares   F-statistic:                     2.908
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):             0.0216
+Time:                        13:30:34   Log-Likelihood:                 25.993
+No. Observations:                  59   AIC:                            -39.99
+Df Residuals:                      53   BIC:                            -27.52
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0095      0.024     -0.396      0.694        -0.057     0.039
+Mkt_Rf         0.9336      0.673      1.387      0.171        -0.416     2.284
+SMB            0.2023      1.236      0.164      0.871        -2.277     2.682
+HML            0.6840      1.675      0.408      0.685        -2.676     4.043
+RMW           -3.6193      1.716     -2.109      0.040        -7.061    -0.177
+CMA           -0.7218      2.371     -0.304      0.762        -5.477     4.033
+==============================================================================
+Omnibus:                       16.761   Durbin-Watson:                   2.269
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               20.309
+Skew:                           1.173   Prob(JB):                     3.89e-05
+Kurtosis:                       4.662   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.009
+Return : 1.282%
+SD     : 17.73%
+VaR 95%: -23.79% 
+
+
+==============================================================================
+XPL has negative alpha !
+==============================================================================
+
+
+Ticker: 14
+==============================================================================
+Ticker       |	SPNE
+Company      |	SeaSpine Holdings Corporation
+Market Cap   |	114257189.3
+IPO year     |	n/a
+Sector       |	Health Care
+Industry     |	Medical/Dental Instruments
+Exchange     |	NASDAQ
+==============================================================================
+SPNE fetech failed, http error!
+==============================================================================
+
+
+Ticker: 15
+==============================================================================
+Ticker       |	ALSK
+Company      |	Alaska Communications Systems Group, Inc.
+Market Cap   |	87092819.0
+IPO year     |	1999
+Sector       |	Public Utilities
+Industry     |	Telecommunications Equipment
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.123
+Model:                            OLS   Adj. R-squared:                  0.041
+Method:                 Least Squares   F-statistic:                     1.493
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):              0.208
+Time:                        13:30:36   Log-Likelihood:                 38.335
+No. Observations:                  59   AIC:                            -64.67
+Df Residuals:                      53   BIC:                            -52.20
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0092      0.019     -0.472      0.639        -0.048     0.030
+Mkt_Rf         0.2479      0.546      0.454      0.652        -0.847     1.343
+SMB            0.4895      1.003      0.488      0.627        -1.522     2.501
+HML            0.4699      1.359      0.346      0.731        -2.255     3.195
+RMW           -2.1186      1.392     -1.522      0.134        -4.911     0.674
+CMA           -2.0461      1.923     -1.064      0.292        -5.904     1.812
+==============================================================================
+Omnibus:                        7.544   Durbin-Watson:                   1.525
+Prob(Omnibus):                  0.023   Jarque-Bera (JB):                9.190
+Skew:                           0.459   Prob(JB):                       0.0101
+Kurtosis:                       4.702   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.009
+Return : 0.396%
+SD     : 13.61%
+VaR 95%: -18.91% 
+
+
+==============================================================================
+ALSK has negative alpha !
+==============================================================================
+
+
+Ticker: 16
+==============================================================================
+Ticker       |	ATEN
+Company      |	A10 Networks, Inc.
+Market Cap   |	442271608.8
+IPO year     |	2014
+Sector       |	Technology
+Industry     |	Computer Communications Equipment
+Exchange     |	NYSE
+==============================================================================
+ATEN has insufficient data !
+==============================================================================
+
+
+Ticker: 17
+==============================================================================
+Ticker       |	MDM
+Company      |	Mountain Province Diamonds Inc.
+Market Cap   |	752087303.43
+IPO year     |	n/a
+Sector       |	Basic Industries
+Industry     |	Precious Metals
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.234
+Model:                            OLS   Adj. R-squared:                  0.161
+Method:                 Least Squares   F-statistic:                     3.230
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):             0.0128
+Time:                        13:30:38   Log-Likelihood:                 53.157
+No. Observations:                  59   AIC:                            -94.31
+Df Residuals:                      53   BIC:                            -81.85
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0002      0.015      0.011      0.991        -0.030     0.030
+Mkt_Rf         1.3965      0.425      3.288      0.002         0.545     2.248
+SMB           -0.1281      0.780     -0.164      0.870        -1.693     1.436
+HML           -0.5335      1.057     -0.505      0.616        -2.653     1.586
+RMW           -0.4201      1.083     -0.388      0.700        -2.592     1.752
+CMA           -0.9268      1.496     -0.619      0.538        -3.927     2.074
+==============================================================================
+Omnibus:                        7.066   Durbin-Watson:                   2.083
+Prob(Omnibus):                  0.029   Jarque-Bera (JB):                6.291
+Skew:                           0.767   Prob(JB):                       0.0431
+Kurtosis:                       3.455   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.0
+Return : 1.984%
+SD     : 11.32%
+VaR 95%: -13.32% 
+
+
+==============================================================================
+
+
+Ticker: 18
+==============================================================================
+Ticker       |	PAAC
+Company      |	Pacific Special Acquisition Corp.
+Market Cap   |	78351656.25
+IPO year     |	2015
+Sector       |	Finance
+Industry     |	Business Services
+Exchange     |	NASDAQ
+==============================================================================
+PAAC fetech failed, http error!
+==============================================================================
+
+
+Ticker: 19
+==============================================================================
+Ticker       |	WOOD
+Company      |	iShares S&P Global Timber & Forestry Index Fund
+Market Cap   |	257256000.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.777
+Model:                            OLS   Adj. R-squared:                  0.756
+Method:                 Least Squares   F-statistic:                     36.91
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           4.16e-16
+Time:                        13:30:40   Log-Likelihood:                 137.12
+No. Observations:                  59   AIC:                            -262.2
+Df Residuals:                      53   BIC:                            -249.8
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0049      0.004     -1.348      0.183        -0.012     0.002
+Mkt_Rf         0.9859      0.102      9.633      0.000         0.781     1.191
+SMB            0.0598      0.188      0.318      0.752        -0.317     0.437
+HML           -0.0921      0.255     -0.362      0.719        -0.603     0.419
+RMW           -0.6526      0.261     -2.501      0.016        -1.176    -0.129
+CMA            0.3181      0.360      0.882      0.382        -0.405     1.041
+==============================================================================
+Omnibus:                        0.619   Durbin-Watson:                   2.226
+Prob(Omnibus):                  0.734   Jarque-Bera (JB):                0.187
+Skew:                          -0.101   Prob(JB):                        0.911
+Kurtosis:                       3.189   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.005
+Return : 1.405%
+SD     : 5.06%
+VaR 95%: -9.03% 
+
+
+==============================================================================
+WOOD has negative alpha !
+==============================================================================
+
+
+Ticker: 20
+==============================================================================
+Ticker       |	CPS
+Company      |	Cooper-Standard Holdings Inc.
+Market Cap   |	1471622679.72
+IPO year     |	n/a
+Sector       |	Capital Goods
+Industry     |	Auto Parts:O.E.M.
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-06
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.194
+Model:                            OLS   Adj. R-squared:                  0.112
+Method:                 Least Squares   F-statistic:                     2.361
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):             0.0536
+Time:                        13:30:40   Log-Likelihood:                 67.547
+No. Observations:                  55   AIC:                            -123.1
+Df Residuals:                      49   BIC:                            -111.1
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0100      0.012      0.868      0.390        -0.013     0.033
+Mkt_Rf         0.6258      0.334      1.871      0.067        -0.046     1.298
+SMB           -0.5972      0.632     -0.945      0.350        -1.868     0.673
+HML            1.2674      0.810      1.564      0.124        -0.361     2.896
+RMW           -1.0705      0.810     -1.321      0.193        -2.699     0.558
+CMA           -2.1689      1.094     -1.983      0.053        -4.367     0.029
+==============================================================================
+Omnibus:                        2.718   Durbin-Watson:                   2.033
+Prob(Omnibus):                  0.257   Jarque-Bera (JB):                2.471
+Skew:                           0.512   Prob(JB):                        0.291
+Kurtosis:                       2.829   Cond. No.                         126.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.01
+Return : 0.675%
+SD     : 7.97%
+VaR 95%: -10.52% 
+
+
+==============================================================================
+
+
+Ticker: 21
+==============================================================================
+Ticker       |	CAFD
+Company      |	8point3 Energy Partners LP
+Market Cap   |	1162509951.46
+IPO year     |	2015
+Sector       |	Public Utilities
+Industry     |	Electric Utilities: Central
+Exchange     |	NASDAQ
+==============================================================================
+CAFD fetech failed, http error!
+==============================================================================
+
+
+Ticker: 22
+==============================================================================
+Ticker       |	SYRS
+Company      |	Syros Pharmaceuticals, Inc.
+Market Cap   |	275170346.49
+IPO year     |	2016
+Sector       |	Health Care
+Industry     |	Major Pharmaceuticals
+Exchange     |	NASDAQ
+==============================================================================
+SYRS fetech failed, http error!
+==============================================================================
+
+
+Ticker: 23
+==============================================================================
+Ticker       |	NWL
+Company      |	Newell Brands Inc.
+Market Cap   |	12884328000.0
+IPO year     |	n/a
+Sector       |	Consumer Non-Durables
+Industry     |	Plastic Products
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.526
+Model:                            OLS   Adj. R-squared:                  0.481
+Method:                 Least Squares   F-statistic:                     11.77
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           1.12e-07
+Time:                        13:30:43   Log-Likelihood:                 95.125
+No. Observations:                  59   AIC:                            -178.2
+Df Residuals:                      53   BIC:                            -165.8
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0024      0.007      0.329      0.743        -0.012     0.017
+Mkt_Rf         1.1393      0.209      5.463      0.000         0.721     1.558
+SMB            0.3575      0.383      0.934      0.355        -0.411     1.126
+HML           -0.4087      0.519     -0.788      0.434        -1.450     0.632
+RMW            0.0060      0.532      0.011      0.991        -1.060     1.072
+CMA            1.1671      0.735      1.589      0.118        -0.306     2.640
+==============================================================================
+Omnibus:                        3.069   Durbin-Watson:                   1.896
+Prob(Omnibus):                  0.216   Jarque-Bera (JB):                1.731
+Skew:                           0.117   Prob(JB):                        0.421
+Kurtosis:                       2.194   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.002
+Return : 1.681%
+SD     : 7.07%
+VaR 95%: -10.4% 
+
+
+==============================================================================
+
+
+Ticker: 24
+==============================================================================
+Ticker       |	RNR^C
+Company      |	RenaissanceRe Holdings Ltd.
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+RNR^C fetech failed, http error!
+==============================================================================
+
+
+Ticker: 25
+==============================================================================
+Ticker       |	RPTP
+Company      |	Raptor Pharmaceutical Corp.
+Market Cap   |	489660957.38
+IPO year     |	n/a
+Sector       |	Health Care
+Industry     |	Major Pharmaceuticals
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.284
+Model:                            OLS   Adj. R-squared:                  0.217
+Method:                 Least Squares   F-statistic:                     4.214
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):            0.00268
+Time:                        13:30:49   Log-Likelihood:                 28.189
+No. Observations:                  59   AIC:                            -44.38
+Df Residuals:                      53   BIC:                            -31.91
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0503      0.023      2.182      0.034         0.004     0.097
+Mkt_Rf        -0.8235      0.649     -1.270      0.210        -2.124     0.477
+SMB            4.1342      1.191      3.471      0.001         1.745     6.523
+HML           -1.5493      1.614     -0.960      0.341        -4.786     1.687
+RMW           -0.0910      1.653     -0.055      0.956        -3.407     3.225
+CMA           -2.6343      2.284     -1.153      0.254        -7.216     1.947
+==============================================================================
+Omnibus:                       17.721   Durbin-Watson:                   2.242
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               27.119
+Skew:                           1.040   Prob(JB):                     1.29e-06
+Kurtosis:                       5.589   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.05
+Return : -0.434%
+SD     : 17.89%
+VaR 95%: -17.62% 
+
+
+==============================================================================
+
+
+Ticker: 26
+==============================================================================
+Ticker       |	NK
+Company      |	NantKwest, Inc.
+Market Cap   |	494323028.55
+IPO year     |	2015
+Sector       |	Health Care
+Industry     |	Biotechnology: Biological Products (No Diagnostic Substances)
+Exchange     |	NASDAQ
+==============================================================================
+NK fetech failed, http error!
+==============================================================================
+
+
+Ticker: 27
+==============================================================================
+Ticker       |	GSBC
+Company      |	Great Southern Bancorp, Inc.
+Market Cap   |	537556229.08
+IPO year     |	1989
+Sector       |	Finance
+Industry     |	Major Banks
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.359
+Model:                            OLS   Adj. R-squared:                  0.298
+Method:                 Least Squares   F-statistic:                     5.932
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           0.000199
+Time:                        13:30:50   Log-Likelihood:                 80.701
+No. Observations:                  59   AIC:                            -149.4
+Df Residuals:                      53   BIC:                            -136.9
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0023      0.009      0.244      0.808        -0.017     0.021
+Mkt_Rf         0.6760      0.266      2.538      0.014         0.142     1.210
+SMB            1.3884      0.489      2.839      0.006         0.407     2.369
+HML            0.1895      0.663      0.286      0.776        -1.140     1.519
+RMW            0.8577      0.679      1.263      0.212        -0.504     2.220
+CMA            0.4959      0.938      0.529      0.599        -1.385     2.377
+==============================================================================
+Omnibus:                        6.669   Durbin-Watson:                   1.710
+Prob(Omnibus):                  0.036   Jarque-Bera (JB):                5.812
+Skew:                           0.632   Prob(JB):                       0.0547
+Kurtosis:                       3.877   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.002
+Return : 1.122%
+SD     : 7.76%
+VaR 95%: -9.53% 
+
+
+==============================================================================
+
+
+Ticker: 28
+==============================================================================
+Ticker       |	FENG
+Company      |	Phoenix New Media Limited
+Market Cap   |	278192584.8
+IPO year     |	2011
+Sector       |	Consumer Services
+Industry     |	Broadcasting
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2011-06
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.322
+Model:                            OLS   Adj. R-squared:                  0.231
+Method:                 Least Squares   F-statistic:                     3.518
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):             0.0106
+Time:                        13:30:51   Log-Likelihood:                 24.904
+No. Observations:                  43   AIC:                            -37.81
+Df Residuals:                      37   BIC:                            -27.24
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0215      0.025      0.866      0.392        -0.029     0.072
+Mkt_Rf        -0.2478      0.755     -0.328      0.745        -1.779     1.283
+SMB            3.1477      1.525      2.064      0.046         0.058     6.237
+HML            1.1635      1.895      0.614      0.543        -2.677     5.004
+RMW           -0.2052      1.909     -0.107      0.915        -4.074     3.663
+CMA           -5.7262      2.644     -2.166      0.037       -11.083    -0.370
+==============================================================================
+Omnibus:                        6.908   Durbin-Watson:                   1.934
+Prob(Omnibus):                  0.032   Jarque-Bera (JB):                8.106
+Skew:                           0.431   Prob(JB):                       0.0174
+Kurtosis:                       4.945   Cond. No.                         136.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.022
+Return : -0.644%
+SD     : 16.66%
+VaR 95%: -21.16% 
+
+
+==============================================================================
+
+
+Ticker: 29
+==============================================================================
+Ticker       |	CCK
+Company      |	Crown Holdings, Inc.
+Market Cap   |	7229107940.7
+IPO year     |	n/a
+Sector       |	Consumer Durables
+Industry     |	Containers/Packaging
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.395
+Model:                            OLS   Adj. R-squared:                  0.337
+Method:                 Least Squares   F-statistic:                     6.907
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           4.97e-05
+Time:                        13:30:57   Log-Likelihood:                 98.511
+No. Observations:                  59   AIC:                            -185.0
+Df Residuals:                      53   BIC:                            -172.6
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0022      0.007      0.307      0.760        -0.012     0.016
+Mkt_Rf         0.9981      0.197      5.068      0.000         0.603     1.393
+SMB           -0.3144      0.362     -0.869      0.389        -1.040     0.411
+HML            0.0916      0.490      0.187      0.852        -0.891     1.074
+RMW           -0.2451      0.502     -0.488      0.627        -1.252     0.762
+CMA           -0.2327      0.694     -0.336      0.739        -1.624     1.158
+==============================================================================
+Omnibus:                        7.481   Durbin-Watson:                   2.291
+Prob(Omnibus):                  0.024   Jarque-Bera (JB):                6.881
+Skew:                           0.816   Prob(JB):                       0.0320
+Kurtosis:                       3.365   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.002
+Return : 1.358%
+SD     : 5.91%
+VaR 95%: -7.79% 
+
+
+==============================================================================
+
+
+Ticker: 30
+==============================================================================
+Ticker       |	DUKH
+Company      |	Duke Energy Corporation
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	Public Utilities
+Industry     |	Power Generation
+Exchange     |	NYSE
+==============================================================================
+DUKH has insufficient data !
+==============================================================================
+
+
+Ticker: 31
+==============================================================================
+Ticker       |	IDT
+Company      |	IDT Corporation
+Market Cap   |	359252446.8
+IPO year     |	n/a
+Sector       |	Public Utilities
+Industry     |	Telecommunications Equipment
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.254
+Model:                            OLS   Adj. R-squared:                  0.184
+Method:                 Least Squares   F-statistic:                     3.618
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):            0.00687
+Time:                        13:30:57   Log-Likelihood:                 33.291
+No. Observations:                  59   AIC:                            -54.58
+Df Residuals:                      53   BIC:                            -42.12
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0322      0.021      1.521      0.134        -0.010     0.075
+Mkt_Rf         0.5457      0.595      0.917      0.363        -0.647     1.739
+SMB            2.3052      1.092      2.110      0.040         0.114     4.496
+HML           -1.2228      1.480     -0.826      0.412        -4.191     1.746
+RMW           -0.1821      1.516     -0.120      0.905        -3.224     2.859
+CMA            4.3446      2.095      2.074      0.043         0.143     8.547
+==============================================================================
+Omnibus:                        7.129   Durbin-Watson:                   1.704
+Prob(Omnibus):                  0.028   Jarque-Bera (JB):                7.739
+Skew:                           0.493   Prob(JB):                       0.0209
+Kurtosis:                       4.475   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.032
+Return : 1.185%
+SD     : 16.08%
+VaR 95%: -17.61% 
+
+
+==============================================================================
+
+
+Ticker: 32
+==============================================================================
+Ticker       |	SLQD
+Company      |	iShares 0-5 Year Investment Grade Corporate Bond ETF
+Market Cap   |	73819500.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NASDAQ
+==============================================================================
+SLQD has insufficient data !
+==============================================================================
+
+
+Ticker: 33
+==============================================================================
+Ticker       |	IDLB
+Company      |	PowerShares FTSE International Low Beta Equal Weight Portfolio
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NASDAQ
+==============================================================================
+IDLB fetech failed, http error!
+==============================================================================
+
+
+Ticker: 34
+==============================================================================
+Ticker       |	HDRAW
+Company      |	Hydra Industries Acquisition Corp.
+Market Cap   |	0.0
+IPO year     |	2014
+Sector       |	Finance
+Industry     |	Business Services
+Exchange     |	NASDAQ
+==============================================================================
+HDRAW fetech failed, http error!
+==============================================================================
+
+
+Ticker: 35
+==============================================================================
+Ticker       |	PRGO
+Company      |	Perrigo Company
+Market Cap   |	13326866000.6
+IPO year     |	n/a
+Sector       |	Health Care
+Industry     |	Major Pharmaceuticals
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.045
+Model:                            OLS   Adj. R-squared:                 -0.045
+Method:                 Least Squares   F-statistic:                    0.5044
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):              0.772
+Time:                        13:31:05   Log-Likelihood:                 81.407
+No. Observations:                  59   AIC:                            -150.8
+Df Residuals:                      53   BIC:                            -138.3
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0209      0.009      2.236      0.030         0.002     0.040
+Mkt_Rf         0.2746      0.263      1.043      0.301        -0.253     0.802
+SMB           -0.0085      0.483     -0.018      0.986        -0.978     0.961
+HML            0.0096      0.655      0.015      0.988        -1.304     1.323
+RMW           -0.2605      0.671     -0.388      0.699        -1.606     1.085
+CMA            0.1825      0.927      0.197      0.845        -1.677     2.041
+==============================================================================
+Omnibus:                        0.515   Durbin-Watson:                   1.914
+Prob(Omnibus):                  0.773   Jarque-Bera (JB):                0.649
+Skew:                           0.185   Prob(JB):                        0.723
+Kurtosis:                       2.644   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.021
+Return : 0.411%
+SD     : 6.29%
+VaR 95%: -6.41% 
+
+
+==============================================================================
+
+
+Ticker: 36
+==============================================================================
+Ticker       |	STE
+Company      |	STERIS plc
+Market Cap   |	5889303831.04
+IPO year     |	n/a
+Sector       |	Health Care
+Industry     |	Industrial Specialties
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.476
+Model:                            OLS   Adj. R-squared:                  0.426
+Method:                 Least Squares   F-statistic:                     9.614
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           1.43e-06
+Time:                        13:31:06   Log-Likelihood:                 99.749
+No. Observations:                  59   AIC:                            -187.5
+Df Residuals:                      53   BIC:                            -175.0
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0061      0.007      0.893      0.376        -0.008     0.020
+Mkt_Rf         0.9757      0.193      5.060      0.000         0.589     1.362
+SMB            0.4138      0.354      1.168      0.248        -0.297     1.124
+HML            0.4031      0.480      0.840      0.405        -0.559     1.365
+RMW            0.2251      0.492      0.458      0.649        -0.761     1.211
+CMA           -0.3729      0.679     -0.549      0.585        -1.735     0.989
+==============================================================================
+Omnibus:                       19.434   Durbin-Watson:                   1.858
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               28.208
+Skew:                           1.193   Prob(JB):                     7.49e-07
+Kurtosis:                       5.405   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.006
+Return : 1.392%
+SD     : 6.21%
+VaR 95%: -7.61% 
+
+
+==============================================================================
+
+
+Ticker: 37
+==============================================================================
+Ticker       |	DGICA
+Company      |	Donegal Group, Inc.
+Market Cap   |	426604660.74
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Property-Casualty Insurers
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.361
+Model:                            OLS   Adj. R-squared:                  0.301
+Method:                 Least Squares   F-statistic:                     5.990
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           0.000183
+Time:                        13:31:07   Log-Likelihood:                 95.424
+No. Observations:                  59   AIC:                            -178.8
+Df Residuals:                      53   BIC:                            -166.4
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0064      0.007     -0.872      0.387        -0.021     0.008
+Mkt_Rf         0.4374      0.207      2.108      0.040         0.021     0.854
+SMB            1.1346      0.381      2.977      0.004         0.370     1.899
+HML           -0.8053      0.516     -1.560      0.125        -1.841     0.230
+RMW            1.9195      0.529      3.628      0.001         0.858     2.981
+CMA            1.1265      0.731      1.541      0.129        -0.339     2.592
+==============================================================================
+Omnibus:                        0.310   Durbin-Watson:                   2.007
+Prob(Omnibus):                  0.856   Jarque-Bera (JB):                0.066
+Skew:                          -0.077   Prob(JB):                        0.968
+Kurtosis:                       3.054   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.006
+Return : 0.851%
+SD     : 6.06%
+VaR 95%: -9.77% 
+
+
+==============================================================================
+DGICA has negative alpha !
+==============================================================================
+
+
+Ticker: 38
+==============================================================================
+Ticker       |	MCRB
+Company      |	Seres Therapeutics, Inc.
+Market Cap   |	1302178793.9
+IPO year     |	2015
+Sector       |	Health Care
+Industry     |	Major Pharmaceuticals
+Exchange     |	NASDAQ
+==============================================================================
+MCRB fetech failed, http error!
+==============================================================================
+
+
+Ticker: 39
+==============================================================================
+Ticker       |	MTB
+Company      |	M&T Bank Corporation
+Market Cap   |	18877952932.2
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Major Banks
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.412
+Model:                            OLS   Adj. R-squared:                  0.357
+Method:                 Least Squares   F-statistic:                     7.441
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           2.38e-05
+Time:                        13:31:07   Log-Likelihood:                 111.67
+No. Observations:                  59   AIC:                            -211.3
+Df Residuals:                      53   BIC:                            -198.9
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0094      0.006      1.673      0.100        -0.002     0.021
+Mkt_Rf         0.3854      0.158      2.446      0.018         0.069     0.701
+SMB           -0.0247      0.289     -0.085      0.932        -0.605     0.556
+HML            0.9890      0.392      2.523      0.015         0.203     1.775
+RMW           -0.7384      0.402     -1.838      0.072        -1.544     0.067
+CMA           -0.1726      0.555     -0.311      0.757        -1.286     0.940
+==============================================================================
+Omnibus:                        4.780   Durbin-Watson:                   2.180
+Prob(Omnibus):                  0.092   Jarque-Bera (JB):                3.796
+Skew:                           0.507   Prob(JB):                        0.150
+Kurtosis:                       3.719   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.009
+Return : 0.474%
+SD     : 4.8%
+VaR 95%: -8.15% 
+
+
+==============================================================================
+
+
+Ticker: 40
+==============================================================================
+Ticker       |	AA
+Company      |	Alcoa Inc.
+Market Cap   |	13979590450.2
+IPO year     |	n/a
+Sector       |	Capital Goods
+Industry     |	Metal Fabrications
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.565
+Model:                            OLS   Adj. R-squared:                  0.524
+Method:                 Least Squares   F-statistic:                     13.75
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           1.31e-08
+Time:                        13:31:08   Log-Likelihood:                 87.078
+No. Observations:                  59   AIC:                            -162.2
+Df Residuals:                      53   BIC:                            -149.7
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0124      0.009     -1.464      0.149        -0.029     0.005
+Mkt_Rf         1.6814      0.239      7.035      0.000         1.202     2.161
+SMB           -0.3959      0.439     -0.902      0.371        -1.276     0.485
+HML            0.1687      0.595      0.284      0.778        -1.024     1.362
+RMW           -0.4317      0.609     -0.708      0.482        -1.654     0.791
+CMA           -0.6368      0.842     -0.756      0.453        -2.325     1.052
+==============================================================================
+Omnibus:                        1.889   Durbin-Watson:                   1.890
+Prob(Omnibus):                  0.389   Jarque-Bera (JB):                1.485
+Skew:                           0.388   Prob(JB):                        0.476
+Kurtosis:                       3.017   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.012
+Return : 2.279%
+SD     : 8.45%
+VaR 95%: -13.17% 
+
+
+==============================================================================
+AA has negative alpha !
+==============================================================================
+
+
+Ticker: 41
+==============================================================================
+Ticker       |	NDAQ
+Company      |	Nasdaq, Inc.
+Market Cap   |	11198512702.0
+IPO year     |	n/a
+Sector       |	Finance
+Industry     |	Investment Bankers/Brokers/Service
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.451
+Model:                            OLS   Adj. R-squared:                  0.400
+Method:                 Least Squares   F-statistic:                     8.725
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           4.37e-06
+Time:                        13:31:09   Log-Likelihood:                 96.244
+No. Observations:                  59   AIC:                            -180.5
+Df Residuals:                      53   BIC:                            -168.0
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0051      0.007      0.700      0.487        -0.010     0.020
+Mkt_Rf         1.0545      0.205      5.153      0.000         0.644     1.465
+SMB           -0.3662      0.376     -0.974      0.334        -1.120     0.388
+HML            0.2064      0.509      0.405      0.687        -0.815     1.228
+RMW           -0.5032      0.522     -0.964      0.339        -1.550     0.543
+CMA            0.3866      0.721      0.536      0.594        -1.059     1.832
+==============================================================================
+Omnibus:                        0.483   Durbin-Watson:                   2.017
+Prob(Omnibus):                  0.786   Jarque-Bera (JB):                0.201
+Skew:                           0.139   Prob(JB):                        0.905
+Kurtosis:                       3.062   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.005
+Return : 1.419%
+SD     : 6.45%
+VaR 95%: -8.83% 
+
+
+==============================================================================
+
+
+Ticker: 42
+==============================================================================
+Ticker       |	WLB
+Company      |	Westmoreland Coal Company
+Market Cap   |	185189644.98
+IPO year     |	n/a
+Sector       |	Energy
+Industry     |	Coal Mining
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.414
+Model:                            OLS   Adj. R-squared:                  0.359
+Method:                 Least Squares   F-statistic:                     7.488
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           2.24e-05
+Time:                        13:31:09   Log-Likelihood:                 46.309
+No. Observations:                  59   AIC:                            -80.62
+Df Residuals:                      53   BIC:                            -68.15
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0105      0.017      0.618      0.539        -0.024     0.045
+Mkt_Rf         2.1439      0.477      4.494      0.000         1.187     3.101
+SMB           -0.5525      0.876     -0.631      0.531        -2.310     1.205
+HML            2.6315      1.187      2.217      0.031         0.251     5.012
+RMW           -0.6434      1.216     -0.529      0.599        -3.083     1.796
+CMA           -2.4583      1.680     -1.463      0.149        -5.828     0.912
+==============================================================================
+Omnibus:                        3.799   Durbin-Watson:                   2.020
+Prob(Omnibus):                  0.150   Jarque-Bera (JB):                3.459
+Skew:                           0.592   Prob(JB):                        0.177
+Kurtosis:                       2.921   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.01
+Return : 2.675%
+SD     : 14.54%
+VaR 95%: -25.11% 
+
+
+==============================================================================
+
+
+Ticker: 43
+==============================================================================
+Ticker       |	DSU
+Company      |	Blackrock Debt Strategies Fund, Inc.
+Market Cap   |	389235479.01
+IPO year     |	1998
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.304
+Model:                            OLS   Adj. R-squared:                  0.238
+Method:                 Least Squares   F-statistic:                     4.627
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):            0.00141
+Time:                        13:31:10   Log-Likelihood:                 132.98
+No. Observations:                  59   AIC:                            -254.0
+Df Residuals:                      53   BIC:                            -241.5
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0014      0.004      0.364      0.717        -0.006     0.009
+Mkt_Rf         0.4881      0.110      4.446      0.000         0.268     0.708
+SMB           -0.3356      0.202     -1.664      0.102        -0.740     0.069
+HML            0.0162      0.273      0.059      0.953        -0.532     0.564
+RMW           -0.1331      0.280     -0.476      0.636        -0.695     0.428
+CMA           -0.0937      0.387     -0.242      0.810        -0.869     0.682
+==============================================================================
+Omnibus:                        1.400   Durbin-Watson:                   1.820
+Prob(Omnibus):                  0.496   Jarque-Bera (JB):                0.699
+Skew:                          -0.147   Prob(JB):                        0.705
+Kurtosis:                       3.444   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.001
+Return : 0.662%
+SD     : 3.07%
+VaR 95%: -4.23% 
+
+
+==============================================================================
+
+
+Ticker: 44
+==============================================================================
+Ticker       |	RNN
+Company      |	Rexahn Pharmaceuticals, Inc.
+Market Cap   |	55339914.586
+IPO year     |	n/a
+Sector       |	Health Care
+Industry     |	Major Pharmaceuticals
+Exchange     |	AMEX
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.249
+Model:                            OLS   Adj. R-squared:                  0.178
+Method:                 Least Squares   F-statistic:                     3.506
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):            0.00823
+Time:                        13:31:11   Log-Likelihood:                0.18449
+No. Observations:                  59   AIC:                             11.63
+Df Residuals:                      53   BIC:                             24.10
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0486      0.037      1.312      0.195        -0.026     0.123
+Mkt_Rf         0.0944      1.042      0.091      0.928        -1.996     2.185
+SMB           -1.1473      1.914     -0.599      0.552        -4.987     2.693
+HML            0.3136      2.594      0.121      0.904        -4.889     5.516
+RMW           -9.5303      2.658     -3.586      0.001       -14.861    -4.199
+CMA           -3.6419      3.672     -0.992      0.326       -11.006     3.723
+==============================================================================
+Omnibus:                       20.996   Durbin-Watson:                   1.816
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               31.174
+Skew:                           1.283   Prob(JB):                     1.70e-07
+Kurtosis:                       5.470   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.049
+Return : -0.007%
+SD     : 28.06%
+VaR 95%: -25.9% 
+
+
+==============================================================================
+
+
+Ticker: 45
+==============================================================================
+Ticker       |	RDS.A
+Company      |	Royal Dutch Shell PLC
+Market Cap   |	0.0
+IPO year     |	n/a
+Sector       |	n/a
+Industry     |	n/a
+Exchange     |	NYSE
+==============================================================================
+RDS.A fetech failed, http error!
+==============================================================================
+
+
+Ticker: 46
+==============================================================================
+Ticker       |	ENB
+Company      |	Enbridge Inc
+Market Cap   |	38906764301.4
+IPO year     |	n/a
+Sector       |	Energy
+Industry     |	Natural Gas Distribution
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.219
+Model:                            OLS   Adj. R-squared:                  0.145
+Method:                 Least Squares   F-statistic:                     2.966
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):             0.0196
+Time:                        13:31:12   Log-Likelihood:                 111.91
+No. Observations:                  59   AIC:                            -211.8
+Df Residuals:                      53   BIC:                            -199.3
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0112      0.006      2.002      0.050     -2.11e-05     0.022
+Mkt_Rf         0.4668      0.157      2.975      0.004         0.152     0.782
+SMB           -0.2708      0.288     -0.940      0.352        -0.849     0.307
+HML            0.3012      0.390      0.771      0.444        -0.482     1.084
+RMW            0.2513      0.400      0.628      0.533        -0.551     1.054
+CMA            0.3787      0.553      0.685      0.496        -0.730     1.487
+==============================================================================
+Omnibus:                        2.473   Durbin-Watson:                   2.138
+Prob(Omnibus):                  0.290   Jarque-Bera (JB):                1.821
+Skew:                           0.114   Prob(JB):                        0.402
+Kurtosis:                       3.830   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.011
+Return : 0.616%
+SD     : 4.14%
+VaR 95%: -5.33% 
+
+
+==============================================================================
+
+
+Ticker: 47
+==============================================================================
+Ticker       |	HOV
+Company      |	Hovnanian Enterprises Inc
+Market Cap   |	260402628.33
+IPO year     |	n/a
+Sector       |	Capital Goods
+Industry     |	Homebuilding
+Exchange     |	NYSE
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.353
+Model:                            OLS   Adj. R-squared:                  0.292
+Method:                 Least Squares   F-statistic:                     5.791
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           0.000245
+Time:                        13:31:13   Log-Likelihood:                 23.094
+No. Observations:                  59   AIC:                            -34.19
+Df Residuals:                      53   BIC:                            -21.72
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept      0.0008      0.025      0.030      0.976        -0.050     0.051
+Mkt_Rf         1.4240      0.707      2.014      0.049         0.006     2.842
+SMB            2.9376      1.298      2.262      0.028         0.333     5.542
+HML            1.9480      1.759      1.107      0.273        -1.581     5.477
+RMW           -0.8022      1.803     -0.445      0.658        -4.418     2.813
+CMA           -0.3677      2.490     -0.148      0.883        -5.362     4.627
+==============================================================================
+Omnibus:                       16.716   Durbin-Watson:                   1.965
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               20.630
+Skew:                           1.145   Prob(JB):                     3.31e-05
+Kurtosis:                       4.774   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : 0.001
+Return : 2.189%
+SD     : 20.52%
+VaR 95%: -22.1% 
+
+
+==============================================================================
+
+
+Ticker: 48
+==============================================================================
+Ticker       |	VCEL
+Company      |	Vericel Corporation
+Market Cap   |	51219025.36
+IPO year     |	n/a
+Sector       |	Health Care
+Industry     |	Biotechnology: Biological Products (No Diagnostic Substances)
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.081
+Model:                            OLS   Adj. R-squared:                 -0.006
+Method:                 Least Squares   F-statistic:                    0.9361
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):              0.465
+Time:                        13:31:13   Log-Likelihood:                 25.953
+No. Observations:                  59   AIC:                            -39.91
+Df Residuals:                      53   BIC:                            -27.44
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0386      0.024     -1.610      0.113        -0.087     0.009
+Mkt_Rf         0.7878      0.674      1.170      0.247        -0.563     2.139
+SMB            0.9693      1.237      0.784      0.437        -1.512     3.450
+HML           -0.8741      1.676     -0.522      0.604        -4.236     2.488
+RMW           -0.2567      1.717     -0.149      0.882        -3.701     3.188
+CMA            0.0360      2.372      0.015      0.988        -4.722     4.794
+==============================================================================
+Omnibus:                        1.247   Durbin-Watson:                   2.200
+Prob(Omnibus):                  0.536   Jarque-Bera (JB):                0.569
+Skew:                           0.052   Prob(JB):                        0.753
+Kurtosis:                       3.469   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.039
+Return : 1.317%
+SD     : 16.4%
+VaR 95%: -28.7% 
+
+
+==============================================================================
+VCEL has negative alpha !
+==============================================================================
+
+
+Ticker: 49
+==============================================================================
+Ticker       |	CBAK
+Company      |	China BAK Battery, Inc.
+Market Cap   |	46504703.86
+IPO year     |	n/a
+Sector       |	Miscellaneous
+Industry     |	Industrial Machinery/Components
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.144
+Model:                            OLS   Adj. R-squared:                  0.063
+Method:                 Least Squares   F-statistic:                     1.781
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):              0.133
+Time:                        13:31:15   Log-Likelihood:                -6.5447
+No. Observations:                  59   AIC:                             25.09
+Df Residuals:                      53   BIC:                             37.55
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0266      0.042     -0.640      0.525        -0.110     0.057
+Mkt_Rf         2.5455      1.168      2.179      0.034         0.202     4.889
+SMB            0.8455      2.146      0.394      0.695        -3.458     5.149
+HML           -2.2025      2.907     -0.758      0.452        -8.034     3.629
+RMW            0.8657      2.979      0.291      0.772        -5.109     6.841
+CMA           -2.5575      4.115     -0.621      0.537       -10.812     5.697
+==============================================================================
+Omnibus:                       32.824   Durbin-Watson:                   2.299
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               70.364
+Skew:                           1.781   Prob(JB):                     5.26e-16
+Kurtosis:                       6.992   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.027
+Return : 3.832%
+SD     : 29.47%
+VaR 95%: -34.72% 
+
+
+==============================================================================
+CBAK has negative alpha !
+==============================================================================
+
+
+Ticker: 50
+==============================================================================
+Ticker       |	ZUMZ
+Company      |	Zumiez Inc.
+Market Cap   |	396695501.21
+IPO year     |	2005
+Sector       |	Consumer Services
+Industry     |	Clothing/Shoe/Accessory Stores
+Exchange     |	NASDAQ
+==============================================================================
+Starting time: 2010-02
+Ending   time: 2014-12
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          Excess_Return   R-squared:                       0.396
+Model:                            OLS   Adj. R-squared:                  0.339
+Method:                 Least Squares   F-statistic:                     6.950
+Date:                Wed, 20 Jul 2016   Prob (F-statistic):           4.69e-05
+Time:                        13:31:16   Log-Likelihood:                 45.340
+No. Observations:                  59   AIC:                            -78.68
+Df Residuals:                      53   BIC:                            -66.22
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     -0.0108      0.017     -0.626      0.534        -0.045     0.024
+Mkt_Rf         2.1686      0.485      4.472      0.000         1.196     3.141
+SMB            1.0038      0.891      1.127      0.265        -0.782     2.790
+HML           -2.0172      1.207     -1.672      0.100        -4.437     0.403
+RMW            1.9831      1.236      1.604      0.115        -0.497     4.463
+CMA            2.2296      1.708      1.305      0.197        -1.196     5.655
+==============================================================================
+Omnibus:                        0.590   Durbin-Watson:                   2.218
+Prob(Omnibus):                  0.744   Jarque-Bera (JB):                0.152
+Skew:                          -0.072   Prob(JB):                        0.927
+Kurtosis:                       3.202   Cond. No.                         128.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+alpha  : -0.011
+Return : 3.319%
+SD     : 14.56%
+VaR 95%: -18.38% 
+
+
+==============================================================================
+ZUMZ has negative alpha !
+==============================================================================
+Return threshold in constraint:  -0.0511840078122
+Iteration limit exceeded    (Exit mode 9)
+            Current function value: -1.00291191298
+            Iterations: 1001
+            Function evaluations: 10596
+            Gradient evaluations: 1001
+Portfolio Summary
+==============================================================================
+Portfolio   size: 34
+Portfolio   name: ['HRZN', 'IDT', 'FORTY', 'PBMD', 'CCK', 'FDX', 'WLB', 'CPS', 'VCEL', 'RPTP', 'MDM', 'TCBK', 'ALSK', 'NWL', 'PERY', 'ZUMZ', 'DGICA', 'AA', 'STE', 'ENB', 'XPL', 'DHG', 'DSU', 'HOV', 'MTB', 'FENG', 'RNN', 'NVMI', 'PRGO', 'CBAK', 'WOOD', 'NDAQ', 'GSBC', 'PNF']
+Portfolio weight: ['0.0%', '0.1%', '0.1%', '0.0%', '0.0%', '9.8%', '0.0%', '0.0%', '0.0%', '0.0%', '0.0%', '0.1%', '0.2%', '0.3%', '0.0%', '0.0%', '0.6%', '0.0%', '0.2%', '8.1%', '0.0%', '77.1%', '0.0%', '0.0%', '0.0%', '0.2%', '0.0%', '0.0%', '0.0%', '0.2%', '2.1%', '0.2%', '0.1%', '0.0%']
+Portfolio return: 1.01%
+Portfolio  SD(Y):  3.38%
+Annulized return: 12.17%
+Annulized  SD(Y): 11.7%
+        SP ratio: 1.04
+Return threshold: -5.12%
+ Realized return: 6.63% from 2015-01-01 to 2015-06-01
+Equally weighted: 7.9%
+  S&P 500 return: 2.6%
