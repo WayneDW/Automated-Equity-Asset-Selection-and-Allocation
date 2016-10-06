@@ -1,3 +1,5 @@
-This routine is used for compute the tangency portfolio based on Fama French factor model
+# This code is sperated into three parts:
 
-It used data (price and other fundamental indexes) from yahoo.finance, factor from French's website, treasury yield data from Bloomberg
+## Data Preprocessing
+## Stock selection to build a portfolio
+## Optimize the best weight for your portfolio
