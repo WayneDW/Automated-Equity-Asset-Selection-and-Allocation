@@ -8,8 +8,9 @@ crawl financial report data from http://www.morningstar.com/
 
 crawl historical stock prices from  https://finance.yahoo.com/
 
-
-./crawler.py
+```python
+./crawl.py
+```
 
 ## Feature engineering
 
