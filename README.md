@@ -2,6 +2,10 @@
 
 ## Data Preprocessing
 ### 
+crawl ticker list and basic stock from http://www.nasdaq.com/screening/company-list.aspx
+crawl financial report data from http://www.morningstar.com/
+crawl historical stock prices from  https://finance.yahoo.com/
+
 
 ./crawler.py
 
