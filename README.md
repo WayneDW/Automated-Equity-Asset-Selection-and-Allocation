@@ -3,6 +3,8 @@
 ## Data Preprocessing
 ### 
 
+./crawler.py
+
 ## Feature engineering
 
 format basic information to the (sample_n, feature_m) matrix
@@ -13,5 +15,12 @@ format basic information to the (sample_n, feature_m) matrix
 
 [ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
 
+
+./preprocessing.py
+
 ## Stock classification based on stock price
+
+./learning.py
 ## Optimize the best weight for your portfolio
+
+./mean_variance_portfolio.py
