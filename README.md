@@ -22,8 +22,10 @@ format basic information to the (sample_n, feature_m) matrix
 
 [ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
 
-
+```python
 ./preprocessing.py
+```
+
 
 ## Stock classification based on stock price
 
