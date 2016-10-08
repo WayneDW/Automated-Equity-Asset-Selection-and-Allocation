@@ -31,7 +31,7 @@ class stock_info_collector:
 			response = urllib2.urlopen(u0 + exchange + u1)
 			csv = response.read().split('\n')
 			for num, line in enumerate(csv):
-				if num > 2: continue
+				if num > 5: continue
 				line = line.strip().strip('"').split('","')
 				if num == 0 or len(line) != 9: continue # filter unmatched format
 
@@ -49,7 +49,7 @@ class stock_info_collector:
 						if _ == 0: print num, ticker, "Http error!"
 				if _ == repeat_times - 1: continue
 				print num, ticker
-				print ratioStr, priceStr
+				#print ratioStr, priceStr
 				fout.write( "{ticker:" + ticker + "," + "name:" + name + "," \
 				"lastSale:" + lastSale + "," + "MarketCap:" + MarketCap + "," \
 				"IPOyear:" + IPOyear + "," + "sector:" + sector + "," + "industry:" + \
