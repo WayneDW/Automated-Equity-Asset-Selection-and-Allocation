@@ -13,7 +13,6 @@ from math import log
 
 # collect stock information, eg, price, volume, sector, key_ratios, etc.
 class stock_info_collector:
-	
 	def __init__(self, d0, d1, dtype):
 		self.time_start, self.time_end, self.time_type = d0, d1, dtype
 		# get basic indicators associated with the ticker
@@ -81,7 +80,7 @@ class stock_info_collector:
 			if if_skip_row: continue # delete redundant rows
 			name = tag.replace(" ", "_") + name.replace(" ", "_")
 			#print ticker, name, ",".join(string)
-			standard_output += "key_ratios" + name.replace("'", "") + ":" + " ".join(string) + ",\n"
+			standard_output += "key_ratios_" + name.replace("'", "") + ":" + " ".join(string) + ",\n"
 		return standard_output [:len(standard_output) - 1] # delete last char in the end of string
 
 	# Return the historical stock price, date type -> monthly: m; weekly: w; daily: d
