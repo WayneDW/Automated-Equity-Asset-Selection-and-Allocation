@@ -7,26 +7,23 @@ import os
 import time
 import urllib
 import urllib2
-'''
-import requests
-import zipfile
-import StringIO
-'''
+
 import random
 from math import log
-# yahoo finance api, containing incomplete index
-# from yahoo_finance import Share 
-# from pprint import pprint
 
-
+# collect stock information, eg, price, volume, sector, key_ratios, etc.
 class stock_info_collector:
-	# collect stock information, eg, price, volume, sector, ...
-	def __init__(self, time_start, time_end, time_type):
-		self.time_start, self.time_end, self.time_type = time_start, time_end, time_type
-		# Get a complete ticker list belong to NYSE, NASDAQ and AMEX from NASDAQ website
-		# Get some basic indicators associated with the ticker: name, lastSale, MarketCap, IPOyear, sector, industry
-		# http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange=NASDAQ&render=download
-		tickerBasicsString = ""
+	
+	def __init__(self, d0, d1, dtype):
+		self.time_start, self.time_end, self.time_type = d0, d1, dtype
+		# get basic indicators associated with the ticker
+
+		# if dir doesn't exist, create one
+		if not os.path.isdir("./dat/"): os.system("mkdir " + "./dat/")
+		# if file existed, exit
+		fileName = "_".join(["raw", self.time_start, self.time_end, self.time_type])
+		if os.path.isfile("./dat/" + fileName): sys.exit("file already existed!")
+		fout = open("./dat/" + fileName, 'a+')
 		for exchange in ["NASDAQ", "NYSE", "AMEX"]:
 			print "Download tickers from " + exchange
 			u0 = "http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange="
@@ -34,32 +31,29 @@ class stock_info_collector:
 			response = urllib2.urlopen(u0 + exchange + u1)
 			csv = response.read().split('\n')
 			for num, line in enumerate(csv):
-				if num > 10: continue
+				if num > 2: continue
 				line = line.strip().strip('"').split('","')
-				if num == 0 or len(line) != 9: continue
+				if num == 0 or len(line) != 9: continue # filter unmatched format
 
-				ticker, name, lastSale, MarketCap, IPOyear, sector, industry = line[0: 4] + line[5: 8]
-				repeat_times, if_response = 0, 0
-				while repeat_times < 5 and not if_response:
+				ticker, name, lastSale, MarketCap, IPOyear, sector, \
+				industry = line[0: 4] + line[5: 8]
+				repeat_times = 3
+				for _ in range(repeat_times): # repeat N times to download
 					try:
-						price_string = self.yahoo_price(ticker)
-						if_response = 1
-						time.sleep(5)
+						time.sleep(random.uniform(3, 7))
+						priceStr = self.yahoo_price(ticker)
+						ratioStr = self.key_ratios(ticker)
+						if priceStr and ratioStr: # skip loop if data fetched
+							break
 					except:
-						print num, ticker, "Http error, wait some time!"
-						time.sleep(times)
+						if _ == 0: print num, ticker, "Http error!"
+				if _ == repeat_times - 1: continue
 				print num, ticker
-				key_ratios_string = self.key_ratios(ticker)
-				tickerBasicsString += "{ticker:" + ticker + "|" + "name:" + "|" \
-				"lastSale:" + lastSale + "|" + "MarketCap:" + MarketCap + "|" \
-				"IPOyear:" + IPOyear + "|" + "sector:" + sector + "|" + "industry:" + industry + '|\n' + \
-				"Key ratios:" + key_ratios_string + "\n|" + \
-				"Price:" + price_string + "}\n" # add key_ratios to stdout
-
-		# if dir doesn't exist, create one
-		if not os.path.isdir("./dat/"): os.system("mkdir " + "./dat/")
-		fout = open("./dat/" + time_start + "_" +  time_end + "_" + time_type, 'w')
-		fout.write(tickerBasicsString)
+				print ratioStr, priceStr
+				fout.write( "{ticker:" + ticker + "," + "name:" + name + "," \
+				"lastSale:" + lastSale + "," + "MarketCap:" + MarketCap + "," \
+				"IPOyear:" + IPOyear + "," + "sector:" + sector + "," + "industry:" + \
+				industry + ',\n' + ratioStr + "\n" + priceStr + "}\n") 
 
 	# Classical indicators for fundamental analysis
 	# Data source: http://www.morningstar.com/
@@ -68,9 +62,8 @@ class stock_info_collector:
 		u1 = "&region=usa&culture=en-US&cur=&order=asc"
 		response = urllib2.urlopen(u0 + ticker + u1)
 		csv = response.read().split('\n')
-		# e.g. N-Year Average is below Net Income and EPS, for these items, we should add group information
-		dt, tag = ["Revenue %", "Operating Income %", "Net Income %", "EPS %"], ""
-		standard_output = "{"
+		dt = ["Revenue %", "Operating Income %", "Net Income %", "EPS %"]
+		standard_output, tag = "", ""
 		for num, lines in enumerate(csv):
 			m, name =  re.match(r"^([\w\d %*&/\-\\']+|),", lines), "" # parse attribute
 			if m: name =  m.group(1)
@@ -88,8 +81,8 @@ class stock_info_collector:
 			if if_skip_row: continue # delete redundant rows
 			name = tag.replace(" ", "_") + name.replace(" ", "_")
 			#print ticker, name, ",".join(string)
-			standard_output += name.replace("'", "") + ":" + ",".join(string) + "\n|"
-		return standard_output[:len(standard_output) - 2] + '}'
+			standard_output += "ratio_" + name.replace("'", "") + ":" + " ".join(string) + ",\n"
+		return standard_output [:len(standard_output) - 1] # delete last char in the end of string
 
 	# Return the historical stock price, date type -> monthly: m; weekly: w; daily: d
 	# http://chart.finance.yahoo.com/table.csv?s=BIDU&a=5&b=12&c=2016&d=6&e=12&f=2016&g=m&ignore=.csv
@@ -112,7 +105,7 @@ class stock_info_collector:
 		csv = response.read().split('\n')
 		# get historical price
 		ticker_price = {}
-		res_str = "{"
+		res_str = ""
 		for num, line in enumerate(csv):
 			line = line.strip().split(',')
 			if len(line) < 7 or num == 0: continue
@@ -122,8 +115,8 @@ class stock_info_collector:
 			# tailor the date if this is a month type
 			if self.time_type == "m": date = date[0:7]
 			# open, high, low, close, volume, adjClose : 1,2,3,4,5,6
-			res_str += "{" + date + ":{Volume:" + line[5] + '|' +  "adjClose:" + line[6] + "}|\n"
-		return res_str + "}"
+			res_str += date + "_Volume:" + line[5] + ',' + date + "_adjClose:" + line[6] + ",\n"
+		return res_str[:len(res_str) - 2] # delete last 2 char in the end of string
 
 
 if __name__ == "__main__":
