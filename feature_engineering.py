@@ -9,8 +9,8 @@ class preprocessing:
 		self.loadDict() # load key_ratio list to filter other ratios
 		self.readFile() # read file to load features and label information
 		self.createFeature() # create feature matrix and get price information
-		self.cleanFeatures() # delete feature if it contains too many missing values
 		self.createLabel() # create labels corresponding to features based on price
+		self.cleanFeatures() # delete feature if it contains too many missing values
 		self.saveLocal() # save ticker_feature_label matrix to local
 		
 	def loadDict(self):
@@ -62,64 +62,65 @@ class preprocessing:
 				self.tickerList.append(last)
 				self.feature = np.vstack([self.feature, A])
 			
+	def createLabel(self):
+		self.label = np.zeros(len(self.feature), dtype=int)
+		if len(self.feature) != len(self.tickerList): 
+			sys.exit("feature number doesn't match label information")
+		self.deleteList = {}
+		for _ in xrange(len(self.tickerList)):
+			ticker = self.tickerList[_]
+			try:
+
+				price_per = self.stock_prices[ticker]["2016-01-04"] / \
+							self.stock_prices[ticker]["2016-09-08"]
+				self.label[_] = 1 if price_per > 1 else 0
+			except:
+				# delete the stock if its price info is not satistifed
+				self.deleteList[ticker] = None 
+				continue
 
 	def cleanFeatures(self):
-		#self.feature = np.nan_to_num(self.feature.astype(np.float))
+		# self.feature = np.nan_to_num(self.feature.astype(np.float))
+		# this part should not include ticker info as its 1st col
 		self.feature = self.feature.astype(np.float)
-		print "Raw feature number: ", np.shape(self.feature)
-		cnt_none, length = 0, np.shape(self.feature)[1]
-		while cnt_none < length:
-			features_j = self.feature[:,cnt_none]
+		print "Raw feature dimension: ", np.shape(self.feature)
+		tag_none_ratio = np.repeat(True, np.shape(self.feature)[1])
+		for num in range(np.shape(self.feature)[1]):
+			features_j = self.feature[:, num]
+			# compute the ratio of missing value in feature_j
 			none_ratio = float(len(features_j[np.isnan(features_j)])) / len(features_j)
-			if none_ratio > 0.0: # delete future if missing value exceeds threshold
-				self.feature = np.delete(self.feature, cnt_none, axis=1)
-				length -= 1
-			else:
-				cnt_none += 1
-		print "Updated feature number: ", np.shape(self.feature)
+			if none_ratio > 0.0: tag_none_ratio[num] = False
+		self.feature = self.feature[:,tag_none_ratio]
+		print "Feature dimension after None deletion: ", np.shape(self.feature)
+
+		# tag true with feature variance is above than threshold, otherwise tag false
+		tag_sd = (np.std(self.feature.astype(np.float), axis=0) > 0)
+		self.feature = self.feature[:,tag_sd]
+		print "Feature dimension after variance check: ", np.shape(self.feature)
+
+		# add ticker to the 1st col, label to the last col of the feature matrix
+		self.tickerList = np.array(self.tickerList)
+		self.feature = self.feature.transpose()
+		self.feature = np.vstack([self.tickerList, self.feature, self.label])
+		self.feature = self.feature.transpose()
+		print "Feature dimension after col-merge: ", np.shape(self.feature)
+
+		# if the stock don't have coresponding price, delete it.
+		tag_price = np.repeat(True, len(self.feature))
+		for num in xrange(len(self.feature)):
+			if self.feature[num][0] in self.deleteList:
+				tag_price[num] = False
+		self.feature = self.feature[tag_price]
+		print "Feature dimension after price check: ", np.shape(self.feature)
 
 	def interpolationFeatures(self):
 		######################### interpolation required ##########################
 		## we need interpolation to replace all nan with reasonable value #########
 		pass
-		
-		#print "......................",self.feature
-		# for ticker in self.stock_prices:
-		# 	for num, day in enumerate(sorted(self.stock_prices[ticker])):
-		# 		if num > 0:
-		# 			self.stock_returns[ticker][day] = self.stock_prices[ticker][day] / lastPrice - 1
-		# 		lastPrice = self.stock_prices[ticker][day]
-
-	def createLabel(self):
-		# use random number first
-		self.label = np.zeros(len(self.feature), dtype=int)
-		if len(self.feature) != len(self.tickerList): 
-			sys.exit("feature number doesn't match label information")
-		i = 0
-		for _ in xrange(len(self.tickerList)):
-			ticker = self.tickerList[_]
-			#od = collections.OrderedDict(sorted(self.stock_prices[ticker].items()))
-			#print od.values()
-			try:
-				print i, ticker
-				price_per = self.stock_prices[ticker]["2016-09-15"] / \
-							self.stock_prices[ticker]["2016-09-08"]
-				self.label[_] = 1 if price_per > 1 else 0
-				i += 1
-			except:
-				continue
 
 	def saveLocal(self):
-		# add ticker to the 1st col, label to the last col
-		self.tickerList = np.array(self.tickerList)
-		self.feature = self.feature.transpose()
-		self.feature = np.vstack([self.tickerList, self.feature, self.label])
-		self.feature = self.feature.transpose()
-		#print self.feature[0]
-		np.savetxt("./dat/feature_label_" + self.d0 + '_' + self.d1, self.feature, delimiter=',', fmt="%s")
-
-
-
+		np.savetxt("./dat/feature_label_" + self.d0 + '_' + self.d1, \
+			self.feature, delimiter=',', fmt="%s")
 
 
 
