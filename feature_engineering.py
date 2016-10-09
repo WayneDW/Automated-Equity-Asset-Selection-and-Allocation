@@ -47,6 +47,7 @@ class preprocessing:
 
 			if dat[0] in self.wordDict: # if key_ratios are these we need
 				numList = np.array(dat[1].split(' ')) # create one row in numpy
+				if len(numList) != np.shape(A)[1]: continue # in case format not match
 				A = np.vstack([A, numList]) # add to A
 
 			m = re.search(r"(\d{4}\-\d{2}\-\d{2})_adjClose", dat[0]) # match stock price
@@ -69,11 +70,10 @@ class preprocessing:
 		self.deleteList = {}
 		for _ in xrange(len(self.tickerList)):
 			ticker = self.tickerList[_]
-			try:
-
-				price_per = self.stock_prices[ticker]["2016-01-04"] / \
-							self.stock_prices[ticker]["2016-09-08"]
-				self.label[_] = 1 if price_per > 1 else 0
+			try: # some company may not IPO at that time
+				price_per = self.stock_prices[ticker]["2016-09-08"] / \
+							self.stock_prices[ticker]["2013-01-07"]
+				self.label[_] = 1 if price_per > 1.3 else 0 # price improvement
 			except:
 				# delete the stock if its price info is not satistifed
 				self.deleteList[ticker] = None 
@@ -89,12 +89,17 @@ class preprocessing:
 			features_j = self.feature[:, num]
 			# compute the ratio of missing value in feature_j
 			none_ratio = float(len(features_j[np.isnan(features_j)])) / len(features_j)
-			if none_ratio > 0.0: tag_none_ratio[num] = False
+			if none_ratio > 0.1: tag_none_ratio[num] = False
 		self.feature = self.feature[:,tag_none_ratio]
 		print "Feature dimension after None deletion: ", np.shape(self.feature)
 
 		# tag true with feature variance is above than threshold, otherwise tag false
-		tag_sd = (np.std(self.feature.astype(np.float), axis=0) > 0)
+		#print len((np.std(self.feature[~np.isnan(self.feature)], axis=0) > 0))
+		#tag_sd = (np.std(self.feature.astype(np.float), axis=0) > 0) # this can't deal with nan
+		tag_sd = np.repeat(True, np.shape(self.feature)[1])
+		for num in range(np.shape(self.feature)[1]):
+			std = np.std(self.feature[~np.isnan(self.feature[:,num]), num])
+			if std == 0: tag_sd[num] = False
 		self.feature = self.feature[:,tag_sd]
 		print "Feature dimension after variance check: ", np.shape(self.feature)
 
