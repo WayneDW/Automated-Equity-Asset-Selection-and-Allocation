@@ -2,7 +2,6 @@ import numpy as np
 from sklearn import svm
 from sklearn import metrics
 
-from preprocessing import preprocessing
 from sklearn.model_selection import GridSearchCV
 
 # from sklearn document
@@ -12,28 +11,23 @@ from sklearn.model_selection import GridSearchCV
 # http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV
 
 date_start = "2000-01-01"
-date_end = "2016-12-30"
+date_end = "2016-12-31"
 date_type = "d"
 
-feature_path = "./dat/" + "_".join([date_start, date_end, "ticker_feature_label"])
+feature_path = "./dat/feature_label_" + "_".join([date_start, date_end])
 dat = np.loadtxt(feature_path, delimiter=',', dtype='str')
 
 tickers = dat[:,0]
+
 # get rid of the 1st and last cols
-features = dat[:, 1:len(dat[0,]) - 1].astype(np.float) 
+features = dat[:, 1:len(dat[0,]) - 50].astype(np.float) 
+
 labels = dat[:,-1].astype(np.int)
 
-i, length = 0, len(features[1,])
-while i < length:
-	features_j = features[:,i]
-	none_ratio = float(len(features_j[features_j==0])) / len(features_j)
-	if none_ratio > 0.01:
-		features = np.delete(features, i, axis=1)
-		length -= 1
-	else:
-		i += 1
-print len(features[1,])
+
 print features
+print "feature dimension", np.shape(features), len(features[1,]), len(features[:,1])
+print labels
 
 n_samples = len(tickers)
 #print "sample number", n_samples

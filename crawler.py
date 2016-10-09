@@ -15,14 +15,13 @@ from math import log
 class stock_info_collector:
 	def __init__(self, d0, d1, dtype):
 		self.time_start, self.time_end, self.time_type = d0, d1, dtype
-		# get basic indicators associated with the ticker
-
 		# if dir doesn't exist, create one
 		if not os.path.isdir("./dat/"): os.system("mkdir " + "./dat/")
 		# if file existed, exit
 		fileName = "_".join(["raw", self.time_start, self.time_end, self.time_type])
 		if os.path.isfile("./dat/" + fileName): sys.exit("file already existed!")
 		fout = open("./dat/" + fileName, 'a+')
+		# get basic indicators associated with the ticker
 		for exchange in ["NASDAQ", "NYSE", "AMEX"]:
 			print "Download tickers from " + exchange
 			u0 = "http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange="
@@ -30,7 +29,6 @@ class stock_info_collector:
 			response = urllib2.urlopen(u0 + exchange + u1)
 			csv = response.read().split('\n')
 			for num, line in enumerate(csv):
-				if num > 5: continue
 				line = line.strip().strip('"').split('","')
 				if num == 0 or len(line) != 9: continue # filter unmatched format
 
@@ -39,7 +37,7 @@ class stock_info_collector:
 				repeat_times = 3
 				for _ in range(repeat_times): # repeat N times to download
 					try:
-						time.sleep(random.uniform(3, 7))
+						time.sleep(random.uniform(2, 3))
 						priceStr = self.yahoo_price(ticker)
 						ratioStr = self.key_ratios(ticker)
 						if priceStr and ratioStr: # skip loop if data fetched
@@ -74,7 +72,7 @@ class stock_info_collector:
 			string, if_skip_row = [], 0
 			for item in res:
 				item = item.replace(',', '').replace('"', '')
-				if item == "": item = "None" # missing value
+				if item == "": item = "nan" # label missing value as numpy None
 				if item in ["TTM", "Latest"] and num != 2: if_skip_row = 1 # tag redundant title rows
 				string.append(item)
 			if if_skip_row: continue # delete redundant rows
@@ -119,4 +117,4 @@ class stock_info_collector:
 
 
 if __name__ == "__main__":
-	s = stock_info_collector("2015-05-01", "2015-09-02", 'd')
+	s = stock_info_collector("2000-01-01", "2016-12-31", 'd')

@@ -4,11 +4,12 @@ import collections
 import numpy as np
 
 class preprocessing:
-	def __init__(self, d1, d2, dtype):
-		self.date_start, self.date_end, self.date_type = d1, d2, dtype
+	def __init__(self, date_start, date_end, date_type):
+		self.d0, self.d1, self.dtype = date_start, date_end, date_type
 		self.loadDict() # load key_ratio list to filter other ratios
 		self.readFile() # read file to load features and label information
 		self.createFeature() # create feature matrix and get price information
+		self.cleanFeatures() # delete feature if it contains too many missing values
 		self.createLabel() # create labels corresponding to features based on price
 		self.saveLocal() # save ticker_feature_label matrix to local
 		
@@ -19,8 +20,7 @@ class preprocessing:
 			self.wordDict[line.strip()] = num
 
 	def readFile(self):
-		self.path = './dat/' + "_".join([self.date_start, self.date_end])
-		f = open(self.path + '_' + self.date_type)
+		f = open('./dat/' + "_".join(["raw", self.d0, self.d1, self.dtype]))
 		res = ""
 		for i, line in enumerate(f):
 			res += line
@@ -36,44 +36,54 @@ class preprocessing:
 			dat = line.strip().split(":") # split key-value pair
 			if dat[0] == "ticker": # everytime update new ticker, clear past array
 				ticker = dat[1]
-				print np.shape(A)
 				if np.shape(A) == (83, 11):
 					if last != -1 and len(self.stock_prices[last]) > 252 * 3: # data check
 						A = A.flatten() # change 2-D matrix to 1-D
-						self.tickerList.append(ticker)
-						print np.shape(self.feature), ticker
+						self.tickerList.append(last)
 						self.feature = np.vstack([self.feature, A])
 				A = np.empty([0, 11])
 				self.stock_prices[ticker], self.stock_returns[ticker] = {}, {}
+				last = ticker
 
 			if dat[0] in self.wordDict: # if key_ratios are these we need
 				numList = np.array(dat[1].split(' ')) # create one row in numpy
 				A = np.vstack([A, numList]) # add to A
-				A[A == 'None'] = np.nan # change None to the numpy format
 
-			m = re.search(r"adjClose_(\d{4}\-\d{2}\-\d{2})", dat[0]) # match stock price
+			m = re.search(r"(\d{4}\-\d{2}\-\d{2})_adjClose", dat[0]) # match stock price
 			if m:
 				curDate = m.group(1)
 				stock_price = float(dat[1])
 				self.stock_prices[ticker][curDate] = stock_price
-			last = ticker
-			######################### interpolation required ##########################
-			## we need interpolation to replace all nan with reasonable value #########
-		print "--------------------------"
-		print self.feature
-		# delete feature if it contains too many Nones
-		cnt_none, length = 0, len(self.feature[1,])
+			
+		# add the last qualified sample
+		if np.shape(A) == (83, 11):
+			if last != -1 and len(self.stock_prices[last]) > 252 * 3: # data check
+				A = A.flatten() # change 2-D matrix to 1-D
+				self.tickerList.append(last)
+				self.feature = np.vstack([self.feature, A])
+			
+
+	def cleanFeatures(self):
+		#self.feature = np.nan_to_num(self.feature.astype(np.float))
+		self.feature = self.feature.astype(np.float)
+		print "Raw feature number: ", np.shape(self.feature)
+		cnt_none, length = 0, np.shape(self.feature)[1]
 		while cnt_none < length:
 			features_j = self.feature[:,cnt_none]
-			none_ratio = float(len(features_j[features_j==np.nan])) / len(features_j)
-			print none_ratio, len(features_j)
-			if none_ratio > 0.10:
+			none_ratio = float(len(features_j[np.isnan(features_j)])) / len(features_j)
+			if none_ratio > 0.0: # delete future if missing value exceeds threshold
 				self.feature = np.delete(self.feature, cnt_none, axis=1)
 				length -= 1
 			else:
 				cnt_none += 1
-		self.feature = np.nan_to_num(self.feature.astype(np.float))
+		print "Updated feature number: ", np.shape(self.feature)
+
+	def interpolationFeatures(self):
+		######################### interpolation required ##########################
+		## we need interpolation to replace all nan with reasonable value #########
+		pass
 		
+		#print "......................",self.feature
 		# for ticker in self.stock_prices:
 		# 	for num, day in enumerate(sorted(self.stock_prices[ticker])):
 		# 		if num > 0:
@@ -105,7 +115,8 @@ class preprocessing:
 		self.feature = self.feature.transpose()
 		self.feature = np.vstack([self.tickerList, self.feature, self.label])
 		self.feature = self.feature.transpose()
-		np.savetxt(self.path + "_ticker_feature_label", self.feature, delimiter=',', fmt="%s")
+		#print self.feature[0]
+		np.savetxt("./dat/feature_label_" + self.d0 + '_' + self.d1, self.feature, delimiter=',', fmt="%s")
 
 
 
@@ -114,6 +125,6 @@ class preprocessing:
 
 if __name__ == "__main__":
 	date_start = "2000-01-01"
-	date_end = "2016-12-30"
+	date_end = "2016-12-31"
 	date_type = "d"
 	s = preprocessing(date_start, date_end, date_type)
