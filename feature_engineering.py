@@ -1,7 +1,9 @@
 import os
 import re
-import collections
 import numpy as np
+from collections import OrderedDict
+from collections import Counter
+
 
 class preprocessing:
 	def __init__(self, date_start, date_end, date_type):
@@ -9,17 +11,20 @@ class preprocessing:
 		self.loadDict() # load key_ratio list to filter other ratios
 		self.readFile() # read file to load features and label information
 		self.createFeature() # create feature matrix and get price information
+		self.calculate_return() # get each stock returns
 		self.createLabel() # create labels corresponding to features based on price
 		self.cleanFeatures() # delete feature if it contains too many missing values
 		self.saveLocal() # save ticker_feature_label matrix to local
 		
 	def loadDict(self):
+		print "Load feature dictionary"
 		f = open('./dat/feature_projection')
 		self.wordDict = {}
 		for num, line in enumerate(f):
 			self.wordDict[line.strip()] = num
 
 	def readFile(self):
+		print "Read Raw Data"
 		f = open('./dat/' + "_".join(["raw", self.d0, self.d1, self.dtype]))
 		res = ""
 		for i, line in enumerate(f):
@@ -27,12 +32,14 @@ class preprocessing:
 		self.lists = re.findall(r"([\w\d\-_%*&/]+:[\w\d\.\-/ ]+)", res) # match key-value pair
 
 	def createFeature(self):
+		print "Create Feature Matrix"
 		# turn the feature in a (samples, features) matrix, A is a feature for one sample
 		self.feature, A = np.empty([0, 11 * 83]), np.empty([0, 11])
 		self.tickerList = [] # use array, since we need the location of each ticker
-		self.stock_prices, self.stock_returns = {}, {} # 2-D hash table
-		last = -1
+		self.stock_prices = {}# 2-D hash table
+		last, cnt = -1, 1
 		for _, line in enumerate(self.lists): # read key-value pairs
+			#if _ > 500000: break # used for test large file
 			dat = line.strip().split(":") # split key-value pair
 			if dat[0] == "ticker": # everytime update new ticker, clear past array
 				ticker = dat[1]
@@ -41,8 +48,9 @@ class preprocessing:
 						A = A.flatten() # change 2-D matrix to 1-D
 						self.tickerList.append(last)
 						self.feature = np.vstack([self.feature, A])
+						print cnt, last; cnt += 1
 				A = np.empty([0, 11])
-				self.stock_prices[ticker], self.stock_returns[ticker] = {}, {}
+				self.stock_prices[ticker] = {}
 				last = ticker
 
 			if dat[0] in self.wordDict: # if key_ratios are these we need
@@ -62,36 +70,66 @@ class preprocessing:
 				A = A.flatten() # change 2-D matrix to 1-D
 				self.tickerList.append(last)
 				self.feature = np.vstack([self.feature, A])
+	
+	def calculate_return(self):
+		print "Compute stock returns"
+		self.returns = {}
+		for ticker in self.stock_prices:
+			prices = self.stock_prices[ticker]
+			self.returns[ticker] = {}
+			orderedDt = OrderedDict(sorted(prices.items())) # sort map by key
+			for num, date in enumerate(orderedDt):
+				if num == 0:
+					last = date
+				else:
+					if prices[last] > 0:
+						self.returns[ticker][date] = prices[date] / prices[last] - 1
+					last = date 
 			
 	def createLabel(self):
+		print "Create Label Based on sharpe ratio"
 		self.label = np.zeros(len(self.feature), dtype=int)
 		if len(self.feature) != len(self.tickerList): 
 			sys.exit("feature number doesn't match label information")
 		self.deleteList = {}
 		for _ in xrange(len(self.tickerList)):
 			ticker = self.tickerList[_]
-			try: # some company may not IPO at that time
-				price_per = self.stock_prices[ticker]["2016-09-08"] / \
-							self.stock_prices[ticker]["2013-01-07"]
-				self.label[_] = 1 if price_per > 1.3 else 0 # price improvement
+			try: # some company may have not IPO yet
+				annualized_r = self.stock_prices[ticker]["2016-09-08"] / \
+							self.stock_prices[ticker]["2015-09-08"] - 1
+				std = np.std(np.array(self.returns[ticker].values()))
+				risk_free = 0.016 # USD LIBOR - 12 months
+				shape_ratio = (annualized_r - risk_free) / std
+				print "sp ratio", shape_ratio
+				if shape_ratio > 0: self.label[_] = min(abs(shape_ratio), 3)
 			except:
 				# delete the stock if its price info is not satistifed
 				self.deleteList[ticker] = None 
 				continue
 
+		label_cnt = Counter(self.label)
+		for _ in label_cnt:
+			print("Label %d: number %d" % (_, label_cnt[_]))
+
+
 	def cleanFeatures(self):
+		print "Clean Features"
 		# self.feature = np.nan_to_num(self.feature.astype(np.float))
 		# this part should not include ticker info as its 1st col
+
 		self.feature = self.feature.astype(np.float)
 		print "Raw feature dimension: ", np.shape(self.feature)
 		tag_none_ratio = np.repeat(True, np.shape(self.feature)[1])
+
+		threshold = 0.1 # missing value threshold
 		for num in range(np.shape(self.feature)[1]):
 			features_j = self.feature[:, num]
 			# compute the ratio of missing value in feature_j
 			none_ratio = float(len(features_j[np.isnan(features_j)])) / len(features_j)
-			if none_ratio > 0.1: tag_none_ratio[num] = False
+			if none_ratio > threshold: tag_none_ratio[num] = False
 		self.feature = self.feature[:,tag_none_ratio]
-		print "Feature dimension after None deletion: ", np.shape(self.feature)
+		print('Feature dimension after %d%%-missing-value check: %s' \
+			% (threshold * 100, np.shape(self.feature)))
 
 		# tag true with feature variance is above than threshold, otherwise tag false
 		#print len((np.std(self.feature[~np.isnan(self.feature)], axis=0) > 0))
