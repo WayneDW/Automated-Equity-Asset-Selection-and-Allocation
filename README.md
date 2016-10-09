@@ -1,4 +1,4 @@
-# This code is sperated into three parts:
+# This repository is sperated into three parts:
 
 ## Data Preprocessing
 ### 
@@ -25,6 +25,8 @@ format basic information to the (sample_n, feature_m) matrix
 ```python
 ./preprocessing.py
 ```
+
+Basic feature filter to delete useless features
 
 
 ## Stock classification based on stock price
