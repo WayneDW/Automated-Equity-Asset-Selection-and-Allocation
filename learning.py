@@ -3,6 +3,7 @@ from sklearn import svm
 from sklearn import metrics
 
 from sklearn.model_selection import GridSearchCV
+from collections import Counter
 
 # from sklearn document
 # Proper choice of C and gamma is critical to the SVM performance. 
@@ -26,11 +27,14 @@ class learning:
 		self.features = np.nan_to_num(self.features) # svm can't handle missing values
 		n_samples = len(self.tickers)
 		print "Feature dimension (sample, feature): ", np.shape(self.features)
-		print "Label number (0, 1): ", sum(self.labels), n_samples - sum(self.labels)
+		label_cnt = Counter(self.labels)
+		for _ in label_cnt:
+			print("Label %d: number %d" % (_, label_cnt[_]))
 
 		# Create a classifier: a support vector classifier
 		# classifier = svm.SVC(C=10000, gamma=0.0001)
-		classifier = svm.SVC(C=10**9, gamma=2.2 * 10**-8) # this gives a great classification in 
+		# classifier = svm.SVC(C=10**9, gamma=2.2 * 10**-8) # this gives a great classification
+		classifier = svm.SVC(C=10 * 10**8, gamma=2.2 * 10**-8)
 		# We learn the digits on the first half of the digits
 		classifier.fit(self.features[: n_samples/2], self.labels[: n_samples/2])
 

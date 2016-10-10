@@ -11,6 +11,10 @@ import urllib2
 import random
 from math import log
 
+## next update: continue to download failed tickers
+## next update: add column attribute to the 1st row
+## next update: add industry, sector, ... as feature
+
 # collect stock information, eg, price, volume, sector, key_ratios, etc.
 class stock_info_collector:
 	def __init__(self, d0, d1, dtype):
