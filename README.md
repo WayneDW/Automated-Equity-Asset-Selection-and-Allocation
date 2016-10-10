@@ -29,7 +29,7 @@ crawl historical stock prices from  https://finance.yahoo.com/
 
 	    [ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
 
-## 3. Stock classification based on data from financial statement
+## 3. Stock classification based on financial statements
 
 ```python
 ./learning.py
