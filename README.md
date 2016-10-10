@@ -37,17 +37,17 @@ crawl historical stock prices from  https://finance.yahoo.com/
 
 ### 3.1 Train the model
 
-#### 3.1.1	Take financial ratios (2006 - Dec.2014) to train the model
+Take financial ratios (2006 - Dec.2014) to train the model
 
-#### 3.1.2 Label based on Sortino ratio and CVaR with time between Jan, 2014 and Jan, 2015
+Label based on Sortino ratio and CVaR with time between Jan, 2014 and Jan, 2015
 
-#### 3.1.3 Select best parameters for us.
+Select best parameters for us.
 
 ### 3.2 Predict data and make comparison
 
-#### 3.2.1 Predict the performance based on financial ratios (2007 - Dec.2015)
+Predict the performance based on financial ratios (2007 - Dec.2015)
 
-#### 3.2.2 Check if the selected group is sigficant better than the rest
+Check if the selected group is sigficant better than the rest
 	
 
 
