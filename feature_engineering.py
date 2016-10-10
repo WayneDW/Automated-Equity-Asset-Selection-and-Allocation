@@ -39,7 +39,7 @@ class preprocessing:
 		self.stock_prices = {}# 2-D hash table
 		last, cnt = -1, 1
 		for _, line in enumerate(self.lists): # read key-value pairs
-			#if _ > 500000: break # used for test large file
+			#if _ > 5 * 10 ** 6: break # used for test large file
 			dat = line.strip().split(":") # split key-value pair
 			if dat[0] == "ticker": # everytime update new ticker, clear past array
 				ticker = dat[1]
@@ -72,8 +72,9 @@ class preprocessing:
 				self.feature = np.vstack([self.feature, A])
 	
 	def calculate_return(self):
-		print "Compute stock returns"
-		self.returns = {}
+		print "Compute stock returns and CVAR"
+		self.returns, self.DR, self.SD = {}, {}, {} # DR: downside deviation
+		self.CVAR = {95:{}, 99:{}, 99.9:{}}
 		for ticker in self.stock_prices:
 			prices = self.stock_prices[ticker]
 			self.returns[ticker] = {}
@@ -84,7 +85,15 @@ class preprocessing:
 				else:
 					if prices[last] > 0:
 						self.returns[ticker][date] = prices[date] / prices[last] - 1
-					last = date 
+					last = date
+			returns_risk = np.array(self.returns[ticker].values())
+			returns_risk = returns_risk[~np.isnan(returns_risk)] # delete missing value
+			for alpha in [0.1, 1, 5]: # change to percentile alpha
+				VaR = np.percentile(returns_risk, alpha)
+				if len(returns_risk[returns_risk < VaR]) == 0: continue
+				self.CVAR[100 - alpha][ticker] = np.mean(returns_risk[returns_risk < VaR])
+				self.DR[ticker] = np.std(returns_risk[returns_risk <= 0]) * np.sqrt(252)
+				self.SD[ticker] = np.std(returns_risk) * np.sqrt(252) # annualized
 			
 	def createLabel(self):
 		print "Create Label Based on sharpe ratio"
@@ -92,19 +101,22 @@ class preprocessing:
 		if len(self.feature) != len(self.tickerList): 
 			sys.exit("feature number doesn't match label information")
 		self.deleteList = {}
+		risk_free = 0.016 # USD LIBOR - 12 months
 		for _ in xrange(len(self.tickerList)):
 			ticker = self.tickerList[_]
 			try: # some company may have not IPO yet
 				annualized_r = self.stock_prices[ticker]["2016-09-08"] / \
-							self.stock_prices[ticker]["2015-09-08"] - 1
-				std = np.std(np.array(self.returns[ticker].values()))
-				risk_free = 0.016 # USD LIBOR - 12 months
-				shape_ratio = (annualized_r - risk_free) / std
-				print "sp ratio", shape_ratio
-				if shape_ratio > 0: self.label[_] = min(abs(shape_ratio), 3)
+							self.stock_prices[ticker]["2015-09-14"] - 1			
+				# Sortino ratio is better to evalueate high-volatility portfolio
+				Sortino_ratio = (annualized_r - risk_free) / self.DR[ticker]
+				Sharpe_ratio = (annualized_r - risk_free) / self.SD[ticker]
+
+				if Sortino_ratio >= 1 and self.CVAR[95][ticker] > -0.1:
+					self.label[_] = 1
+				print("%6s\tSortino: %4s\t\tCVaR 95%%: %5s%%\t%d" % (ticker, str(round(\
+					Sortino_ratio, 1))[:5], str(self.CVAR[95][ticker] * 100)[:5], self.label[_]))
 			except:
-				# delete the stock if its price info is not satistifed
-				self.deleteList[ticker] = None 
+				self.deleteList[ticker] = None # delete unqualified stock
 				continue
 
 		label_cnt = Counter(self.label)
