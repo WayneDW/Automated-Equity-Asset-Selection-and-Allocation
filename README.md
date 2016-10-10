@@ -53,7 +53,9 @@ Check if the selected group is sigficant better than the rest
 
 
 
-Use SVM in sklearn to train the model and use cross-validation to pick the best parameters (missing value problem, maybe handled by cubic spline)
+Comment: 
+
+We wse SVM in sklearn to train the model and use cross-validation to pick the best parameters (missing value problem, now is dealed with deleting missing values, maybe handled by cubic spline in the future)
 
 Get a roughly desired stock sets
 
