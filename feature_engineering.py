@@ -11,7 +11,7 @@ class preprocessing:
 		self.loadDict() # load key_ratio list to filter other ratios
 		self.readFile() # read file to load features and label information
 		self.createFeature() # create feature matrix and get price information
-		self.calculate_return() # get each stock returns
+		self.calculate_risk() # get each stock returns, CVaR, downside sd
 		self.createLabel() # create labels corresponding to features based on price
 		self.cleanFeatures() # delete feature if it contains too many missing values
 		self.saveLocal() # save ticker_feature_label matrix to local
@@ -71,7 +71,7 @@ class preprocessing:
 				self.tickerList.append(last)
 				self.feature = np.vstack([self.feature, A])
 	
-	def calculate_return(self):
+	def calculate_risk(self):
 		print "Compute stock returns and CVAR"
 		self.returns, self.DR, self.SD = {}, {}, {} # DR: downside deviation
 		self.CVAR = {95:{}, 99:{}, 99.9:{}}
