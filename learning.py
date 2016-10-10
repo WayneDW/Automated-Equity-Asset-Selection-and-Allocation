@@ -3,6 +3,7 @@ from sklearn import svm
 from sklearn import metrics
 
 from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import KFold
 from collections import Counter
 
 # from sklearn document
@@ -31,11 +32,22 @@ class learning:
 		for _ in label_cnt:
 			print("Label %d: number %d" % (_, label_cnt[_]))
 
-		# Create a classifier: a support vector classifier
-		# classifier = svm.SVC(C=10000, gamma=0.0001)
-		# classifier = svm.SVC(C=10**9, gamma=2.2 * 10**-8) # this gives a great classification
-		classifier = svm.SVC(C=10 * 10**8, gamma=2.2 * 10**-8)
-		# We learn the digits on the first half of the digits
+		#choose the best C and gamma
+		scores = {}
+		for c in np.logspace(3, 6, 10):
+			for gamma in np.logspace(-11, -8, 20):
+				classifier = svm.SVC(C=c, gamma=gamma, class_weight={1: 10})
+				classifier.fit(self.features[: n_samples/2], self.labels[: n_samples/2])
+				score = classifier.score(self.features[n_samples/2:], self.labels[n_samples/2:])
+				print("C = %.1e, gamma = %.1e, score = %.3f" % (c, gamma, score))
+				scores[score] = (c, gamma)
+		
+
+		best_C, best_gamma = scores[sorted(scores.keys(), reverse=True)[0]]
+		print("\nPick best parameters c=%e, gamma=%e"% (best_C, best_gamma))
+		# best_C = 3 * 10 ** 5
+		# best_gamma = 3 * 10 ** -10
+		classifier = svm.SVC(C=best_C, gamma=best_gamma, class_weight={1: 10})
 		classifier.fit(self.features[: n_samples/2], self.labels[: n_samples/2])
 
 		# Now predict the value of the digit on the second half:
@@ -47,13 +59,6 @@ class learning:
 		      % (classifier, metrics.classification_report(expected, predicted)))
 		print("Confusion matrix:\n%s" % metrics.confusion_matrix(expected, predicted))
 
-
-		# parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10], 'gamma':[1,0.1,0.001]}
-		# svr = svm.SVC()
-		# classifier = GridSearchCV(svr, parameters)
-		# print classifier.fit(features, labels)
-
-		# print sorted(classifier.cv_results_.keys())
 
 
 if __name__ == "__main__":
