@@ -2,15 +2,15 @@
 
 ## 1. Data Preprocessing
 
+```python
+./crawl.py
+```
+
 crawl ticker list and basic stock from http://www.nasdaq.com/screening/company-list.aspx
 
 crawl financial statement from http://www.morningstar.com/
 
 crawl historical stock prices from  https://finance.yahoo.com/
-
-```python
-./crawl.py
-```
 
 ## 2. Feature engineering
 
@@ -29,7 +29,7 @@ crawl historical stock prices from  https://finance.yahoo.com/
 
 	    [ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
 
-## 3. Stock classification based on stock price
+## 3. Stock classification based on financial ratios as input and sortino ratio and CVaR as labels
 
 ```python
 ./learning.py
@@ -53,7 +53,7 @@ Check if the selected group is sigficant better than the rest
 
 
 ```
-Comment: We wse SVM in sklearn to train the model and use cross-validation to pick the best parameters (missing value problem, now is dealed with deleting missing values, maybe handled by cubic spline in the future)
+Comment: We wse SVM in sklearn to train the model and use cross-validation to pick the best parameters (missing value problem, now is dealed with deleting missing values, may be handled by cubic spline in the future)
 ```
 
 Get a roughly desired stock sets
