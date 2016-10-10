@@ -14,21 +14,35 @@ crawl historical stock prices from  https://finance.yahoo.com/
 
 ## Feature engineering
 
-format basic information to the (sample_n, feature_m) matrix
-
-[ feature1_sample_1, feature2_sample_1, ... feature_m_sample_1]
-
-...
-
-[ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
-
 ```python
 ./feature engineering.py
 ```
+1. Clean Feature
 
-Basic feature filter to delete useless features
+	Basic feature filter to delete useless features
 
-Take financial ratios as input and sharpe ratios as label
+	format basic information to the (sample_n, feature_m) matrix
+
+	[ feature1_sample_1, feature2_sample_1, ... feature_m_sample_1]
+
+	...
+
+	[ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
+
+2. Train the model
+
+	Take financial ratios (2006 - Dec.2014) to train the model
+
+	Label based on Sortino ratio and CVaR with time between Jan, 2014 and Jan, 2015
+
+	Select best parameters for us.
+
+3. Predict data and make comparison
+
+	Predict the performance based on financial ratios (2007 - Dec.2015)
+
+	Check if the selected group is sigficant better than the rest
+	
 
 ## Stock classification based on stock price
 
