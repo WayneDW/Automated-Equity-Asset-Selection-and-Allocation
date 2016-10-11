@@ -1,6 +1,10 @@
 import os
 import re
 import numpy as np
+import scipy as sp
+
+from scipy.interpolate import interp1d
+from sklearn import linear_model
 from collections import OrderedDict
 from collections import Counter
 
@@ -11,7 +15,9 @@ class preprocessing:
 		self.loadDict() # load key_ratio list to filter other ratios
 		self.readFile() # read file to load features and label information
 		self.createFeature() # create feature matrix and get price information
-		self.calculate_risk() # get each stock returns, CVaR, downside sd
+		self.interpolate() # fill in missing value with interpolated value
+		self.featureName() # add feature name w.r.t. the columns of feature matrix
+		self.calculateRisk() # get each stock returns, CVaR, downside sd
 		self.createLabel() # create labels corresponding to features based on price
 		self.cleanFeatures() # delete feature if it contains too many missing values
 		self.saveLocal() # save ticker_feature_label matrix to local
@@ -20,8 +26,10 @@ class preprocessing:
 		print "Load feature dictionary"
 		f = open('./dat/feature_projection')
 		self.wordDict = {}
+		self.wordDictRev = {}
 		for num, line in enumerate(f):
 			self.wordDict[line.strip()] = num
+			self.wordDictRev[num] = line.strip()
 
 	def readFile(self):
 		print "Read Raw Data"
@@ -39,7 +47,7 @@ class preprocessing:
 		self.stock_prices = {}# 2-D hash table
 		last, cnt = -1, 1
 		for _, line in enumerate(self.lists): # read key-value pairs
-			#if _ > 5 * 10 ** 6: break # used for test large file
+			#if _ > 2 * 10 ** 5: break # used for test large file
 			dat = line.strip().split(":") # split key-value pair
 			if dat[0] == "ticker": # everytime update new ticker, clear past array
 				ticker = dat[1]
@@ -52,6 +60,9 @@ class preprocessing:
 				A = np.empty([0, 11])
 				self.stock_prices[ticker] = {}
 				last = ticker
+			if dat[0] == "key_ratios_Time":
+				years = np.array(dat[1].split(' '))
+				if len(years) == 11: self.time_horizon = years
 
 			if dat[0] in self.wordDict: # if key_ratios are these we need
 				numList = np.array(dat[1].split(' ')) # create one row in numpy
@@ -70,8 +81,50 @@ class preprocessing:
 				A = A.flatten() # change 2-D matrix to 1-D
 				self.tickerList.append(last)
 				self.feature = np.vstack([self.feature, A])
+		self.feature = self.feature.astype(np.float)
+
+	def interpolate(self): # handle missing values (middle of data)
+		### one reason: SVM can't handle missing value (despite Boosting could) 
+		### another: we will move forward time window to make prediction       
+		
+		print "Interpolate and predict missing values"
+		regr = linear_model.LinearRegression()
+		
+		for kth, dataSets in enumerate(self.feature):
+			for num, item in enumerate(dataSets):
+				#if num % 11 != 0: continue # operate every 11 loops
+				x = np.array(range(num, num + 11))
+				#x = np.linspace(num, num + 10, 11)
+				y = dataSets[num: num + 11]
+				newX = x[~np.isnan(y)] # ignore nan value
+				newY = y[~np.isnan(y)]
+				if len(newX) < 7 or len(newX) == 11:
+					continue # data complete or too many missing values
+
+				if max(newX) - min(newX) + 1 != len(newX): # missing value between min and max
+					grid_x = np.linspace(min(newX), max(newX), max(newX) - min(newX) + 1)
+					self.feature[kth][min(newX): max(newX) + 1] = sp.interpolate.interp1d(
+						newX, newY, kind='cubic')(grid_x).round(3)
+					
+				if max(newX) - min(newX) + 1 != 11: # linear regression required
+					partX = np.linspace(min(newX), max(newX), max(newX) - min(newX) + 1)
+					partY = self.feature[kth][min(newX): max(newX) + 1]
+					partX, partY = partX.reshape(len(partX), 1), partY.reshape(len(partY), 1)
+					regr.fit(partX, partY)
+					for r_ in range(num, num + 11):
+						if r_ >= min(newX) and r_ <= max(newX): continue
+						self.feature[kth][r_] = round(regr.predict(r_), 3)
+
+	def featureName(self):
+		self.feature_name = []
+		for num in self.wordDictRev:
+			len_time = len(self.time_horizon)
+			for k, time in enumerate(self.time_horizon):			
+				self.feature_name.append(self.wordDictRev[num].split("key_ratios_")[1] \
+					+ "__" + time)
+		self.feature_name = np.array(self.feature_name)
 	
-	def calculate_risk(self):
+	def calculateRisk(self):
 		print "Compute stock returns and CVAR"
 		self.returns, self.DR, self.SD = {}, {}, {} # DR: downside deviation
 		self.CVAR = {95:{}, 99:{}, 99.9:{}}
@@ -97,7 +150,8 @@ class preprocessing:
 			
 	def createLabel(self):
 		print "Create Label Based on sharpe ratio"
-		self.label = np.zeros(len(self.feature), dtype=int)
+		self.label_train = np.zeros(len(self.feature), dtype=int) # to train model
+		self.label_test = np.zeros(len(self.feature), dtype=int) # to analyze performance
 		if len(self.feature) != len(self.tickerList): 
 			sys.exit("feature number doesn't match label information")
 		self.deleteList = {}
@@ -105,58 +159,64 @@ class preprocessing:
 		for _ in xrange(len(self.tickerList)):
 			ticker = self.tickerList[_]
 			try: # some company may have not IPO yet
-				annualized_r = self.stock_prices[ticker]["2016-09-08"] / \
-							self.stock_prices[ticker]["2015-09-14"] - 1			
-				# Sortino ratio is better to evalueate high-volatility portfolio
-				Sortino_ratio = (annualized_r - risk_free) / self.DR[ticker]
-				Sharpe_ratio = (annualized_r - risk_free) / self.SD[ticker]
+				def calcRatio(date0, date1, type):
+					annualized_r = self.stock_prices[ticker][date1] / \
+								self.stock_prices[ticker][date0] - 1			
+					# Sortino ratio is better to evalueate high-volatility portfolio
+					Sortino_ratio = (annualized_r - risk_free) / self.DR[ticker]
+					Sharpe_ratio = (annualized_r - risk_free) / self.SD[ticker]
 
-				if Sortino_ratio >= 1 and self.CVAR[95][ticker] > -0.1:
-					self.label[_] = 1
-				print("%6s\tSortino: %4s\t\tCVaR 95%%: %5s%%\t%d" % (ticker, str(round(\
-					Sortino_ratio, 1))[:5], str(self.CVAR[95][ticker] * 100)[:5], self.label[_]))
+					if Sortino_ratio >= 1 and self.CVAR[95][ticker] > -0.1:
+						if type == "train": self.label_train[_] = 1
+						else: self.label_test[_] = 1
+					if type == "train":
+						print("%6s\tSortino: %4s\t\tCVaR 95%%: %5s%%\t%d" % \
+							(ticker, str(round(Sortino_ratio, 1))[:5], \
+							str(self.CVAR[95][ticker] * 100)[:5], self.label_train[_]))
+				calcRatio("2014-01-02", "2015-01-02", "train")
+				# this period use same variance may artificially improve the performance
+				calcRatio("2015-01-02", "2016-01-04", "test") 
 			except:
 				self.deleteList[ticker] = None # delete unqualified stock
 				continue
 
-		label_cnt = Counter(self.label)
+		label_cnt = Counter(self.label_train)
 		for _ in label_cnt:
 			print("Label %d: number %d" % (_, label_cnt[_]))
 
 
 	def cleanFeatures(self):
-		print "Clean Features"
-		# self.feature = np.nan_to_num(self.feature.astype(np.float))
+		print "\nClean Features"
 		# this part should not include ticker info as its 1st col
-
-		self.feature = self.feature.astype(np.float)
 		print "Raw feature dimension: ", np.shape(self.feature)
 		tag_none_ratio = np.repeat(True, np.shape(self.feature)[1])
-
-		threshold = 0.1 # missing value threshold
+		threshold = 0.0 # missing value threshold
 		for num in range(np.shape(self.feature)[1]):
 			features_j = self.feature[:, num]
 			# compute the ratio of missing value in feature_j
 			none_ratio = float(len(features_j[np.isnan(features_j)])) / len(features_j)
 			if none_ratio > threshold: tag_none_ratio[num] = False
 		self.feature = self.feature[:,tag_none_ratio]
+		self.feature_name = self.feature_name[tag_none_ratio]
 		print('Feature dimension after %d%%-missing-value check: %s' \
 			% (threshold * 100, np.shape(self.feature)))
 
 		# tag true with feature variance is above than threshold, otherwise tag false
-		#print len((np.std(self.feature[~np.isnan(self.feature)], axis=0) > 0))
-		#tag_sd = (np.std(self.feature.astype(np.float), axis=0) > 0) # this can't deal with nan
+		# print len((np.std(self.feature[~np.isnan(self.feature)], axis=0) > 0))
+		# tag_sd = (np.std(self.feature.astype(np.float), axis=0) > 0) # this can't deal with nan
 		tag_sd = np.repeat(True, np.shape(self.feature)[1])
 		for num in range(np.shape(self.feature)[1]):
 			std = np.std(self.feature[~np.isnan(self.feature[:,num]), num])
 			if std == 0: tag_sd[num] = False
 		self.feature = self.feature[:,tag_sd]
+		self.feature_name = self.feature_name[tag_sd]
 		print "Feature dimension after variance check: ", np.shape(self.feature)
 
 		# add ticker to the 1st col, label to the last col of the feature matrix
 		self.tickerList = np.array(self.tickerList)
 		self.feature = self.feature.transpose()
-		self.feature = np.vstack([self.tickerList, self.feature, self.label])
+		self.feature = np.vstack([self.tickerList, self.feature, \
+			self.label_train, self.label_test])
 		self.feature = self.feature.transpose()
 		print "Feature dimension after col-merge: ", np.shape(self.feature)
 
@@ -168,14 +228,14 @@ class preprocessing:
 		self.feature = self.feature[tag_price]
 		print "Feature dimension after price check: ", np.shape(self.feature)
 
-	def interpolationFeatures(self):
-		######################### interpolation required ##########################
-		## we need interpolation to replace all nan with reasonable value #########
-		pass
+
 
 	def saveLocal(self):
 		np.savetxt("./dat/feature_label_" + self.d0 + '_' + self.d1, \
 			self.feature, delimiter=',', fmt="%s")
+
+		np.savetxt("./dat/selected_feature_" + self.d0 + '_' + self.d1, \
+			self.feature_name, delimiter=',', fmt="%s")
 
 
 
