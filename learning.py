@@ -171,14 +171,6 @@ class learning:
 		 round(float(sum(self.expected)) / len(self.expected), 3))
 
 
-
-
-		
-		
-
-
-
-
 if __name__ == "__main__":
 	date_start = "2000-01-01"
 	date_end = "2016-12-31"
