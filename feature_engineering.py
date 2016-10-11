@@ -47,7 +47,7 @@ class preprocessing:
 		self.stock_prices = {}# 2-D hash table
 		last, cnt = -1, 1
 		for _, line in enumerate(self.lists): # read key-value pairs
-			#if _ > 2 * 10 ** 5: break # used for test large file
+			#if _ > 8 * 10 ** 5: break # used to test large file
 			dat = line.strip().split(":") # split key-value pair
 			if dat[0] == "ticker": # everytime update new ticker, clear past array
 				ticker = dat[1]
@@ -92,14 +92,18 @@ class preprocessing:
 		
 		for kth, dataSets in enumerate(self.feature):
 			for num, item in enumerate(dataSets):
-				#if num % 11 != 0: continue # operate every 11 loops
+				if num % 11 != 0: continue # operate every 11 loops
 				x = np.array(range(num, num + 11))
-				#x = np.linspace(num, num + 10, 11)
 				y = dataSets[num: num + 11]
 				newX = x[~np.isnan(y)] # ignore nan value
 				newY = y[~np.isnan(y)]
-				if len(newX) < 7 or len(newX) == 11:
+				if len(newX) == 0 or len(newX) == 11:
 					continue # data complete or too many missing values
+				elif len(newX) < 4: # too little data, use mean estimator
+					for _ in range(num, num + 11):
+						if _ in newX: continue
+						self.feature[kth][_] = np.mean(newY)
+					continue
 
 				if max(newX) - min(newX) + 1 != len(newX): # missing value between min and max
 					grid_x = np.linspace(min(newX), max(newX), max(newX) - min(newX) + 1)
@@ -190,7 +194,7 @@ class preprocessing:
 		# this part should not include ticker info as its 1st col
 		print "Raw feature dimension: ", np.shape(self.feature)
 		tag_none_ratio = np.repeat(True, np.shape(self.feature)[1])
-		threshold = 0.0 # missing value threshold
+		threshold = 0.00 # missing value threshold, 0 is too rigid
 		for num in range(np.shape(self.feature)[1]):
 			features_j = self.feature[:, num]
 			# compute the ratio of missing value in feature_j
@@ -204,13 +208,32 @@ class preprocessing:
 		# tag true with feature variance is above than threshold, otherwise tag false
 		# print len((np.std(self.feature[~np.isnan(self.feature)], axis=0) > 0))
 		# tag_sd = (np.std(self.feature.astype(np.float), axis=0) > 0) # this can't deal with nan
-		tag_sd = np.repeat(True, np.shape(self.feature)[1])
-		for num in range(np.shape(self.feature)[1]):
-			std = np.std(self.feature[~np.isnan(self.feature[:,num]), num])
-			if std == 0: tag_sd[num] = False
-		self.feature = self.feature[:,tag_sd]
-		self.feature_name = self.feature_name[tag_sd]
-		print "Feature dimension after variance check: ", np.shape(self.feature)
+		# tag_sd = np.repeat(True, np.shape(self.feature)[1])
+		# for num in range(np.shape(self.feature)[1]):
+		# 	std = np.std(self.feature[~np.isnan(self.feature[:,num]), num])
+		# 	if std == 0: tag_sd[num] = False
+		# self.feature = self.feature[:,tag_sd]
+		# self.feature_name = self.feature_name[tag_sd]
+		# print "Feature dimension after variance check: ", np.shape(self.feature)
+
+		# if a ratio in features doesn't have 11 data, we can't get time-window data
+		# delete all the related ratios asscociated with that
+		tag_full_ratio = np.repeat(True, np.shape(self.feature)[1])
+		last = -1; cnt = 0
+		for num in range(len(self.feature_name)):
+			tag = self.feature_name[num].split("__")[0]
+			if last != -1 and tag != last:
+				if cnt != 11:
+					tag_full_ratio[num - cnt:num] = np.repeat(False, cnt)
+				cnt = 0
+			cnt += 1
+			last = tag
+		if tag != last and cnt != 11:
+			tag_full_ratio[num - cnt:num] = np.repeat(False, cnt)
+		self.feature = self.feature[:,tag_full_ratio]
+		self.feature_name = self.feature_name[tag_full_ratio]
+		print 'Feature dimension after ratio-time completeness check:', \
+			np.shape(self.feature)
 
 		# add ticker to the 1st col, label to the last col of the feature matrix
 		self.tickerList = np.array(self.tickerList)
