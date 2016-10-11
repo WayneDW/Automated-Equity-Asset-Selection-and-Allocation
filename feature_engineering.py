@@ -8,10 +8,11 @@ from sklearn import linear_model
 from collections import OrderedDict
 from collections import Counter
 
+# may have different time horizon
+# add sector industry, etc...
 
 class preprocessing:
 	def __init__(self, date_start, date_end, date_type):
-		self.d0, self.d1, self.dtype = date_start, date_end, date_type
 		self.loadDict() # load key_ratio list to filter other ratios
 		self.readFile() # read file to load features and label information
 		self.createFeature() # create feature matrix and get price information
@@ -33,7 +34,7 @@ class preprocessing:
 
 	def readFile(self):
 		print "Read Raw Data"
-		f = open('./dat/' + "_".join(["raw", self.d0, self.d1, self.dtype]))
+		f = open('./dat/' + "_".join(["raw", date_start, date_end, date_type]))
 		res = ""
 		for i, line in enumerate(f):
 			res += line
@@ -47,7 +48,7 @@ class preprocessing:
 		self.stock_prices = {}# 2-D hash table
 		last, cnt = -1, 1
 		for _, line in enumerate(self.lists): # read key-value pairs
-			#if _ > 8 * 10 ** 5: break # used to test large file
+			#if _ > 3 * 10 ** 6: break # used to test large file
 			dat = line.strip().split(":") # split key-value pair
 			if dat[0] == "ticker": # everytime update new ticker, clear past array
 				ticker = dat[1]
@@ -62,6 +63,7 @@ class preprocessing:
 				last = ticker
 			if dat[0] == "key_ratios_Time":
 				years = np.array(dat[1].split(' '))
+				# may have different time horizon !!!
 				if len(years) == 11: self.time_horizon = years
 
 			if dat[0] in self.wordDict: # if key_ratios are these we need
@@ -102,13 +104,13 @@ class preprocessing:
 				elif len(newX) < 4: # too little data, use mean estimator
 					for _ in range(num, num + 11):
 						if _ in newX: continue
-						self.feature[kth][_] = np.mean(newY)
+						self.feature[kth][_] = round(np.mean(newY), 4)
 					continue
 
 				if max(newX) - min(newX) + 1 != len(newX): # missing value between min and max
 					grid_x = np.linspace(min(newX), max(newX), max(newX) - min(newX) + 1)
 					self.feature[kth][min(newX): max(newX) + 1] = sp.interpolate.interp1d(
-						newX, newY, kind='cubic')(grid_x).round(3)
+						newX, newY, kind='cubic')(grid_x).round(4)
 					
 				if max(newX) - min(newX) + 1 != 11: # linear regression required
 					partX = np.linspace(min(newX), max(newX), max(newX) - min(newX) + 1)
@@ -117,7 +119,7 @@ class preprocessing:
 					regr.fit(partX, partY)
 					for r_ in range(num, num + 11):
 						if r_ >= min(newX) and r_ <= max(newX): continue
-						self.feature[kth][r_] = round(regr.predict(r_), 3)
+						self.feature[kth][r_] = round(regr.predict(r_), 4)
 
 	def featureName(self):
 		self.feature_name = []
@@ -170,7 +172,8 @@ class preprocessing:
 					Sortino_ratio = (annualized_r - risk_free) / self.DR[ticker]
 					Sharpe_ratio = (annualized_r - risk_free) / self.SD[ticker]
 
-					if Sortino_ratio >= 1 and self.CVAR[95][ticker] > -0.1:
+					#if Sortino_ratio >= 1 and self.CVAR[95][ticker] > -0.1:
+					if Sortino_ratio >= .5:
 						if type == "train": self.label_train[_] = 1
 						else: self.label_test[_] = 1
 					if type == "train":
@@ -194,7 +197,7 @@ class preprocessing:
 		# this part should not include ticker info as its 1st col
 		print "Raw feature dimension: ", np.shape(self.feature)
 		tag_none_ratio = np.repeat(True, np.shape(self.feature)[1])
-		threshold = 0.00 # missing value threshold, 0 is too rigid
+		threshold = 0.05 # missing value threshold, 0 is too rigid
 		for num in range(np.shape(self.feature)[1]):
 			features_j = self.feature[:, num]
 			# compute the ratio of missing value in feature_j
@@ -206,15 +209,15 @@ class preprocessing:
 			% (threshold * 100, np.shape(self.feature)))
 
 		# tag true with feature variance is above than threshold, otherwise tag false
-		# print len((np.std(self.feature[~np.isnan(self.feature)], axis=0) > 0))
-		# tag_sd = (np.std(self.feature.astype(np.float), axis=0) > 0) # this can't deal with nan
-		# tag_sd = np.repeat(True, np.shape(self.feature)[1])
-		# for num in range(np.shape(self.feature)[1]):
-		# 	std = np.std(self.feature[~np.isnan(self.feature[:,num]), num])
-		# 	if std == 0: tag_sd[num] = False
-		# self.feature = self.feature[:,tag_sd]
-		# self.feature_name = self.feature_name[tag_sd]
-		# print "Feature dimension after variance check: ", np.shape(self.feature)
+		#print len((np.std(self.feature[~np.isnan(self.feature)], axis=0) > 0))
+		#tag_sd = (np.std(self.feature.astype(np.float), axis=0) > 0) # this can't deal with nan
+		tag_sd = np.repeat(True, np.shape(self.feature)[1])
+		for num in range(np.shape(self.feature)[1]):
+			std = np.std(self.feature[~np.isnan(self.feature[:,num]), num])
+			if std == 0: tag_sd[num] = False
+		self.feature = self.feature[:,tag_sd]
+		self.feature_name = self.feature_name[tag_sd]
+		print "Feature dimension after variance check: ", np.shape(self.feature)
 
 		# if a ratio in features doesn't have 11 data, we can't get time-window data
 		# delete all the related ratios asscociated with that
@@ -252,12 +255,11 @@ class preprocessing:
 		print "Feature dimension after price check: ", np.shape(self.feature)
 
 
-
 	def saveLocal(self):
-		np.savetxt("./dat/feature_label_" + self.d0 + '_' + self.d1, \
+		np.savetxt("./dat/feature_label_" + date_start + '_' + date_end, \
 			self.feature, delimiter=',', fmt="%s")
 
-		np.savetxt("./dat/selected_feature_" + self.d0 + '_' + self.d1, \
+		np.savetxt("./dat/selected_feature_" + date_start + '_' + date_end, \
 			self.feature_name, delimiter=',', fmt="%s")
 
 

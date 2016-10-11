@@ -3,9 +3,12 @@ import csv
 import re
 from sklearn import svm
 from sklearn import metrics
+from datetime import datetime
 
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import KFold
+from sklearn.preprocessing import Imputer
+from sklearn.neural_network import MLPClassifier
 from collections import Counter
 
 # from sklearn document
@@ -21,8 +24,9 @@ from collections import Counter
 class learning:
 	def __init__(self, date_start, date_end, date_type):
 		self.loadFile()
-		self.trainSVM()
-		self.predictSVM()
+		self.dataProcressing()
+		#self.SVM()
+		self.neuralNet()
 
 	def loadFile(self):
 		typePar = "_".join([date_start, date_end])
@@ -35,6 +39,41 @@ class learning:
 		self.label_train = dat[:,-2].astype(np.int)
 		self.label_test = dat[:,-1].astype(np.int)
 
+		imp = Imputer(missing_values='NaN', strategy='median', axis=0)
+		imp.fit(self.feature)
+		self.feature = imp.transform(self.feature)
+
+		self.fout = open('./dat/result_' + "_".join([date_start, date_end]), 'a+') # save to local
+		self.fticker = open('./dat/tickers_' + "_".join([date_start, date_end]), 'w')
+		curtime = str(datetime.now())
+		self.ptLocal(self.fout, "Today: %s",curtime[:len(curtime) - 10])
+
+	def ptLocal(self, fout, content, pars): # pars should be an array
+		print(content % (pars))
+		content += "\n"
+		fout.write(content % (pars))
+
+	def dataProcressing(self):
+		# train model use data from 2006-2014, excluding TTM
+		tag = self.selectedTime(self.feature_names, 2006, 2013, 0)
+		self.X, self.y = self.feature[:, tag], self.label_train
+
+		# sample number
+		n_samples = len(self.tickers)
+		self.ptLocal(self.fout, "Feature dimension (sample, feature): %d %d\n", np.shape(self.X))
+		# count the number of each label
+		label_cnt = Counter(self.y)
+		for _ in label_cnt:
+			self.ptLocal(self.fout, "Label %d: number %d", (_, label_cnt[_]))
+
+		# make prediction based on data from 2007-2015, excluding TTM
+		tag = self.selectedTime(self.feature_names, 2007, 2014, 0)
+		self.X_test, self.expected = self.feature[:, tag], self.label_test
+		# cross validation
+		self.K = 3
+		self.k_fold = KFold(self.K)
+		
+
 
 	def selectedTime(self, names, year0, year1, ifTTM): # year1 as int
 		tag = np.repeat(True, len(names))
@@ -45,73 +84,96 @@ class learning:
 				if date == "TTM" and not ifTTM: tag[num] = False
 				elif int(date) > year1 or int(date) < year0:
 					tag[num] = False
-				#if not tag[num]: print "Deleted feature: ", name
-		#print "Existing features:", names[tag]
 		return tag
 
 
-	def trainSVM(self):
-		self.fout = open('./dat/result_' + "_".join([date_start, date_end]), 'a+') # save to local
-		# svm can't handle missing values
-		self.feature = np.nan_to_num(self.feature)
-
-		# train model use data from 2006-2014, excluding TTM
-		tag = self.selectedTime(self.feature_names, 2006, 2013, 0)
-		X, y = self.feature[:, tag], self.label_train
-
-		# sample number
-		n_samples = len(self.tickers)
-		self.ptLocal(self.fout, "Feature dimension (sample, feature): %d %d\n", np.shape(X))
-		# count the number of each label
-		label_cnt = Counter(y)
-		for _ in label_cnt:
-			self.ptLocal(self.fout, "Label %d: number %d\n", (_, label_cnt[_]))
-		# cross validation
-		k_fold = KFold(3)
-
+	def SVM(self):		
 		#choose the best C and gamma
 		best, scores = 0, {}
 		self.ptLocal(self.fout, "\nChoose best parameters\n", ())
-		for c in np.logspace(3, 6, 3): # (s, e, n) means: n number starting from 10^s to 10^e
-			for gamma in np.logspace(-10, -7, 5):
+		for c in np.logspace(1, 8, 10): # (s, e, n) means: n number starting from 10^s to 10^e
+			for gamma in np.logspace(-7, -2, 10):
 				score = []
-				for k, (train, test) in enumerate(k_fold.split(X, y)):
-					classifier = svm.SVC(C=c, gamma=gamma, class_weight={1: 10})
-					classifier.fit(X[train], y[train])
-					score.append(classifier.score(X[test], y[test]))
+				for k, (train, test) in enumerate(self.k_fold.split(self.X, self.y)):
+					clf = svm.SVC(C=c, gamma=gamma)
+					clf.fit(self.X[train], self.y[train])
+					score.append(clf.score(self.X[test], self.y[test]))
 				if min(score) > best:
 					best = min(score)
 					self.ptLocal(self.fout, "C = %.1e, gamma = %.1e, score = %.3f\n", \
 						(c, gamma, best))
-					self.best_C, self.best_gamma = c, gamma
-					self.classifier = classifier
 		
-	def predictSVM(self):
-		# make prediction based on data from 2007-2015, excluding TTM
-		tag = self.selectedTime(self.feature_names, 2007, 2014, 0)
-		X, expected = self.feature[:, tag], self.label_test
-		print np.shape(X)
-		predicted = self.classifier.predict(X)
+		print np.shape(self.X_test)
+		predicted = clf.predict(self.X_test)
 		
-
 		self.ptLocal(self.fout, "Classification report for classifier %s:\n%s\n", \
-			(self.classifier, metrics.classification_report(expected, predicted)))
-		self.ptLocal(self.fout, "Confusion matrix:\n%s", metrics.confusion_matrix(expected, predicted))
+			(clf, metrics.classification_report(self.expected, predicted)))
+		self.ptLocal(self.fout, "Confusion matrix:\n%s", \
+			metrics.confusion_matrix(self.expected, predicted))
 
-		# use data until Dec, 2014 as input
-		# label based on diff between Jul, 2014 and Jun, 2015, select best parameters
-
-		# use this model (based on previous parameters) to train data until Jun.2016
-		# predict the best possible stocks which may give us a good Sortino ratio and CVaR
-		f_predict = open('./dat/tickers_' + "_".join([date_start, date_end]), 'w')
+		
 		tickers_pred = self.tickers[predicted.astype(bool)].tolist()
-		f_predict.write(",".join(tickers_pred))
-		print "Possible ticker number :", len(tickers_pred)
+		self.fticker.write(",".join(tickers_pred))
+		print "Possible ticker number:", len(tickers_pred)
+		print "Random pick successful ratio: ", \
+			round(float(sum(self.expected)) / len(self.expected), 3)
+
+	def neuralNet(self):
+		def combine(n, k): # generate Combination 
+			if k == 1:
+				return [[i] for i in range(1, n+1)]
+			if n == k:
+				return [[i for i in range(1, n+1)]]
+			return [i for i in combine(n-1, k)] + [i + [n] for i in combine(n-1,k-1)]
+		
+		best = 0
+		for layer_n in range(1, 6): # number of layers
+			layers = combine(30, layer_n) # combination of layers
+			for layer in layers:
+				if layer[0] == 1: continue
+				layer = sorted(layer, reverse=True)
+				layer.insert(layer_n, 2)
+				score = [0] * self.K
+				for k, (train, test) in enumerate(self.k_fold.split(self.X, self.y)):
+					clf = MLPClassifier(solver='lbfgs', alpha=1e-5,\
+						hidden_layer_sizes=layer, random_state=1)
+					clf.fit(self.X[train], self.y[train])
+					score.append(clf.score(self.X[test], self.y[test]))
+					predicted = clf.predict(self.X[test])
+
+					score_mat = metrics.confusion_matrix(self.y[test], predicted)
+					if score_mat[1, 1] == 0: continue # only care label-1 performance
+					recall = float(score_mat[1, 1]) / sum(score_mat[1])
+					precision = float(score_mat[1, 1]) / sum(score_mat[:, 1])
+					score[k] = 1 / ((1 / recall + 1 / precision) / 2) # f1 score
+					
+				if min(score) > best:
+					best = min(score)
+					bestClf = clf
+					self.ptLocal(self.fout, "Layers: %s", ("-".join(np.array(layer, dtype=str))))
+					self.ptLocal(self.fout, "Confusion matrix:\n%s", score_mat)
+					self.ptLocal(self.fout, "Label 1 precision: %.3f", precision)
+					self.ptLocal(self.fout, "Label 1 recall: %.3f", recall)
+					self.ptLocal(self.fout, "Label 1 f1: %.3f\n", best)
+
+		# layer = [13, 8, 3, 2]
+		# bestClf = MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=layer, random_state=1)
+		bestClf.fit(self.X, self.y)
+		predicted = bestClf.predict(self.X_test)
+		self.ptLocal(self.fout, "Classification report for classifier %s:\n%s", \
+			(bestClf, metrics.classification_report(self.expected, predicted)))
+		self.ptLocal(self.fout, "Confusion matrix:\n%s", \
+			metrics.confusion_matrix(self.expected, predicted))
+		tickers_pred = self.tickers[predicted.astype(bool)].tolist()
+		self.fticker.write(",".join(tickers_pred))
+		self.ptLocal(self.fout, "Possible ticker number: %s", len(tickers_pred))
+		self.ptLocal(self.fout, "Random pick successful ratio: %.3f\n",\
+		 round(float(sum(self.expected)) / len(self.expected), 3))
 
 
-	def ptLocal(self, fout, content, pars): # pars should be an array
-		print(content % (pars))
-		fout.write(content % (pars))
+
+
+		
 		
 
 
