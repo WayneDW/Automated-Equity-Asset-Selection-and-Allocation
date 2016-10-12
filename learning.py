@@ -8,6 +8,7 @@ from datetime import datetime
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import Imputer
+from sklearn.preprocessing import scale
 from sklearn.neural_network import MLPClassifier
 from collections import Counter
 
@@ -35,8 +36,10 @@ class learning:
 		# load feature_label file, 1st col as tickers, last col as label
 		dat = np.loadtxt("./dat/feature_label_" + typePar, delimiter=',', dtype='str')
 		self.tickers = dat[:,0]
-		self.feature = dat[:, 1:np.shape(dat)[1] - 2].astype(np.float)
-		self.label_train = dat[:,-2].astype(np.int)
+		self.feature = dat[:, 1:np.shape(dat)[1] - 5].astype(np.float)
+		self.label_train = {}
+		for i in range(4):
+			self.label_train[i] = dat[:,-5 + i].astype(np.int)
 		self.label_test = dat[:,-1].astype(np.int)
 
 		imp = Imputer(missing_values='NaN', strategy='median', axis=0)
@@ -54,20 +57,26 @@ class learning:
 		fout.write(content % (pars))
 
 	def dataProcressing(self):
-		# train model use data from 2006-2014, excluding TTM
-		tag = self.selectedTime(self.feature_names, 2006, 2013, 0)
-		self.X, self.y = self.feature[:, tag], self.label_train
-
+		# train model use data from 2006-2011, 2007-12, 2008-13, 2009-14
+		for i in range(4):
+			tag = self.selectedTime(self.feature_names, 2006 + i, 2011 + i, 0)
+			if i == 0: self.X, self.y = self.feature[:, tag], self.label_train[i]
+			else:
+				self.X = np.vstack([self.X, self.feature[:, tag]])
+				self.y = np.vstack([self.y, self.label_train[i]])
+		self.y = self.y.flatten()
+		print np.shape(self.X), np.shape(self.y)
 		# sample number
 		n_samples = len(self.tickers)
-		self.ptLocal(self.fout, "Feature dimension (sample, feature): %d %d\n", np.shape(self.X))
+		self.ptLocal(self.fout, "Feature dimension (sample, training feature): %d %d\n", \
+			np.shape(self.X))
 		# count the number of each label
 		label_cnt = Counter(self.y)
 		for _ in label_cnt:
 			self.ptLocal(self.fout, "Label %d: number %d", (_, label_cnt[_]))
 
-		# make prediction based on data from 2007-2015, excluding TTM
-		tag = self.selectedTime(self.feature_names, 2007, 2014, 0)
+		# make prediction based on data from 2010-2015, excluding TTM
+		tag = self.selectedTime(self.feature_names, 2010, 2015, 0)
 		self.X_test, self.expected = self.feature[:, tag], self.label_test
 		# cross validation
 		self.K = 3
@@ -127,10 +136,10 @@ class learning:
 			return [i for i in combine(n-1, k)] + [i + [n] for i in combine(n-1,k-1)]
 		
 		best = 0
-		for layer_n in range(1, 6): # number of layers
-			layers = combine(30, layer_n) # combination of layers
+		for layer_n in range(1, 4): # number of layers
+			layers = combine(20, layer_n) # combination of layers
 			for layer in layers:
-				if layer[0] == 1: continue
+				if layer[0] == 1: continue # hidden layer should have more than 1 node
 				layer = sorted(layer, reverse=True)
 				layer.insert(layer_n, 2)
 				score = [0] * self.K
@@ -138,37 +147,30 @@ class learning:
 					clf = MLPClassifier(solver='lbfgs', alpha=1e-5,\
 						hidden_layer_sizes=layer, random_state=1)
 					clf.fit(self.X[train], self.y[train])
-					score.append(clf.score(self.X[test], self.y[test]))
+					#score[k] = clf.score(self.X[test], self.y[test]) # if we care the whole
 					predicted = clf.predict(self.X[test])
-
 					score_mat = metrics.confusion_matrix(self.y[test], predicted)
+
 					if score_mat[1, 1] == 0: continue # only care label-1 performance
 					recall = float(score_mat[1, 1]) / sum(score_mat[1])
 					precision = float(score_mat[1, 1]) / sum(score_mat[:, 1])
 					score[k] = 1 / ((1 / recall + 1 / precision) / 2) # f1 score
-					
-				if min(score) > best:
-					best = min(score)
-					bestClf = clf
-					self.ptLocal(self.fout, "Layers: %s", ("-".join(np.array(layer, dtype=str))))
-					self.ptLocal(self.fout, "Confusion matrix:\n%s", score_mat)
-					self.ptLocal(self.fout, "Label 1 precision: %.3f", precision)
-					self.ptLocal(self.fout, "Label 1 recall: %.3f", recall)
-					self.ptLocal(self.fout, "Label 1 f1: %.3f\n", best)
-
-		# layer = [13, 8, 3, 2]
-		# bestClf = MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=layer, random_state=1)
-		bestClf.fit(self.X, self.y)
-		predicted = bestClf.predict(self.X_test)
-		self.ptLocal(self.fout, "Classification report for classifier %s:\n%s", \
-			(bestClf, metrics.classification_report(self.expected, predicted)))
-		self.ptLocal(self.fout, "Confusion matrix:\n%s", \
-			metrics.confusion_matrix(self.expected, predicted))
-		tickers_pred = self.tickers[predicted.astype(bool)].tolist()
-		self.fticker.write(",".join(tickers_pred))
-		self.ptLocal(self.fout, "Possible ticker number: %s", len(tickers_pred))
-		self.ptLocal(self.fout, "Random pick successful ratio: %.3f\n",\
-		 round(float(sum(self.expected)) / len(self.expected), 3))
+				#if min(score) <= best: continue # only update if we have better result
+				best, idx = min(score), score.index(min(score))
+				self.ptLocal(self.fout, "\nLayers: %s", ("-".join(np.array(layer, dtype=str))))
+				self.ptLocal(self.fout, "Confusion matrix:\n%s", score_mat)
+				self.ptLocal(self.fout, "Label 1 expected f1 score: %.3f\n", best)
+				clf.fit(self.X, self.y)
+				predicted = clf.predict(self.X_test)
+				self.ptLocal(self.fout, "Classification report for classifier %s:\n%s", \
+					(clf, metrics.classification_report(self.expected, predicted)))
+				self.ptLocal(self.fout, "Confusion matrix:\n%s", \
+					metrics.confusion_matrix(self.expected, predicted))
+				tickers_pred = self.tickers[predicted.astype(bool)].tolist()
+				self.fticker.write(",".join(tickers_pred))
+				self.ptLocal(self.fout, "Possible ticker number: %s", len(tickers_pred))
+				self.ptLocal(self.fout, "Random pick successful rate: %.3f\n",\
+				 round(float(sum(self.expected)) / len(self.expected), 3))
 
 
 if __name__ == "__main__":

@@ -50,7 +50,7 @@ class preprocessing:
 		self.stock_prices = {}# 2-D hash table
 		last, cnt = -1, 1
 		for _, line in enumerate(self.lists): # read key-value pairs
-			#if _ > 1 * 10 ** 5: break # used to test large file
+			#if _ > 1 * 10 ** 7: break # used to test large file
 			dat = line.strip().split(":") # split key-value pair
 			if dat[0] == "ticker": # everytime update new ticker, clear past array
 				ticker = dat[1]
@@ -152,14 +152,15 @@ class preprocessing:
 			for alpha in [0.1, 1, 5]: # change to percentile alpha
 				VaR = np.percentile(returns_risk, alpha)
 				if len(returns_risk[returns_risk < VaR]) == 0: continue
-				self.CVAR[100 - alpha][ticker] = np.mean(returns_risk[returns_risk < VaR])
+				#self.CVAR[100 - alpha][ticker] = np.mean(returns_risk[returns_risk < VaR])
 				self.DR[ticker] = np.std(returns_risk[returns_risk <= 0]) * np.sqrt(252)
-				self.SD[ticker] = np.std(returns_risk) * np.sqrt(252) # annualized
+				#self.SD[ticker] = np.std(returns_risk) * np.sqrt(252) # annualized
 			
 	def createLabel(self):
 		print "Create Label Based on sharpe ratio"
-		self.label_train = np.zeros(len(self.feature), dtype=int) # to train model
-		self.label_test = np.zeros(len(self.feature), dtype=int) # to analyze performance
+		self.label = {}
+		for name in ["train0", "train1", "train2", "train3", "test"]:
+			self.label[name] = np.zeros(len(self.feature), dtype=int) # to train model
 		if len(self.feature) != len(self.tickerList): 
 			sys.exit("feature number doesn't match label information")
 		self.deleteList = {}
@@ -172,27 +173,22 @@ class preprocessing:
 								self.stock_prices[ticker][date0] - 1			
 					# Sortino ratio is better to evalueate high-volatility portfolio
 					Sortino_ratio = (annualized_r - risk_free) / self.DR[ticker] * mul
-					Sharpe_ratio = (annualized_r - risk_free) / self.SD[ticker] * mul
+					#Sharpe_ratio = (annualized_r - risk_free) / self.SD[ticker] * mul
 
-					#if Sortino_ratio >= 1 and self.CVAR[95][ticker] > -0.1:
-					if Sortino_ratio >= .5:
-						if type == "train": self.label_train[_] = 1
-						else: self.label_test[_] = 1
-					if type == "train":
-						print("%6s\tSortino: %4s\t\tCVaR 95%%: %5s%%\t%d" % \
-							(ticker, str(round(Sortino_ratio, 1))[:5], \
-							str(self.CVAR[95][ticker] * 100)[:5], self.label_train[_]))
-				calcRatio("2015-01-02", "2015-04-02", "train", 252. / 62)
-				# this period use same variance may artificially improve the performance
-				calcRatio("2016-01-04", "2016-04-04", "test", 252. / 62) 
+					if Sortino_ratio >= 1:
+						self.label[type][_] = 1
+					# if type == "train3":
+					# 	print("%6s\tSortino: %4s\t\tCVaR 95%%: %5s%%\t%d" % \
+					# 		(ticker, str(round(Sortino_ratio, 1))[:5], \
+					# 		str(self.CVAR[95][ticker] * 100)[:5], self.label["train3"][_]))
+				calcRatio("2012-01-03", "2012-03-01", "train0", 252. / 40)# 40 days
+				calcRatio("2013-01-02", "2013-03-01", "train1", 252. / 40) # 40 days
+				calcRatio("2014-01-02", "2014-03-03", "train2", 252. / 40) # 40 days
+				calcRatio("2015-01-02", "2015-03-03", "train3", 252. / 40) # 40 days
+				calcRatio("2016-01-04", "2016-03-02", "test", 252. / 40) 
 			except:
 				self.deleteList[ticker] = None # delete unqualified stock
 				continue
-
-		label_cnt = Counter(self.label_train)
-		for _ in label_cnt:
-			print("Label %d: number %d" % (_, label_cnt[_]))
-
 
 	def cleanFeatures(self):
 		print "\nClean Features"
@@ -256,8 +252,9 @@ class preprocessing:
 		# add ticker to the 1st col, label to the last col of the feature matrix
 		self.tickerList = np.array(self.tickerList)
 		self.feature = self.feature.transpose()
-		self.feature = np.vstack([self.tickerList, self.feature, \
-			self.label_train, self.label_test])
+		self.feature = np.vstack([self.tickerList, self.feature])
+		for name in ["train0", "train1", "train2", "train3", "test"]:
+			self.feature = np.vstack([self.feature, self.label[name]])
 		self.feature = self.feature.transpose()
 		print "Feature dimension after col-merge: ", np.shape(self.feature)
 
