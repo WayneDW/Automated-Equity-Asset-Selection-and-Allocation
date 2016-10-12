@@ -1,0 +1,86 @@
+Today: 2016-10-11 20:31
+Feature dimension (sample, training feature): 2674 315
+
+Label 0: number 1684
+Label 1: number 990
+
+Layers: 2-2
+Confusion matrix:
+[[397 158]
+ [203 133]]
+Label 1 expected f1 score: 0.395
+
+Classification report for classifier MLPClassifier(activation='relu', alpha=1e-05, batch_size='auto', beta_1=0.9,
+       beta_2=0.999, early_stopping=False, epsilon=1e-08,
+       hidden_layer_sizes=[2, 2], learning_rate='constant',
+       learning_rate_init=0.001, max_iter=200, momentum=0.9,
+       nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=True,
+       solver='lbfgs', tol=0.0001, validation_fraction=0.1, verbose=False,
+       warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.64      0.76      0.69      1668
+          1       0.42      0.30      0.35      1006
+
+avg / total       0.56      0.58      0.56      2674
+
+Confusion matrix:
+[[1262  406]
+ [ 708  298]]
+Possible ticker number: 704
+Random pick successful ratio: 0.376
+
+
+Layers: 6-2
+Confusion matrix:
+[[351 204]
+ [162 174]]
+Label 1 expected f1 score: 0.461
+
+Classification report for classifier MLPClassifier(activation='relu', alpha=1e-05, batch_size='auto', beta_1=0.9,
+       beta_2=0.999, early_stopping=False, epsilon=1e-08,
+       hidden_layer_sizes=[6, 2], learning_rate='constant',
+       learning_rate_init=0.001, max_iter=200, momentum=0.9,
+       nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=True,
+       solver='lbfgs', tol=0.0001, validation_fraction=0.1, verbose=False,
+       warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.64      0.53      0.58      1668
+          1       0.39      0.51      0.44      1006
+
+avg / total       0.55      0.52      0.53      2674
+
+Confusion matrix:
+[[880 788]
+ [497 509]]
+Possible ticker number: 1297
+Random pick successful ratio: 0.376
+
+
+Layers: 10-2
+Confusion matrix:
+[[309 246]
+ [151 185]]
+Label 1 expected f1 score: 0.480
+
+Classification report for classifier MLPClassifier(activation='relu', alpha=1e-05, batch_size='auto', beta_1=0.9,
+       beta_2=0.999, early_stopping=False, epsilon=1e-08,
+       hidden_layer_sizes=[10, 2], learning_rate='constant',
+       learning_rate_init=0.001, max_iter=200, momentum=0.9,
+       nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=True,
+       solver='lbfgs', tol=0.0001, validation_fraction=0.1, verbose=False,
+       warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.65      0.44      0.52      1668
+          1       0.40      0.61      0.48      1006
+
+avg / total       0.56      0.50      0.51      2674
+
+Confusion matrix:
+[[731 937]
+ [388 618]]
+Possible ticker number: 1555
+Random pick successful ratio: 0.376
+
