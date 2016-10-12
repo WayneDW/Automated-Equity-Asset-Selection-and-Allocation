@@ -5,6 +5,8 @@ import scipy as sp
 
 from scipy.interpolate import interp1d
 from sklearn import linear_model
+from sklearn.preprocessing import scale
+from sklearn.preprocessing import Imputer
 from collections import OrderedDict
 from collections import Counter
 
@@ -48,12 +50,13 @@ class preprocessing:
 		self.stock_prices = {}# 2-D hash table
 		last, cnt = -1, 1
 		for _, line in enumerate(self.lists): # read key-value pairs
-			#if _ > 3 * 10 ** 6: break # used to test large file
+			#if _ > 1 * 10 ** 5: break # used to test large file
 			dat = line.strip().split(":") # split key-value pair
 			if dat[0] == "ticker": # everytime update new ticker, clear past array
 				ticker = dat[1]
 				if np.shape(A) == (83, 11):
-					if last != -1 and len(self.stock_prices[last]) > 252 * 3: # data check
+					if last != -1 and len(self.stock_prices[last]) > 252 * 3 \
+						and years[0] == '2006': # date has different time horizon
 						A = A.flatten() # change 2-D matrix to 1-D
 						self.tickerList.append(last)
 						self.feature = np.vstack([self.feature, A])
@@ -63,7 +66,6 @@ class preprocessing:
 				last = ticker
 			if dat[0] == "key_ratios_Time":
 				years = np.array(dat[1].split(' '))
-				# may have different time horizon !!!
 				if len(years) == 11: self.time_horizon = years
 
 			if dat[0] in self.wordDict: # if key_ratios are these we need
@@ -165,12 +167,12 @@ class preprocessing:
 		for _ in xrange(len(self.tickerList)):
 			ticker = self.tickerList[_]
 			try: # some company may have not IPO yet
-				def calcRatio(date0, date1, type):
+				def calcRatio(date0, date1, type, mul):
 					annualized_r = self.stock_prices[ticker][date1] / \
 								self.stock_prices[ticker][date0] - 1			
 					# Sortino ratio is better to evalueate high-volatility portfolio
-					Sortino_ratio = (annualized_r - risk_free) / self.DR[ticker]
-					Sharpe_ratio = (annualized_r - risk_free) / self.SD[ticker]
+					Sortino_ratio = (annualized_r - risk_free) / self.DR[ticker] * mul
+					Sharpe_ratio = (annualized_r - risk_free) / self.SD[ticker] * mul
 
 					#if Sortino_ratio >= 1 and self.CVAR[95][ticker] > -0.1:
 					if Sortino_ratio >= .5:
@@ -180,9 +182,9 @@ class preprocessing:
 						print("%6s\tSortino: %4s\t\tCVaR 95%%: %5s%%\t%d" % \
 							(ticker, str(round(Sortino_ratio, 1))[:5], \
 							str(self.CVAR[95][ticker] * 100)[:5], self.label_train[_]))
-				calcRatio("2014-01-02", "2015-01-02", "train")
+				calcRatio("2015-01-02", "2015-04-02", "train", 252. / 62)
 				# this period use same variance may artificially improve the performance
-				calcRatio("2015-01-02", "2016-01-04", "test") 
+				calcRatio("2016-01-04", "2016-04-04", "test", 252. / 62) 
 			except:
 				self.deleteList[ticker] = None # delete unqualified stock
 				continue
@@ -214,6 +216,7 @@ class preprocessing:
 		tag_sd = np.repeat(True, np.shape(self.feature)[1])
 		for num in range(np.shape(self.feature)[1]):
 			std = np.std(self.feature[~np.isnan(self.feature[:,num]), num])
+			#mean = np.mean(self.feature[~np.isnan(self.feature[:,num]), num])
 			if std == 0: tag_sd[num] = False
 		self.feature = self.feature[:,tag_sd]
 		self.feature_name = self.feature_name[tag_sd]
@@ -237,6 +240,18 @@ class preprocessing:
 		self.feature_name = self.feature_name[tag_full_ratio]
 		print 'Feature dimension after ratio-time completeness check:', \
 			np.shape(self.feature)
+
+
+		# do data imputation to fill in missing values
+		imp = Imputer(missing_values='NaN', strategy='median', axis=0)
+		imp.fit(self.feature)
+		self.feature = imp.transform(self.feature)
+		# feature scaling, can't do it in createFeature part due to missing values
+		fclasses = len(self.feature[0]) / 11
+		for num in range(len(self.feature)):
+			feature_trans = np.reshape(self.feature[num], [fclasses, 11])
+			feature_trans = scale(feature_trans, axis=1).round(3)
+			self.feature[num] = feature_trans.flatten()
 
 		# add ticker to the 1st col, label to the last col of the feature matrix
 		self.tickerList = np.array(self.tickerList)
