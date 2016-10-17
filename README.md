@@ -32,7 +32,7 @@ Format basic information to the (sample_n, feature_m) matrix
 
 		[ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
 
-Typically, a sample has feature dimension 81 * 11 (financial ratios)
+Before filter, a sample has feature dimension 81 * 11 (891 financial ratios)
 
 ### 2.2 Missing value filter
 
