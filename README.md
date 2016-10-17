@@ -45,13 +45,13 @@ crawl historical stock prices from  https://finance.yahoo.com/
 
 		Some starts at April 2007, we regard them as 2006
 
-### 2.5 Feature variance filter
+## 3. Data accuracy check
 
-		Right now, this part is complete, just have been annotated
+```python
+./dataCheck.py
+```
 
-
-
-## 3. Stock classification based on financial statements
+## 4. Stock classification based on financial statements
 
 ```python
 ./learning.py
@@ -81,7 +81,7 @@ Comment: We wse SVM in sklearn to train the model and use cross-validation to pi
 Get a roughly desired stock sets
 
 
-## 4. Optimize the best weight for your portfolio
+## 5. Optimize the best weight for your portfolio
 
 ```python
 ./mean_variance_optimization.py
