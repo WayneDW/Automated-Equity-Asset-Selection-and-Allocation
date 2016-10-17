@@ -24,31 +24,33 @@ output: feature_label_*, selected_feature_*
 
 ### 2.1 Feature format
 
-		Basic feature filter to delete useless features
+Basic feature filter to delete useless features
 
-		format basic information to the (sample_n, feature_m) matrix
+format basic information to the (sample_n, feature_m) matrix
 
-	    [ feature1_sample_1, feature2_sample_1, ... feature_m_sample_1]
+[ feature1_sample_1, feature2_sample_1, ... feature_m_sample_1]
 
-	    ...
+...
 
-	    [ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
+[ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
 
-	    Typically, a sample has feature dimension 81 * 11 (financial ratios)
+Typically, a sample has feature dimension 81 * 11 (financial ratios)
 
 ### 2.2 Missing value filter
 
-	    Delele the feature if it has more than N% missing values (we can set N as 1, 5, 10)
+Delele the feature if it has more than N% missing values (we can set N as 1, 5, 10)
 
 ### 2.3 feature time-horizon completeness check
 
-		Since we need a complete time window to shift, if it doesn't have full 11 data, delete all of this type of feature, such P/E or Asset turnover
+Since we need a complete time window to shift, if it doesn't have full 11 data, delete all of this 
+
+type of feature, such P/E or Asset turnover
 
 ### 2.4 Feature date filter
 
-		Some stock may only have data from 2005 - 2014
+Some stock may only have data from 2005 - 2014
 
-		Some starts at April 2007, we regard them as 2006
+Some starts at April 2007, we regard them as 2006
 
 ## 3. Data accuracy check
 
