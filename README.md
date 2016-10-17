@@ -1,4 +1,4 @@
-# This repository is sperated into four parts:
+# This repository is separated into four parts:
 
 ## 1. Data Preprocessing
 
