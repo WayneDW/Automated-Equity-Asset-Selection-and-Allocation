@@ -24,15 +24,13 @@ output: feature_label_*, selected_feature_*
 
 ### 2.1 Feature format
 
-Basic feature filter to delete useless features
+Format basic information to the (sample_n, feature_m) matrix
 
-format basic information to the (sample_n, feature_m) matrix
+		[ feature1_sample_1, feature2_sample_1, ... feature_m_sample_1]
 
-[ feature1_sample_1, feature2_sample_1, ... feature_m_sample_1]
+		...
 
-...
-
-[ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
+		[ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
 
 Typically, a sample has feature dimension 81 * 11 (financial ratios)
 
