@@ -8,7 +8,7 @@
 
 crawl ticker list and basic stock from http://www.nasdaq.com/screening/company-list.aspx
 
-crawl financial statement from http://www.morningstar.com/
+crawl financial statement from http://financials.morningstar.com/ratios/r.html?t=BIDU&region=USA&culture=en_US
 
 crawl historical stock prices from  https://finance.yahoo.com/
 
@@ -17,7 +17,7 @@ crawl historical stock prices from  https://finance.yahoo.com/
 ```python
 ./feature engineering.py
 ```
-### 2.1 Feature Engineering
+### 2.1 Feature format
 
 		Basic feature filter to delete useless features
 
@@ -28,6 +28,28 @@ crawl historical stock prices from  https://finance.yahoo.com/
 	    ...
 
 	    [ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
+
+	    Typically, a sample has feature dimension 83 * 11 (financial ratios)
+
+### 2.2 Missing value filter
+
+	    Delele the feature if it has more than N% missing values (we can set N as 1, 5, 10)
+
+### 2.3 feature time-horizon completeness check
+
+		Since we need a complete time window to shift, if it doesn't have full 11 data, delete all of this type of feature, such P/E or Asset turnover
+
+### 2.4 Feature date filter
+
+		Some stock may only have data from 2005 - 2014
+
+		Some starts at April 2007, we regard them as 2006
+
+### 2.5 Feature variance filter
+
+		Right now, this part is complete, just have been annotated
+
+
 
 ## 3. Stock classification based on financial statements
 
