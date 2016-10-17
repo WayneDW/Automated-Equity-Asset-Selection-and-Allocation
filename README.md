@@ -29,7 +29,7 @@ crawl historical stock prices from  https://finance.yahoo.com/
 
 	    [ feature1_sample_m, feature2_sample_m, ... feature_m_sample_n]
 
-	    Typically, a sample has feature dimension 83 * 11 (financial ratios)
+	    Typically, a sample has feature dimension 81 * 11 (financial ratios)
 
 ### 2.2 Missing value filter
 
