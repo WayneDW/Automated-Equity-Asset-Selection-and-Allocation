@@ -5,6 +5,7 @@
 ```python
 ./crawl.py
 ```
+output: raw_2000-01-01_2016-12-31_d
 
 crawl ticker list and basic stock from http://www.nasdaq.com/screening/company-list.aspx
 
@@ -14,9 +15,13 @@ crawl historical stock prices from  https://finance.yahoo.com/
 
 ## 2. Feature engineering
 
+input: feature_projection
+
 ```python
 ./feature engineering.py
 ```
+output: feature_label_*, selected_feature_*
+
 ### 2.1 Feature format
 
 		Basic feature filter to delete useless features
