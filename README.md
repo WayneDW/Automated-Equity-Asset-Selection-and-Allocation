@@ -4,7 +4,7 @@
 
 ```python
 ./crawl.py
-output: raw_2000-01-01_2016-12-31_d
+output: ./input/raw_*
 ```
 
 
