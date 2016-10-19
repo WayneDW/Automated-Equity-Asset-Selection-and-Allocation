@@ -16,12 +16,13 @@ crawl historical stock prices from  https://finance.yahoo.com/
 
 ## 2. Feature engineering
 
-input: feature_projection
 
 ```python
+input: feature_projection
 ./feature engineering.py
-```
 output: feature_label_*, selected_feature_*
+```
+
 
 ### 2.1 Feature format
 
