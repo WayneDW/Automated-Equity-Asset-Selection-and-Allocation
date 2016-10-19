@@ -62,28 +62,18 @@ Some starts at April 2007, we regard them as 2006
 ./learning.py
 ```
 
-### 3.1 Train the model
+### 4.1 Train the model
 
 Take financial ratios (2006 - Dec.2014) to train the model
 
-Label based on Sortino ratio and CVaR with time between Jan, 2014 and Jan, 2015
+Increase training sample by using 2006-2011, 2007-2012, 2008-2013, 2009-2014, 2010-2015
 
-Select best parameters for us.
+Label based on Sortino ratio
 
-### 3.2 Predict data and make comparison
+### 4.2 Predict data and make comparison
 
-Predict the performance based on financial ratios (2007 - Dec.2015)
-
-Check if the selected group is sigficant better than the rest
+In summary, gradient boosting gives us the best performance (highest precision of label 1 in average)
 	
-
-
-
-```
-Comment: We wse SVM in sklearn to train the model and use cross-validation to pick the best parameters (missing value problem, now is dealed with deleting missing values, may be handled by cubic spline in the future)
-```
-
-Get a roughly desired stock sets
 
 
 ## 5. Optimize the best weight for your portfolio
