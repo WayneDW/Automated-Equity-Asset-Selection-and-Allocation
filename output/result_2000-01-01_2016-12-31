@@ -1,0 +1,275 @@
+Today: 2016-10-18 23:12
+Training data based on period: 2006-2015
+Feature dimension (sample, training feature): 13145 168
+
+Label 0 number: 6506
+Label 1 number: 6639
+Random pick successful rate: 0.310
+
+
+Deep Neural Network
+Cross Validation Score: 0.495
+Classification report for classifier MLPClassifier(activation='relu', alpha=1e-05, batch_size='auto', beta_1=0.9,
+       beta_2=0.999, early_stopping=True, epsilon=1e-08,
+       hidden_layer_sizes=[168, 32, 2], learning_rate='constant',
+       learning_rate_init=0.001, max_iter=100000, momentum=0.5,
+       nesterovs_momentum=True, power_t=0.5, random_state=0, shuffle=True,
+       solver='lbfgs', tol=0.0001, validation_fraction=0.1, verbose=False,
+       warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.71      0.61      0.65      2318
+          1       0.33      0.43      0.38      1039
+
+avg / total       0.59      0.55      0.57      3357
+
+Confusion matrix:
+[[1410  908]
+ [ 589  450]]
+
+Gradient Boosting
+Cross Validation Score: 0.491
+Classification report for classifier GradientBoostingClassifier(criterion='friedman_mse', init=None,
+              learning_rate=0.1, loss='deviance', max_depth=3,
+              max_features=None, max_leaf_nodes=None,
+              min_impurity_split=1e-07, min_samples_leaf=1,
+              min_samples_split=2, min_weight_fraction_leaf=0.0,
+              n_estimators=1000, presort='auto', random_state=0,
+              subsample=1.0, verbose=0, warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.71      0.76      0.73      2318
+          1       0.37      0.31      0.34      1039
+
+avg / total       0.60      0.62      0.61      3357
+
+Confusion matrix:
+[[1758  560]
+ [ 714  325]]
+
+Random Forest
+Cross Validation Score: 0.498
+Classification report for classifier RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+            max_depth=None, max_features='auto', max_leaf_nodes=None,
+            min_impurity_split=1e-07, min_samples_leaf=1,
+            min_samples_split=2, min_weight_fraction_leaf=0.0,
+            n_estimators=10, n_jobs=1, oob_score=False, random_state=0,
+            verbose=0, warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.71      0.75      0.73      2318
+          1       0.35      0.30      0.33      1039
+
+avg / total       0.60      0.61      0.60      3357
+
+Confusion matrix:
+[[1739  579]
+ [ 725  314]]
+
+
+Today: 2016-10-18 23:03
+Training data based on period: 2006-2014
+Feature dimension (sample, training feature): 9814 168
+
+Label 0 number: 4527
+Label 1 number: 5287
+Random pick successful rate: 0.406
+
+
+Deep Neural Network
+Cross Validation Score: 0.542
+Classification report for classifier MLPClassifier(activation='relu', alpha=1e-05, batch_size='auto', beta_1=0.9,
+       beta_2=0.999, early_stopping=True, epsilon=1e-08,
+       hidden_layer_sizes=[168, 32, 2], learning_rate='constant',
+       learning_rate_init=0.001, max_iter=100000, momentum=0.5,
+       nesterovs_momentum=True, power_t=0.5, random_state=0, shuffle=True,
+       solver='lbfgs', tol=0.0001, validation_fraction=0.1, verbose=False,
+       warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.60      0.75      0.67      1979
+          1       0.43      0.28      0.34      1352
+
+avg / total       0.53      0.56      0.53      3331
+
+Confusion matrix:
+[[1481  498]
+ [ 979  373]]
+
+Gradient Boosting
+Cross Validation Score: 0.550
+Classification report for classifier GradientBoostingClassifier(criterion='friedman_mse', init=None,
+              learning_rate=0.1, loss='deviance', max_depth=3,
+              max_features=None, max_leaf_nodes=None,
+              min_impurity_split=1e-07, min_samples_leaf=1,
+              min_samples_split=2, min_weight_fraction_leaf=0.0,
+              n_estimators=1000, presort='auto', random_state=0,
+              subsample=1.0, verbose=0, warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.60      0.72      0.66      1979
+          1       0.43      0.31      0.36      1352
+
+avg / total       0.53      0.55      0.54      3331
+
+Confusion matrix:
+[[1426  553]
+ [ 934  418]]
+
+Random Forest
+Cross Validation Score: 0.530
+Classification report for classifier RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+            max_depth=None, max_features='auto', max_leaf_nodes=None,
+            min_impurity_split=1e-07, min_samples_leaf=1,
+            min_samples_split=2, min_weight_fraction_leaf=0.0,
+            n_estimators=10, n_jobs=1, oob_score=False, random_state=0,
+            verbose=0, warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.61      0.70      0.65      1979
+          1       0.43      0.33      0.38      1352
+
+avg / total       0.53      0.55      0.54      3331
+
+Confusion matrix:
+[[1380  599]
+ [ 900  452]]
+
+
+Today: 2016-10-18 22:56
+Training data based on period: 2006-2013
+Feature dimension (sample, training feature): 6521 168
+
+Label 0 number: 2635
+Label 1 number: 3886
+Random pick successful rate: 0.425
+
+
+Deep Neural Network
+Cross Validation Score: 0.531
+Classification report for classifier MLPClassifier(activation='relu', alpha=1e-05, batch_size='auto', beta_1=0.9,
+       beta_2=0.999, early_stopping=True, epsilon=1e-08,
+       hidden_layer_sizes=[168, 32, 2], learning_rate='constant',
+       learning_rate_init=0.001, max_iter=100000, momentum=0.5,
+       nesterovs_momentum=True, power_t=0.5, random_state=0, shuffle=True,
+       solver='lbfgs', tol=0.0001, validation_fraction=0.1, verbose=False,
+       warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.57      0.44      0.50      1892
+          1       0.42      0.54      0.47      1401
+
+avg / total       0.50      0.49      0.49      3293
+
+Confusion matrix:
+[[ 836 1056]
+ [ 638  763]]
+
+Gradient Boosting
+Cross Validation Score: 0.556
+Classification report for classifier GradientBoostingClassifier(criterion='friedman_mse', init=None,
+              learning_rate=0.1, loss='deviance', max_depth=3,
+              max_features=None, max_leaf_nodes=None,
+              min_impurity_split=1e-07, min_samples_leaf=1,
+              min_samples_split=2, min_weight_fraction_leaf=0.0,
+              n_estimators=1000, presort='auto', random_state=0,
+              subsample=1.0, verbose=0, warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.60      0.43      0.50      1892
+          1       0.44      0.61      0.51      1401
+
+avg / total       0.53      0.51      0.51      3293
+
+Confusion matrix:
+[[ 814 1078]
+ [ 542  859]]
+
+Random Forest
+Cross Validation Score: 0.524
+Classification report for classifier RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+            max_depth=None, max_features='auto', max_leaf_nodes=None,
+            min_impurity_split=1e-07, min_samples_leaf=1,
+            min_samples_split=2, min_weight_fraction_leaf=0.0,
+            n_estimators=10, n_jobs=1, oob_score=False, random_state=0,
+            verbose=0, warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.57      0.48      0.52      1892
+          1       0.42      0.51      0.46      1401
+
+avg / total       0.51      0.49      0.50      3293
+
+Confusion matrix:
+[[909 983]
+ [682 719]]
+
+
+
+Today: 2016-10-18 22:52
+Training data based on period: 2006-2012
+Feature dimension (sample, training feature): 3249 168
+
+Label 0 number: 1121
+Label 1 number: 2128
+Random pick successful rate: 0.537
+
+
+Deep Neural Network
+Cross Validation Score: 0.599
+Classification report for classifier MLPClassifier(activation='relu', alpha=1e-05, batch_size='auto', beta_1=0.9,
+       beta_2=0.999, early_stopping=True, epsilon=1e-08,
+       hidden_layer_sizes=[168, 32, 2], learning_rate='constant',
+       learning_rate_init=0.001, max_iter=100000, momentum=0.5,
+       nesterovs_momentum=True, power_t=0.5, random_state=0, shuffle=True,
+       solver='lbfgs', tol=0.0001, validation_fraction=0.1, verbose=False,
+       warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.47      0.35      0.40      1514
+          1       0.54      0.67      0.60      1758
+
+avg / total       0.51      0.52      0.51      3272
+
+Confusion matrix:
+[[ 526  988]
+ [ 586 1172]]
+
+Gradient Boosting
+Cross Validation Score: 0.613
+Classification report for classifier GradientBoostingClassifier(criterion='friedman_mse', init=None,
+              learning_rate=0.1, loss='deviance', max_depth=3,
+              max_features=None, max_leaf_nodes=None,
+              min_impurity_split=1e-07, min_samples_leaf=1,
+              min_samples_split=2, min_weight_fraction_leaf=0.0,
+              n_estimators=1000, presort='auto', random_state=0,
+              subsample=1.0, verbose=0, warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.52      0.21      0.30      1514
+          1       0.55      0.84      0.66      1758
+
+avg / total       0.54      0.54      0.49      3272
+
+Confusion matrix:
+[[ 313 1201]
+ [ 288 1470]]
+
+Random Forest
+Cross Validation Score: 0.604
+Classification report for classifier RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+            max_depth=None, max_features='auto', max_leaf_nodes=None,
+            min_impurity_split=1e-07, min_samples_leaf=1,
+            min_samples_split=2, min_weight_fraction_leaf=0.0,
+            n_estimators=10, n_jobs=1, oob_score=False, random_state=0,
+            verbose=0, warm_start=False):
+             precision    recall  f1-score   support
+
+          0       0.47      0.28      0.35      1514
+          1       0.54      0.73      0.62      1758
+
+avg / total       0.51      0.52      0.50      3272
+
+Confusion matrix:
+[[ 425 1089]
+ [ 476 1282]]
