@@ -20,10 +20,10 @@ class stock_info_collector:
 	def __init__(self, d0, d1, dtype):
 		self.time_start, self.time_end, self.time_type = d0, d1, dtype
 		# if dir doesn't exist, create one
-		if not os.path.isdir("./dat/"): os.system("mkdir " + "./dat/")
+		if not os.path.isdir("./input/"): os.system("mkdir " + "./input/")
 		# if file existed, exit
 		fileName = "_".join(["raw", self.time_start, self.time_end, self.time_type])
-		if os.path.isfile("./dat/" + fileName): sys.exit("file already existed!")
+		if os.path.isfile("./input/" + fileName): sys.exit("file already existed!")
 
 		self.failedList, cnt = {}, 1
 		# get basic indicators associated with the ticker
@@ -53,7 +53,7 @@ class stock_info_collector:
 	
 	def writeFile(self, fileName, ticker, name, lastSale, MarketCap, \
 			IPOyear, sector, industry, ratioStr, priceStr):
-		fout = open("./dat/" + fileName, 'a+')
+		fout = open("./input/" + fileName, 'a+')
 		#print ratioStr, priceStr
 		fout.write( "{ticker:" + ticker + "," + "name:" + name + "," \
 		"lastSale:" + lastSale + "," + "MarketCap:" + MarketCap + "," \
