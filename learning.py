@@ -206,11 +206,10 @@ class learning:
 		self.ptLocal(self.fout, "Confusion matrix:\n%s", \
 			metrics.confusion_matrix(self.expected, predicted))
 		
-
 if __name__ == "__main__":
 	date_start = "2000-01-01"
 	date_end = "2016-12-31"
 	date_type = "d" # daily data
 	sortino_rate = .5 # set classification threshold
-	testYear = 2015
+	testYear = 2016
 	s = learning(date_start, date_end, date_type, sortino_rate, testYear)
