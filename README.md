@@ -4,6 +4,7 @@
 
 ```python
 ./crawl.py
+
 Output: ./input/raw_*
 ```
 
@@ -19,6 +20,7 @@ crawl historical stock prices from  https://finance.yahoo.com/
 
 ```python
 ./feature engineering.py
+
 Input: ./input/feature_projection
 Output: ./input/feature_label_*, selected_feature_*
 ```
@@ -62,6 +64,9 @@ Some starts at April 2007, we regard them as 2006
 
 ```python
 ./learning.py
+
+Input: ./input/feature_label_*
+Output: ./output/result_*, ./output/tickers_*
 ```
 
 ### 4.1 Train the model
