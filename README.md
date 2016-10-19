@@ -4,8 +4,9 @@
 
 ```python
 ./crawl.py
-```
 output: raw_2000-01-01_2016-12-31_d
+```
+
 
 crawl ticker list and basic stock from http://www.nasdaq.com/screening/company-list.aspx
 
