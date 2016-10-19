@@ -4,7 +4,7 @@
 
 ```python
 ./crawl.py
-output: ./input/raw_*
+Output: ./input/raw_*
 ```
 
 
@@ -18,9 +18,9 @@ crawl historical stock prices from  https://finance.yahoo.com/
 
 
 ```python
-input: feature_projection
 ./feature engineering.py
-output: feature_label_*, selected_feature_*
+Input: ./input/feature_projection
+Output: ./input/feature_label_*, selected_feature_*
 ```
 
 
