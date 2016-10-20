@@ -237,7 +237,7 @@ class preprocessing:
 		imp.fit(self.feature)
 		self.feature = imp.transform(self.feature)
 
-		# feature scaling, can't do it in createFeature part due to missing values
+		#feature scaling, can't do it in createFeature part due to missing values
 		fclasses = len(self.feature[0]) / 11
 		for num in range(len(self.feature)):
 			feature_trans = np.reshape(self.feature[num], [fclasses, 11])
@@ -250,6 +250,7 @@ class preprocessing:
 					feature_trans[fnum] = scale(feature_trans[fnum]).round(3)
 				elif featureType == "percent": # transform xy% to 0.xy
 					feature_trans[fnum] = feature_trans[fnum] / 100.
+					#feature_trans[fnum] = scale(feature_trans[fnum]).round(3)
 				else: continue # actually, we should not go into this loop
 			self.feature[num] = feature_trans.flatten()
 
