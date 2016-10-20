@@ -15,6 +15,15 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from collections import Counter
 
+
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import Dropout
+from keras.layers import LSTM
+
+from keras.layers.embeddings import Embedding
+from keras.preprocessing import sequence
+
 # no sector, matketCap feature right now
 
 class learning:
@@ -22,9 +31,10 @@ class learning:
 		self.loadFile()
 		self.dataProcressing()
 		#self.SVM()
-		self.neuralNet()
+		#self.neuralNet()
 		self.boosting()
-		self.randomForest()
+		#self.randomForest()
+		self.LSTM()
 
 	def loadFile(self):
 		typePar = "_".join([date_start, date_end])
@@ -74,6 +84,7 @@ class learning:
 		self.y[self.y < sortino_rate], self.expected[self.expected < sortino_rate] = 0, 0
 		self.y[self.y >= sortino_rate], self.expected[self.expected >= sortino_rate] = 1, 1
 		self.y, self.expected = self.y.astype(int), self.expected.astype(int)
+
 		# sample number
 		n_samples = len(self.tickers)
 		self.ptLocal(self.fout, "Feature dimension (sample, training feature): %d %d\n", \
@@ -196,6 +207,34 @@ class learning:
 		self.clf = GradientBoostingClassifier(n_estimators=1000, random_state=0)
 		self.perform()
 
+	# keras.io/getting-started/sequential-model-guide/
+	def LSTM(self):
+		featureNum = len(self.X[0]) / 6
+		X = np.empty((len(self.X), 6, featureNum))
+		X_test = np.empty((len(self.X_test), 6, featureNum))
+		self.X = self.X.reshape(len(self.X), featureNum, 6)
+		self.X_test = self.X_test.reshape(len(self.X_test), featureNum, 6)
+		for i in range(len(self.X)):
+			X[i] = self.X[i].transpose()
+		for i in range(len(self.X_test)):
+			X_test[i] = self.X_test[i].transpose()
+
+		model = Sequential()
+		model.add(LSTM(200, batch_input_shape=(None, 6, 28)))
+		model.add(Dropout(0.2))
+		model.add(Dense(1, activation='sigmoid'))
+		model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+		print(model.summary())
+		model.fit(X, self.y, verbose=2)
+		predicted = model.predict_classes(X_test, verbose=0)
+		# Final evaluation of the model
+		scores = model.evaluate(X_test, self.expected, verbose=0)
+		print("Accuracy: %.2f%%" % (scores[1]*100))
+		self.ptLocal(self.fout, "Classification report for classifier:\n%s", \
+			(metrics.classification_report(self.expected, predicted)))
+		self.ptLocal(self.fout, "Confusion matrix:\n%s", \
+			metrics.confusion_matrix(self.expected, predicted))
+
 	def perform(self):
 		self.clf.fit(self.X, self.y)
 		scores = cross_val_score(self.clf, self.X, self.y).mean()
@@ -211,5 +250,5 @@ if __name__ == "__main__":
 	date_end = "2016-12-31"
 	date_type = "d" # daily data
 	sortino_rate = .5 # set classification threshold
-	testYear = 2016
+	testYear = 2013
 	s = learning(date_start, date_end, date_type, sortino_rate, testYear)
