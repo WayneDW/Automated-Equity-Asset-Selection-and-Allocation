@@ -230,7 +230,7 @@ class preprocessing:
 		self.feature_name = self.feature_name[tag_full_ratio]
 		print 'Feature dimension after ratio-time completeness check:', \
 			np.shape(self.feature)
-
+		'''
 		# do data imputation to fill in missing values
 		# load file of feature_name to determine which feature to scale
 		imp = Imputer(missing_values='NaN', strategy='median', axis=0)
@@ -253,7 +253,7 @@ class preprocessing:
 					#feature_trans[fnum] = scale(feature_trans[fnum]).round(3)
 				else: continue # actually, we should not go into this loop
 			self.feature[num] = feature_trans.flatten()
-
+		'''
 		# add ticker to the 1st col, label to the last col of the feature matrix
 		self.tickerList = np.array(self.tickerList)
 		self.feature = self.feature.transpose()
