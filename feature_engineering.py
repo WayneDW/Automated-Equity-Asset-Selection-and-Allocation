@@ -217,58 +217,6 @@ class preprocessing:
         # self.feature_name = self.feature_name[tag_sd]
         # print "Feature dimension after variance check: ", np.shape(self.feature)
 
-<<<<<<< HEAD
-		# if a ratio in features doesn't have 11 data, we can't get time-window shift
-		# delete all the related ratios asscociated with that
-		tag_full_ratio = np.repeat(True, np.shape(self.feature)[1])
-		last = -1; cnt = 0
-		for num in range(len(self.feature_name)):
-			tag = self.feature_name[num].split("__")[0]
-			if last != -1 and tag != last:
-				if cnt != 11:
-					tag_full_ratio[num - cnt:num] = np.repeat(False, cnt)
-				cnt = 0
-			cnt += 1
-			last = tag
-		if tag != last and cnt != 11:
-			tag_full_ratio[num - cnt:num] = np.repeat(False, cnt)
-		self.feature = self.feature[:,tag_full_ratio]
-		self.feature_name = self.feature_name[tag_full_ratio]
-		print 'Feature dimension after ratio-time completeness check:', \
-			np.shape(self.feature)
-		'''
-		# do data imputation to fill in missing values
-		# load file of feature_name to determine which feature to scale
-		imp = Imputer(missing_values='NaN', strategy='median', axis=0)
-		imp.fit(self.feature)
-		self.feature = imp.transform(self.feature)
-
-		#feature scaling, can't do it in createFeature part due to missing values
-		fclasses = len(self.feature[0]) / 11
-		for num in range(len(self.feature)):
-			feature_trans = np.reshape(self.feature[num], [fclasses, 11])
-			#feature_trans = scale(feature_trans, axis=1).round(3)
-			# we should scale the non-percent values
-			for fnum in range(fclasses):
-				featureName = "key_ratios_" + self.feature_name[fnum].split("__")[0]
-				featureType = self.wordDict[featureName]
-				if featureType == "scalar": # transform to scale number
-					feature_trans[fnum] = scale(feature_trans[fnum]).round(3)
-				elif featureType == "percent": # transform xy% to 0.xy
-					feature_trans[fnum] = feature_trans[fnum] / 100.
-					#feature_trans[fnum] = scale(feature_trans[fnum]).round(3)
-				else: continue # actually, we should not go into this loop
-			self.feature[num] = feature_trans.flatten()
-		'''
-		# add ticker to the 1st col, label to the last col of the feature matrix
-		self.tickerList = np.array(self.tickerList)
-		self.feature = self.feature.transpose()
-		self.feature = np.vstack([self.tickerList, self.feature])
-		for name in ["train0", "train1", "train2", "train3", "test"]:
-			self.feature = np.vstack([self.feature, self.label[name]])
-		self.feature = self.feature.transpose()
-		print "Feature dimension after col-merge: ", np.shape(self.feature)
-=======
         # if a ratio in features doesn't have 11 data, we can't get time-window shift
         # delete all the related ratios asscociated with that
         tag_full_ratio = np.repeat(True, np.shape(self.feature)[1])
@@ -290,6 +238,7 @@ class preprocessing:
 
         # do data imputation to fill in missing values
         # load file of feature_name to determine which feature to scale
+        '''
         imp = Imputer(missing_values='NaN', strategy='median', axis=0)
         imp.fit(self.feature)
         self.feature = imp.transform(self.feature)
@@ -310,7 +259,7 @@ class preprocessing:
                     #feature_trans[fnum] = scale(feature_trans[fnum]).round(3)
                 else: continue # actually, we should not go into this loop
             self.feature[num] = feature_trans.flatten()
-
+        '''
         # add ticker to the 1st col, label to the last col of the feature matrix
         self.tickerList = np.array(self.tickerList)
         self.feature = self.feature.transpose()
@@ -319,7 +268,6 @@ class preprocessing:
             self.feature = np.vstack([self.feature, self.label[name]])
         self.feature = self.feature.transpose()
         print "Feature dimension after col-merge: ", np.shape(self.feature)
->>>>>>> 94b4a386b437ebee43c94d06518e3cf847ca56fd
 
         # if the stock don't have coresponding price, delete it.
         # tag_price = np.repeat(True, len(self.feature))
@@ -331,7 +279,7 @@ class preprocessing:
 
 
     def saveLocal(self):
-        np.savetxt("./input/feature_label_" + date_start + '_' + date_end, \
+        np.savetxt("./input/feature_label_for_kaggle_" + date_start + '_' + date_end, \
             self.feature, delimiter=',', fmt="%s")
 
         np.savetxt("./output/selected_feature_" + date_start + '_' + date_end, \
@@ -340,14 +288,7 @@ class preprocessing:
 
 
 if __name__ == "__main__":
-<<<<<<< HEAD
-	date_start = "2000-01-01"
-	date_end = "2016-12-31"
-	date_type = "d"
-	s = preprocessing(date_start, date_end, date_type)
-=======
     date_start = "2000-01-01"
     date_end = "2016-12-31"
     date_type = "d"
     s = preprocessing(date_start, date_end, date_type)
->>>>>>> 94b4a386b437ebee43c94d06518e3cf847ca56fd
